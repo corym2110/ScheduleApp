@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/styles.css">
+<script src="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;max-width:100%;overflow-x:clip}
+#app{container-type:inline-size}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+#app{--accent:#0f6e6b;--accent-deep:#0a3f3e;--on-accent:#ffffff}
+#app[data-theme="dark"]{--accent:#9184d9;--accent-deep:#2b2741;--on-accent:#12141f;--link:#b5abfc;--link-hover:#d2cefd}
+#app[data-theme="light"]{--link:#0f6e6b;--link-hover:#0a504e;--bg:#f4f3ef;--surface:#ffffff;--text:#1c1e1c;--divider:rgba(28,30,28,.10);--muted:#6d7270;--ok:#0f6e6b;--row:rgba(28,30,28,.045);--card:0 1px 2px rgba(28,30,28,.05),0 10px 28px rgba(28,30,28,.06)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] option,#app[data-theme="dark"] input,#app[data-theme="dark"] textarea{background:#12141f;color:#e9e9ed;color-scheme:dark}
+#app[data-theme="dark"] select option:checked{background:#2b2741;color:#e9e9ed}
+#app[data-theme="light"] select,#app[data-theme="light"] option{background:#ffffff;color:#1c1e1c;color-scheme:light}
+#app[data-theme="dark"]{--bg:#161826;--surface:#232532;--text:#e9e9ed;--divider:rgba(233,233,237,.14);--muted:#9397ab;--ok:#7fd6a5;--row:rgba(233,233,237,.05);--card:0 0 0 1px #3f424d,0 10px 28px rgba(0,0,0,.5)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] input,#app[data-theme="dark"] option{color-scheme:dark}
+#app[data-theme="dark"] select{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] select option{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] input{color-scheme:dark}
+</style>
+</helmet>
+<div id="frame" style="width:100%;overflow-x:clip"><div id="app" data-theme="{{ theme }}" style="width:100%;min-height:100vh;display:flex;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55">
+
+  <nav style="width:{{ navWidth }};flex:none;min-width:0;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow:hidden;background:#12141f;color:#e9e9ed;display:flex;flex-direction:column;padding:26px 16px 20px;gap:24px;transition:width .18s ease">
+    <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:10px;padding-left:6px">
+      <div style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:12.5px">2</div>
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600;font-size:17px;letter-spacing:.04em;white-space:nowrap">2110 Fitness</span></sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <a href="2110 Scheduling Dashboard.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.8V20h14V9.8"></path><path d="M10 20v-6h4v6"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Dashboard</span></sc-if>
+      </a>
+      <a href="2110 Schedule.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Schedule</span></sc-if>
+      </a>
+      <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14.5px;overflow:hidden">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.6"></circle><circle cx="16" cy="8" r="2.6"></circle><path d="M3.5 19c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"></path><path d="M13.5 19c0-2.8 1.6-4.4 4-4.4s3 1.6 3 4.4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Classes</span></sc-if>
+      </div>
+      <a href="2110 Members.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"></circle><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"></path><path d="M16 5.4a3.2 3.2 0 0 1 0 5.6M18.4 19.6c0-2.6-.9-4.2-2.4-5.2"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Members</span></sc-if>
+      </a>
+      <a href="2110 POS.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2.5"></rect><path d="M3 9.5h18M7.5 20h9"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">POS</span></sc-if>
+      </a>
+      <a href="2110 Reports.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Reports</span></sc-if>
+      </a>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(233,233,237,.12);padding-top:12px">
+      <a href="2110 Settings.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:10px 14px;border-radius:11px;color:rgba(233,233,237,.66);font-size:14px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="17" height="17" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.65l.06.06a1.8 1.8 0 1 1-2.55 2.55l-.06-.06a1.5 1.5 0 0 0-1.65-.3 1.5 1.5 0 0 0-.9 1.37V20a1.8 1.8 0 0 1-3.6 0v-.1a1.5 1.5 0 0 0-.98-1.37 1.5 1.5 0 0 0-1.65.3l-.06.06a1.8 1.8 0 1 1-2.55-2.55l.06-.06a1.5 1.5 0 0 0 .3-1.65 1.5 1.5 0 0 0-1.37-.9H4a1.8 1.8 0 0 1 0-3.6h.1a1.5 1.5 0 0 0 1.37-.98 1.5 1.5 0 0 0-.3-1.65l-.06-.06a1.8 1.8 0 1 1 2.55-2.55l.06.06a1.5 1.5 0 0 0 1.65.3H9.5a1.5 1.5 0 0 0 .9-1.37V4a1.8 1.8 0 0 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.37 1.5 1.5 0 0 0 1.65-.3l.06-.06a1.8 1.8 0 1 1 2.55 2.55l-.06.06a1.5 1.5 0 0 0-.3 1.65v.06a1.5 1.5 0 0 0 1.37.9H20a1.8 1.8 0 0 1 0 3.6h-.1a1.5 1.5 0 0 0-1.37.9Z"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Settings</span></sc-if>
+      </a>
+      <a href="2110 Coach Preferences.dc.html" title="My preferences" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:11px;padding:10px 12px;margin-top:4px;border-radius:11px;background:rgba(233,233,237,.06);color:#e9e9ed;overflow:hidden" style-hover="background:rgba(233,233,237,.12)">
+        <div style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:12px;font-weight:600">CM</div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div style="min-width:0">
+          <div style="font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cory Martin</div>
+          <div style="font-size:11.5px;color:rgba(233,233,237,.55)">Facility Supervisor</div>
+        </div></sc-if>
+      </a>
+    </div>
+  </nav>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;margin-left:{{ navWidth }};transition:margin-left .18s ease">
+    <header style="height:64px;flex:none;position:sticky;top:0;z-index:30;background:var(--surface);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1">
+      <button type="button" onClick="{{ toggleNav }}" title="{{ navToggleTitle }}" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"></rect><path d="M9.5 4.5v15"></path><path d="{{ navChevron }}"></path></svg>
+      </button>
+      <div style="position:relative;width:320px;min-width:0;flex-shrink:1">
+      <div style="display:flex;align-items:center;gap:9px;height:36px;padding:0 14px;border:1px solid {{ searchBorder }};border-radius:10px;overflow:hidden;color:var(--muted)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input value="{{ searchQuery }}" onChange="{{ setSearch }}" onFocus="{{ openSearch }}" placeholder="Search members, sessions, pages" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:13.5px;outline:none" />
+        <button type="button" onClick="{{ clearSearch }}" style="display:{{ clearDisplay }};width:20px;height:20px;flex:none;place-items:center;border:0;border-radius:999px;background:var(--row);color:var(--muted);cursor:pointer;padding:0">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+        <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:42px;left:0;width:100%;min-width:300px;z-index:60;background:var(--surface);border-radius:12px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="max-height:340px;overflow-y:auto">
+              <sc-for list="{{ searchResults }}" as="s" hint-placeholder-count="4">
+                <a href="{{ s.href }}" style="display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--divider);color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:26px;height:26px;flex:none;border-radius:{{ s.radius }};background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10.5px;font-weight:600">{{ s.badge }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.title }}</span>
+                    <span style="display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.sub }}</span>
+                  </span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:22px 14px;font-size:13px;color:var(--muted);text-align:center">No matches for "{{ searchQuery }}".</div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13px;cursor:pointer" style-hover="background:var(--row)">
+          <span style="display:grid;place-items:center;width:16px;height:16px">{{ themeIcon }}</span>{{ themeLabel }}
+        </button>
+        <div style="position:relative;flex:none">
+        <button type="button" onClick="{{ toggleNotif }}" title="Notifications" style="position:relative;width:36px;height:36px;display:grid;place-items:center;border:1px solid {{ notifBorder }};border-radius:999px;background:{{ notifBg }};color:{{ notifFg }};cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.4 1.4 5.4H4.6S6 14 6 10Z"></path><path d="M10 19a2.2 2.2 0 0 0 4 0"></path></svg>
+          <span style="display:{{ badgeDisplay }};position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c8452e;color:#fff;font-size:10px;font-weight:600;place-items:center">{{ notifCount }}</span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:344px;max-width:calc(100vw - 40px);z-index:60;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider)">
+              <span style="font-size:14.5px;font-weight:600">Notifications</span>
+              <button type="button" onClick="{{ markAllRead }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">Mark all read</button>
+            </div>
+            <div style="max-height:390px;overflow-y:auto">
+              <sc-for list="{{ notifItems }}" as="n" hint-placeholder-count="4">
+                <a href="{{ n.href }}" style="display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--divider);background:{{ n.rowBg }};color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:28px;height:28px;flex:none;border-radius:999px;background:{{ n.iconBg }};color:{{ n.iconFg }};display:grid;place-items:center;font-size:11px;font-weight:600">{{ n.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;text-wrap:pretty">{{ n.text }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);margin-top:1px">{{ n.when }}</span>
+                  </span>
+                  <span style="display:{{ n.dotDisplay }};width:7px;height:7px;flex:none;margin-top:6px;border-radius:999px;background:var(--accent)"></span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ notifEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:26px 16px;font-size:13.5px;color:var(--muted);text-align:center">You're all caught up.</div>
+              </sc-if>
+            </div>
+            <a href="2110 Coach Preferences.dc.html" style="display:block;padding:12px 16px;font-size:12.5px;text-align:center">Notification settings</a>
+          </div>
+        </sc-if>
+      </div>
+        <a href="2110 Schedule.dc.html?new=1" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;white-space:nowrap;flex:none;cursor:pointer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+          New session
+        </a>
+      </div>
+    </header>
+
+    <main style="flex:1;padding:24px 30px 28px;padding-right:{{ mainPadRight }};display:flex;flex-direction:column;gap:18px;min-width:0;transition:padding-right .16s ease">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div>
+          <h2 style="margin:0 0 2px;font-size:28px;font-weight:500;letter-spacing:-.02em">Classes</h2>
+          <div style="font-size:13.5px;color:var(--muted)">{{ weekLabel }} · {{ summary }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap">
+          <div style="display:flex;gap:4px;padding:4px;border:1px solid var(--divider);border-radius:11px">
+            <sc-for list="{{ kindChips }}" as="k" hint-placeholder-count="2">
+              <button type="button" onClick="{{ k.toggle }}" style="padding:6px 13px;border:0;border-radius:8px;background:{{ k.bg }};color:{{ k.fg }};font:inherit;font-size:13px;font-weight:{{ k.weight }};white-space:nowrap;cursor:pointer">{{ k.label }}</button>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px">
+            <button type="button" onClick="{{ goToday }}" style="height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--text);font:inherit;font-size:13px;white-space:nowrap;cursor:pointer" style-hover="background:var(--row)">This week</button>
+            <button type="button" onClick="{{ prevWeek }}" title="Previous week" style="width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"></path></svg>
+            </button>
+            <button type="button" onClick="{{ nextWeek }}" title="Next week" style="width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6 6 6-6 6"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <sc-for list="{{ dayGroups }}" as="d" hint-placeholder-count="4">
+        <section style="display:flex;flex-direction:column;gap:9px;min-width:0">
+          <div style="display:flex;align-items:baseline;gap:10px">
+            <span style="font-size:13px;font-weight:600;letter-spacing:.02em">{{ d.label }}</span>
+            <span style="font-size:12px;color:var(--muted)">{{ d.sub }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px;min-width:0">
+            <sc-for list="{{ d.cards }}" as="c" hint-placeholder-count="2">
+              <button type="button" onClick="{{ c.select }}" style="display:flex;flex-direction:column;gap:9px;min-width:0;padding:14px 15px;border:1px solid {{ c.border }};border-radius:14px;background:var(--surface);box-shadow:var(--card);color:var(--text);font:inherit;text-align:left;cursor:pointer" style-hover="border-color:var(--accent)">
+                <div style="display:flex;align-items:center;gap:9px;min-width:0">
+                  <span style="width:3px;height:30px;flex:none;border-radius:999px;background:{{ c.bar }}"></span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span>
+                    <span style="display:block;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums">{{ c.time }} · {{ c.coach }}</span>
+                  </span>
+                  <span style="display:{{ c.fullDisplay }};flex:none;padding:2px 7px;border-radius:6px;background:{{ c.fullBg }};color:{{ c.fullFg }};font-size:10.5px;font-weight:600;letter-spacing:.04em">FULL</span>
+                </div>
+                <div style="min-width:0">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:12.5px">
+                    <span>{{ c.capText }}</span>
+                    <span style="color:{{ c.capLeftFg }}">{{ c.capLeft }}</span>
+                  </div>
+                  <div style="height:5px;margin-top:5px;border-radius:999px;background:var(--row);overflow:hidden">
+                    <div style="width:{{ c.barPct }};height:100%;background:{{ c.barBg }}"></div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:11.5px;color:var(--muted)">
+                  <span style="display:{{ c.inDisplay }};padding:2px 8px;border-radius:6px;background:{{ c.inBg }};color:{{ c.inFg }};font-weight:500">{{ c.inText }}</span>
+                  <span style="display:{{ c.waitDisplay }};padding:2px 8px;border-radius:6px;background:var(--row)">{{ c.waitText }}</span>
+                  <span style="display:{{ c.openDisplay }}">{{ c.openText }}</span>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+      </sc-for>
+
+      <sc-if value="{{ nothing }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:44px 20px;background:var(--surface);border-radius:16px;box-shadow:var(--card);font-size:13.5px;color:var(--muted);text-align:center">No classes on the schedule this week.</div>
+      </sc-if>
+
+      <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:fixed;top:{{ panelTop }};right:0;bottom:0;width:352px;max-width:100%;z-index:50;background:var(--surface);border-left:1px solid var(--divider);box-shadow:-18px 0 40px rgba(0,0,0,.16);display:flex;flex-direction:column;overflow-y:auto">
+          <div style="padding:18px 20px 0;display:flex;align-items:flex-start;gap:12px">
+            <div style="flex:1;min-width:0">
+              <div style="font-size:18px;font-weight:500;letter-spacing:-.01em">{{ panelName }}</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px">{{ panelWhen }} · {{ panelTime }}</div>
+            </div>
+            <button type="button" onClick="{{ closePanel }}" title="Close" style="width:30px;height:30px;flex:none;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+            </button>
+          </div>
+
+          <div style="padding:12px 20px 0;display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.2"></circle><path d="M5.5 20c0-3.3 2.9-5.4 6.5-5.4s6.5 2.1 6.5 5.4"></path></svg>
+            <span style="color:var(--text)">{{ panelCoach }}</span>
+          </div>
+
+          <div style="padding:16px 20px 0">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:13px">
+              <span>{{ panelCapText }}</span>
+              <span style="color:{{ panelCapFg }}">{{ panelCapLeft }}</span>
+            </div>
+            <div style="height:6px;margin-top:6px;border-radius:999px;background:var(--row);overflow:hidden">
+              <div style="width:{{ panelBarPct }};height:100%;background:{{ panelBarBg }}"></div>
+            </div>
+            <div style="margin-top:7px;font-size:12px;color:var(--muted)">{{ panelInCount }}</div>
+          </div>
+
+          <div style="height:1px;background:var(--divider);margin:18px 20px 0"></div>
+
+          <div style="padding:16px 20px 0">
+            <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Roster</div>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <sc-for list="{{ roster }}" as="p" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:6px;min-width:0">
+                  <button type="button" onClick="{{ p.toggleIn }}" title="{{ p.inTitle }}" style="width:32px;height:36px;flex:none;display:grid;place-items:center;border:1px solid {{ p.inBorder }};border-radius:9px;background:{{ p.inBg }};color:{{ p.inFg }};cursor:pointer" style-hover="background:var(--row)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+                  </button>
+                  <button type="button" onClick="{{ p.toggleNo }}" title="{{ p.noTitle }}" style="width:32px;height:36px;flex:none;display:grid;place-items:center;border:1px solid {{ p.noBorder }};border-radius:9px;background:{{ p.noBg }};color:{{ p.noFg }};cursor:pointer" style-hover="background:var(--row)">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+                  </button>
+                  <a href="{{ p.href }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid var(--divider);border-radius:9px;color:var(--text)" style-hover="background:var(--row)">
+                    <span style="width:24px;height:24px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10px;font-weight:600">{{ p.initials }}</span>
+                    <span style="flex:1;min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:{{ p.decor }}">{{ p.n }}</span>
+                    <span style="display:{{ p.tagDisplay }};flex:none;font-size:10.5px;padding:2px 7px;border-radius:6px;background:{{ p.tagBg }};color:{{ p.tagFg }}">{{ p.tag }}</span>
+                  </a>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="padding:14px 20px 0;display:flex;gap:7px">
+            <select value="{{ addPick }}" onChange="{{ setAddPick }}" style="flex:1;min-width:0;height:36px;padding:0 8px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:13.5px">
+              <option value="">Add a member…</option>
+              <sc-for list="{{ addOptions }}" as="o" hint-placeholder-count="6">
+                <option value="{{ o.v }}">{{ o.v }}</option>
+              </sc-for>
+            </select>
+            <button type="button" onClick="{{ addPerson }}" style="height:36px;flex:none;padding:0 14px;border:0;border-radius:9px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer">{{ addLabel }}</button>
+          </div>
+
+          <sc-if value="{{ hasWait }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:18px 20px 0">
+              <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">{{ waitLabel }}</div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <sc-for list="{{ waitRows }}" as="w" hint-placeholder-count="2">
+                  <div style="display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px dashed var(--divider);border-radius:9px;min-width:0">
+                    <span style="width:22px;height:22px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10px;font-weight:600">{{ w.pos }}</span>
+                    <span style="flex:1;min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ w.n }}</span>
+                    <button type="button" onClick="{{ w.promote }}" style="height:26px;flex:none;padding:0 10px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:12px;cursor:pointer" style-hover="background:var(--row)">Book in</button>
+                    <button type="button" onClick="{{ w.drop }}" title="Remove from waitlist" style="width:26px;height:26px;flex:none;display:grid;place-items:center;border:0;border-radius:7px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+                    </button>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <div style="padding:16px 20px 22px;margin-top:auto">
+            <a href="{{ panelScheduleHref }}" style="display:grid;place-items:center;height:40px;border:1px solid var(--divider);border-radius:999px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">Open in the schedule</a>
+          </div>
+        </div>
+      </sc-if>
+    </main>
+  </div>
+</div></div>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;}}">
+class Component extends DCLogic {
+  state = {
+    theme: Component.savedTheme(this.props.theme), collapsed: false, notifOpen: false, notifRead: {},
+    searchQuery: "", searchOpen: false,
+    statuses: Component.loadAtt("2110-attendance"),
+    waitlists: Component.loadAtt("2110-waitlists"),
+    adds: Component.loadAtt("2110-class-adds"),
+    offset: 0, kinds: { "Class": true, "Group Training": true },
+    selected: null, addPick: "",
+  };
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ vw: window.innerWidth });
+    window.addEventListener("resize", this._onResize);
+    this.setState({ vw: window.innerWidth });
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._onResize);
+  }
+
+  setAdds(k, list) {
+    this.setState(st => {
+      const adds = { ...st.adds };
+      if (list.length) adds[k] = list; else delete adds[k];
+      try { localStorage.setItem("2110-class-adds", JSON.stringify(adds)); } catch (e) {}
+      return { adds };
+    });
+  }
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const colors = { "Class": dark ? "#8fc79f" : "#3d7a52", "Group Training": dark ? "#6fb3c8" : "#2f6f8f" };
+    const tint = (hex) => hex + (dark ? "26" : "18");
+    const okHex = dark ? "#7fd6a5" : "#0f6e6b";
+    const bad = "#c8452e";
+    const DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const FULLDOW = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const fmt = (m) => {
+      const h = Math.floor(m / 60), mm = m % 60;
+      return (((h + 11) % 12) + 1) + ":" + String(mm).padStart(2, "0") + " " + (h >= 12 ? "PM" : "AM");
+    };
+    const pad = (n) => String(n).padStart(2, "0");
+    const isoOf = (d) => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+    const dowIdx = (d) => (d.getDay() + 6) % 7;
+    const addDays = (d, n) => { const x = new Date(d.getTime()); x.setDate(x.getDate() + n); return x; };
+    const mondayOf = (d) => addDays(d, -dowIdx(d));
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const todayIso = isoOf(today);
+    const weekStart = addDays(mondayOf(today), this.state.offset * 7);
+
+    // the studio's recurring roster sessions — one row per session on the weekly template
+    const ROWS = [
+      [0, 690, 60, "", "Group Training", "JT", ["Dan Whitfield", "Owen Pratt", "Kim Alvarez", "Beth Nunes"]],
+      [0, 990, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Kim Alvarez", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [1, 990, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [1, 1080, 60, "", "Group Training", "JT", ["Dan Whitfield", "Rafael Diaz", "Beth Nunes"]],
+      [2, 360, 60, "2110 Fitness Class", "Class", "JT", ["Owen Pratt", "Kim Alvarez", "Amy Cole"]],
+      [2, 690, 60, "", "Group Training", "JT", ["Dan Whitfield", "Owen Pratt", "Kim Alvarez", "Beth Nunes"]],
+      [2, 990, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Kim Alvarez", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [3, 990, 60, "Conditioning", "Class", "JT", ["Kim Alvarez", "Rafael Diaz", "Tom Okafor", "Amy Cole"]],
+      [3, 1080, 60, "", "Group Training", "JT", ["Dan Whitfield", "Rafael Diaz", "Beth Nunes"]],
+      [4, 690, 60, "", "Group Training", "JT", ["Dan Whitfield", "Owen Pratt", "Kim Alvarez", "Beth Nunes", "Tom Okafor", "Rafael Diaz"]],
+      [4, 990, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [5, 480, 60, "", "Group Training", "JT", ["Owen Pratt", "Beth Nunes", "Amy Cole", "Kim Alvarez", "Rafael Diaz"]],
+      [6, 600, 60, "Recovery class", "Class", "JT", ["Priya Raman", "Amy Cole", "Beth Nunes", "Dan Whitfield"]],
+    ];
+    const typeCaps = { "Class": 12, "Group Training": 8 };
+    const namedCaps = { "Recovery class": 10, "Conditioning": 14 };
+    const capOf = (type, name) => namedCaps[name] || typeCaps[type] || 0;
+    const coachName = { CM: "Cory Martin", JT: "Jess Tran", AR: "Andre Reyes" };
+
+    const att = this.state.statuses || {};
+    const waits = this.state.waitlists || {};
+    const adds = this.state.adds || {};
+    const attKey = (iso, start, coach) => iso + "-" + start + "-" + coach + "-";
+    const slotKey = (iso, start, coach, type) => iso + "|" + start + "|" + coach + "|" + type;
+
+    const session = (r, date) => {
+      const [, start, dur, name, type, coach, seed] = r;
+      const iso = isoOf(date);
+      const sk = slotKey(iso, start, coach, type);
+      const ak = attKey(iso, start, coach);
+      const roster = seed.concat(adds[sk] || []);
+      const cap = capOf(type, name);
+      const head = roster.length;
+      const full = cap > 0 && head >= cap;
+      const waiting = waits[sk] || [];
+      const checked = roster.filter(n => att[ak + n] === "Checked in").length;
+      const noun = type === "Class" ? " signed in" : " booked";
+      return {
+        iso, start, dur, type, coach, sk, ak, roster, cap, head, full, waiting, checked, noun,
+        title: name || "Group Training",
+        date,
+      };
+    };
+
+    const kinds = this.state.kinds;
+    const dates = [0, 1, 2, 3, 4, 5, 6].map(i => addDays(weekStart, i));
+    const all = [];
+    const dayGroups = dates.map(date => {
+      const rows = ROWS.filter(r => r[0] === dowIdx(date) && kinds[r[4]]).sort((a, b) => a[1] - b[1]);
+      const list = rows.map(r => session(r, date));
+      list.forEach(s => all.push(s));
+      const iso = isoOf(date);
+      return {
+        show: list.length > 0,
+        label: FULLDOW[dowIdx(date)] + ", " + MONTHS[date.getMonth()].slice(0, 3) + " " + date.getDate() + (iso === todayIso ? " · Today" : ""),
+        sub: list.length + (list.length === 1 ? " session" : " sessions"),
+        cards: list.map(s => ({
+          name: s.title,
+          time: fmt(s.start) + " – " + fmt(s.start + s.dur),
+          coach: coachName[s.coach] || s.coach,
+          bar: colors[s.type],
+          border: this.state.selected && this.state.selected.sk === s.sk ? "var(--accent)" : "var(--divider)",
+          capText: s.cap ? s.head + " of " + s.cap + s.noun : s.head + s.noun,
+          capLeft: !s.cap ? "" : s.full ? "Full" : (s.cap - s.head) + " spot" + (s.cap - s.head === 1 ? "" : "s") + " left",
+          capLeftFg: s.full ? bad : "var(--muted)",
+          barPct: s.cap ? Math.min(100, Math.round(s.head / s.cap * 100)) + "%" : "0%",
+          barBg: s.full ? bad : colors[s.type],
+          fullDisplay: s.full ? "block" : "none",
+          fullBg: tint(bad), fullFg: bad,
+          inDisplay: s.checked ? "block" : "none",
+          inText: s.checked + " checked in",
+          inBg: tint(okHex), inFg: "var(--ok)",
+          waitDisplay: s.waiting.length ? "block" : "none",
+          waitText: s.waiting.length + " on the waitlist",
+          openDisplay: (!s.checked && !s.waiting.length) ? "block" : "none",
+          openText: s.cap && !s.full ? "Open for sign-ups" : "",
+          select: () => this.setState({ selected: { sk: s.sk, iso: s.iso, start: s.start, dur: s.dur, type: s.type, coach: s.coach, name: s.title, seed: s.roster.slice(0, s.roster.length - (adds[s.sk] || []).length) }, addPick: "" }),
+        })),
+      };
+    }).filter(g => g.show);
+
+    const heads = all.reduce((a, s) => a + s.head, 0);
+    const vw = this.state.vw || 1440;
+    const wide = vw >= 1180;
+    const sel = this.state.selected;
+    let panel = {};
+    if (sel) {
+      const s = session([dowIdx(new Date(sel.iso + "T00:00:00")), sel.start, sel.dur, sel.name === "Group Training" ? "" : sel.name, sel.type, sel.coach, sel.seed], new Date(sel.iso + "T00:00:00"));
+      const d = new Date(sel.iso + "T00:00:00");
+      const members = ["Dan Whitfield", "Sarah Chen", "Kim Alvarez", "Owen Pratt", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole", "Priya Raman", "Marcus Ellis", "Lena Ortiz", "Neil Vance", "Rosa Delgado", "Alicia Braun", "Jon Reyes", "Nina Park", "Martyn Cole", "Tyler Beaumont", "Adrian Voss"];
+      panel = {
+        panelOpen: true,
+        panelName: s.title,
+        panelWhen: FULLDOW[dowIdx(d)] + ", " + MONTHS[d.getMonth()] + " " + d.getDate(),
+        panelTime: fmt(s.start) + " – " + fmt(s.start + s.dur),
+        panelCoach: coachName[s.coach] || s.coach,
+        panelCapText: s.cap ? s.head + " of " + s.cap + s.noun : s.head + s.noun,
+        panelCapLeft: !s.cap ? "" : s.full ? "Full" : (s.cap - s.head) + " spot" + (s.cap - s.head === 1 ? "" : "s") + " left",
+        panelCapFg: s.full ? bad : "var(--muted)",
+        panelBarPct: s.cap ? Math.min(100, Math.round(s.head / s.cap * 100)) + "%" : "0%",
+        panelBarBg: s.full ? bad : colors[s.type],
+        panelInCount: s.checked + " of " + s.head + " checked in",
+        panelScheduleHref: "2110 Schedule.dc.html",
+        closePanel: () => this.setState({ selected: null }),
+        roster: s.roster.map(n => {
+          const st = att[s.ak + n];
+          const isIn = st === "Checked in";
+          const isNo = st === "No-show";
+          return {
+            n, initials: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+            href: "2110 Members.dc.html?member=" + encodeURIComponent(n),
+            decor: isNo ? "line-through" : "none",
+            inBorder: isIn ? okHex : "var(--divider)",
+            inBg: isIn ? tint(okHex) : "transparent",
+            inFg: isIn ? "var(--ok)" : "var(--muted)",
+            inTitle: isIn ? "Checked in — click to undo" : "Check in " + n,
+            toggleIn: () => this.setStatus(s.ak + n, isIn ? "Booked" : "Checked in"),
+            noBorder: isNo ? bad : "var(--divider)",
+            noBg: isNo ? tint(bad) : "transparent",
+            noFg: isNo ? bad : "var(--muted)",
+            noTitle: isNo ? "Marked no-show — click to undo" : "Mark " + n + " a no-show",
+            toggleNo: () => this.setStatus(s.ak + n, isNo ? "Booked" : "No-show"),
+            tagDisplay: st ? "block" : "none",
+            tag: isIn ? "In" : isNo ? "No-show" : st === "Late cancel" ? "Late cancel" : st || "",
+            tagBg: isIn ? tint(okHex) : tint(bad),
+            tagFg: isIn ? "var(--ok)" : bad,
+          };
+        }),
+        addOptions: members.filter(n => s.roster.indexOf(n) < 0 && s.waiting.indexOf(n) < 0).map(v => ({ v })),
+        addPick: this.state.addPick,
+        setAddPick: (ev) => this.setState({ addPick: ev.target.value }),
+        addLabel: s.full ? "Waitlist" : "Book in",
+        addPerson: () => {
+          const n = this.state.addPick;
+          if (!n) return;
+          if (s.full) this.setWait(s.sk, s.waiting.concat([n]));
+          else this.setAdds(s.sk, (adds[s.sk] || []).concat([n]));
+          this.setState({ addPick: "" });
+        },
+        hasWait: s.waiting.length > 0,
+        waitLabel: "Waitlist · " + s.waiting.length,
+        waitRows: s.waiting.map((n, i) => ({
+          n, pos: String(i + 1),
+          promote: () => {
+            this.setAdds(s.sk, (adds[s.sk] || []).concat([n]));
+            this.setWait(s.sk, s.waiting.filter(x => x !== n));
+          },
+          drop: () => this.setWait(s.sk, s.waiting.filter(x => x !== n)),
+        })),
+      };
+    }
+
+    const weekEnd = addDays(weekStart, 6);
+    return {
+      expanded: !this.state.collapsed,
+      navWidth: this.state.collapsed ? "76px" : "232px",
+      navAlign: this.state.collapsed ? "center" : "flex-start",
+      navToggleTitle: this.state.collapsed ? "Expand sidebar" : "Collapse sidebar",
+      navChevron: this.state.collapsed ? "m14.2 9.4 2.6 2.6-2.6 2.6" : "m17.3 9.4-2.6 2.6 2.6 2.6",
+      toggleNav: () => this.setState(st => ({ collapsed: !st.collapsed })),
+      weekLabel: "Week of " + MONTHS[weekStart.getMonth()] + " " + weekStart.getDate() + " – " + MONTHS[weekEnd.getMonth()] + " " + weekEnd.getDate() + ", " + weekEnd.getFullYear(),
+      summary: all.length + (all.length === 1 ? " session · " : " sessions · ") + heads + " booked",
+      kindChips: ["Class", "Group Training"].map(k => {
+        const on = !!kinds[k];
+        return {
+          label: k === "Class" ? "Classes" : "Group training",
+          bg: on ? "var(--row)" : "transparent",
+          fg: on ? "var(--text)" : "var(--muted)",
+          weight: on ? 600 : 400,
+          toggle: () => this.setState(st => {
+            const next = { ...st.kinds, [k]: !st.kinds[k] };
+            if (!next["Class"] && !next["Group Training"]) return {};
+            return { kinds: next, selected: null };
+          }),
+        };
+      }),
+      dayGroups,
+      nothing: dayGroups.length === 0,
+      goToday: () => this.setState({ offset: 0, selected: null }),
+      prevWeek: () => this.setState(st => ({ offset: st.offset - 1, selected: null })),
+      nextWeek: () => this.setState(st => ({ offset: st.offset + 1, selected: null })),
+      panelOpen: false,
+      panelTop: wide ? "64px" : "220px",
+      mainPadRight: sel && wide ? "382px" : "30px",
+      ...panel,
+      ...this.notifVals(),
+      ...this.searchVals(),
+      theme: this.state.theme,
+      themeLabel: dark ? "Dark" : "Light",
+      themeIcon: dark ? this.moon() : this.sun(),
+      toggleTheme: () => this.flipTheme(),
+    };
+  }
+
+
+
+  static availDefaults() {
+    const w = (on, start, end) => ({ on, start, end });
+    return {
+      CM: {
+        hours: { Mon: w(true, 360, 1140), Tue: w(true, 360, 1140), Wed: w(true, 360, 1140), Thu: w(true, 360, 1140), Fri: w(true, 360, 900), Sat: w(false, 480, 720), Sun: w(false, 480, 720) },
+        timeOff: [
+          { from: "2026-09-21", to: "2026-09-25", reason: "Vacation", type: "Full days" },
+          { from: "2026-10-09", to: "2026-10-09", reason: "Certification course", type: "Full days" },
+        ],
+      },
+      JT: {
+        hours: { Mon: w(true, 360, 1200), Tue: w(true, 360, 1200), Wed: w(true, 360, 1200), Thu: w(true, 360, 1200), Fri: w(true, 420, 1080), Sat: w(true, 480, 780), Sun: w(true, 540, 720) },
+        timeOff: [],
+      },
+      AR: {
+        hours: { Mon: w(true, 420, 1020), Tue: w(true, 420, 1020), Wed: w(true, 420, 1020), Thu: w(true, 420, 1020), Fri: w(true, 420, 960), Sat: w(true, 480, 720), Sun: w(true, 480, 720) },
+        timeOff: [],
+      },
+    };
+  }
+  // written by the coach's own preferences page
+  static availAll() {
+    const base = Component.availDefaults();
+    try {
+      const raw = localStorage.getItem("2110-availability");
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved && typeof saved === "object") {
+          const out = {};
+          Object.keys(base).forEach(k => { out[k] = saved[k] || base[k]; });
+          Object.keys(saved).forEach(k => { out[k] = saved[k]; });
+          return out;
+        }
+      }
+    } catch (e) {}
+    return base;
+  }
+  // attendance survives a reload and a page change
+  static loadAtt(key) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) { const s = JSON.parse(raw); if (s && typeof s === "object") return s; }
+    } catch (e) {}
+    return {};
+  }
+  setStatus(k, v) {
+    this.setState(st => {
+      const statuses = { ...st.statuses, [k]: v };
+      try { localStorage.setItem("2110-attendance", JSON.stringify(statuses)); } catch (e) {}
+      return { statuses };
+    });
+  }
+  setWait(k, list) {
+    this.setState(st => {
+      const waitlists = { ...st.waitlists };
+      if (list.length) waitlists[k] = list; else delete waitlists[k];
+      try { localStorage.setItem("2110-waitlists", JSON.stringify(waitlists)); } catch (e) {}
+      return { waitlists };
+    });
+  }
+  setFee(k, v) {
+    this.setState(st => {
+      const fees = { ...st.fees, [k]: v };
+      try { localStorage.setItem("2110-session-fees", JSON.stringify(fees)); } catch (e) {}
+      return { fees };
+    });
+  }
+  static savedTheme(fallback) {
+    try { return localStorage.getItem("2110-theme") || fallback || "light"; }
+    catch (e) { return fallback || "light"; }
+  }
+  flipTheme() {
+    this.setState(st => {
+      const next = st.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("2110-theme", next); } catch (e) {}
+      return { theme: next };
+    });
+  }
+
+  notifData() {
+    return [
+      ["b1", "Sarah Chen booked Personal Training", "Today, 10:00 AM · booked 6 min ago", "SC", "member"],
+      ["b2", "Owen Pratt joined Conditioning", "Today, 4:30 PM class · 14 min ago", "OP", "member"],
+      ["b3", "Kim Alvarez joined Group Training", "Today, 11:35 AM · 38 min ago", "KA", "member"],
+      ["b4", "Rafael Diaz booked Bodpod", "Thu, Sep 3, 2:20 PM · 1 hr ago", "RD", "member"],
+      ["b5", "Amy Cole joined Recovery class", "Sun, Sep 6, 10:00 AM · 2 hrs ago", "AC", "member"],
+    ];
+  }
+  notifVals() {
+    const dark = this.state.theme === "dark";
+    const read = this.state.notifRead || {};
+    const items = this.notifData().map(([id, text, when, initials]) => {
+      const isRead = !!read[id];
+      const name = text.split(" ").slice(0, 2).join(" ");
+      return {
+        id, text, when, initials,
+        href: "2110 Members.dc.html?member=" + encodeURIComponent(name),
+        rowBg: isRead ? "transparent" : (dark ? "rgba(145,132,217,.07)" : "rgba(15,110,107,.05)"),
+        dotDisplay: isRead ? "none" : "block",
+        iconBg: "var(--row)", iconFg: "var(--muted)",
+      };
+    });
+    const unread = items.filter(i => i.dotDisplay === "block").length;
+    const open = !!this.state.notifOpen;
+    return {
+      notifItems: items,
+      notifEmpty: items.length === 0,
+      notifCount: String(unread),
+      badgeDisplay: unread > 0 ? "grid" : "none",
+      notifOpen: open,
+      notifBg: open ? "var(--row)" : "transparent",
+      notifFg: open ? "var(--text)" : "var(--muted)",
+      notifBorder: open ? "var(--accent)" : "var(--divider)",
+      toggleNotif: () => this.setState(st => ({ notifOpen: !st.notifOpen })),
+      markAllRead: (ev) => {
+        ev.preventDefault();
+        const all = {};
+        this.notifData().forEach(([id]) => { all[id] = true; });
+        this.setState({ notifRead: all });
+      },
+    };
+  }
+
+  memberNames() {
+    return ["Dan Whitfield","Sarah Chen","Marcus Ellis","Priya Raman","Alicia Braun","Rosa Delgado",
+      "Tom Okafor","Owen Pratt","Kim Alvarez","Beth Nunes","Rafael Diaz","Amy Cole","Lena Ortiz","Nina Park",
+      "Jon Reyes","Neil Vance"];
+  }
+  searchIndex() {
+    const members = this.memberNames();
+    const items = members.map(n => ({
+      title: n, sub: "Member profile", kind: "member",
+      badge: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+      radius: "999px",
+      href: "2110 Members.dc.html?member=" + encodeURIComponent(n),
+    }));
+    const pages = [
+      ["Dashboard", "Today's overview", "2110 Scheduling Dashboard.dc.html"],
+      ["Schedule", "Day, week and month calendar", "2110 Schedule.dc.html"],
+      ["Members", "Member list and profiles", "2110 Members.dc.html"],
+      ["POS", "Point of sale", "2110 POS.dc.html"],
+      ["Reports", "Revenue, sessions, coaches", "2110 Reports.dc.html"],
+      ["Settings", "Facility, staff, services", "2110 Settings.dc.html"],
+      ["My preferences", "Hours, time off, notifications", "2110 Coach Preferences.dc.html"],
+    ].map(([title, sub, href]) => ({ title, sub, href, kind: "page", badge: "→", radius: "8px" }));
+    const sessions = [
+      ["Personal Training", "Session type · 60 min · $50"],
+      ["Group Training", "Session type · 60 min · up to 6"],
+      ["Class", "Session type · 60 min · up to 16"],
+      ["Remote Consult", "Session type · 15 min · $40"],
+      ["Bodpod", "Session type · 30 min · $45"],
+      ["Blueprint and Baseline", "Session type · 90 min · no charge"],
+    ].map(([title, sub]) => ({ title, sub, kind: "session", badge: "◷", radius: "8px", href: "2110 Schedule.dc.html" }));
+    return items.concat(sessions, pages);
+  }
+  searchVals() {
+    const q = (this.state.searchQuery || "").trim().toLowerCase();
+    const hits = q ? this.searchIndex().filter(i =>
+      i.title.toLowerCase().includes(q) || i.sub.toLowerCase().includes(q)).slice(0, 8) : [];
+    const open = !!this.state.searchOpen && q.length > 0;
+    return {
+      searchQuery: this.state.searchQuery || "",
+      searchResults: hits,
+      searchEmpty: open && hits.length === 0,
+      searchOpen: open,
+      searchBorder: open ? "var(--accent)" : "var(--divider)",
+      clearDisplay: q ? "grid" : "none",
+      setSearch: (ev) => this.setState({ searchQuery: ev.target.value, searchOpen: true }),
+      openSearch: () => this.setState({ searchOpen: true }),
+      clearSearch: () => this.setState({ searchQuery: "", searchOpen: false }),
+    };
+  }
+
+  sun() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" },
+      React.createElement("circle", { cx: 12, cy: 12, r: 4 }),
+      React.createElement("path", { d: "M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" }));
+  }
+  moon() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" },
+      React.createElement("path", { d: "M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" }));
+  }
+}
+</script>
+</x-dc>
+</body>
+</html>

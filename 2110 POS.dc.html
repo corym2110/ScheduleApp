@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/styles.css">
+<script src="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;max-width:100%;overflow-x:clip}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+#app{--accent:#0f6e6b;--accent-deep:#0a3f3e;--on-accent:#ffffff}
+#app[data-theme="dark"]{--accent:#9184d9;--accent-deep:#2b2741;--on-accent:#12141f;--link:#b5abfc;--link-hover:#d2cefd}
+#app[data-theme="light"]{--link:#0f6e6b;--link-hover:#0a504e;--bg:#f4f3ef;--surface:#ffffff;--text:#1c1e1c;--divider:rgba(28,30,28,.10);--muted:#6d7270;--ok:#0f6e6b;--row:rgba(28,30,28,.045);--card:0 1px 2px rgba(28,30,28,.05),0 10px 28px rgba(28,30,28,.06)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] option,#app[data-theme="dark"] input,#app[data-theme="dark"] textarea{background:#12141f;color:#e9e9ed;color-scheme:dark}
+#app[data-theme="dark"] select option:checked{background:#2b2741;color:#e9e9ed}
+#app[data-theme="light"] select,#app[data-theme="light"] option{background:#ffffff;color:#1c1e1c;color-scheme:light}
+#app[data-theme="dark"]{--bg:#161826;--surface:#232532;--text:#e9e9ed;--divider:rgba(233,233,237,.14);--muted:#9397ab;--ok:#7fd6a5;--row:rgba(233,233,237,.05);--card:0 0 0 1px #3f424d,0 10px 28px rgba(0,0,0,.5)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] input,#app[data-theme="dark"] option{color-scheme:dark}
+#app[data-theme="dark"] select{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] select option{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] input{color-scheme:dark}
+</style>
+</helmet>
+<div id="frame" style="width:100%;overflow-x:clip"><div id="app" data-theme="{{ theme }}" style="width:100%;min-height:100vh;display:flex;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55">
+
+  <nav style="width:{{ navWidth }};flex:none;min-width:0;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow:hidden;background:#12141f;color:#e9e9ed;display:flex;flex-direction:column;padding:26px 16px 20px;gap:24px;transition:width .18s ease">
+    <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:10px;padding-left:6px">
+      <div style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:12.5px">2</div>
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600;font-size:17px;letter-spacing:.04em;white-space:nowrap">2110 Fitness</span></sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <a href="2110 Scheduling Dashboard.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.8V20h14V9.8"></path><path d="M10 20v-6h4v6"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Dashboard</span></sc-if>
+      </a>
+      <a href="2110 Schedule.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Schedule</span></sc-if>
+      </a>
+      <a href="2110 Classes.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.6"></circle><circle cx="16" cy="8" r="2.6"></circle><path d="M3.5 19c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"></path><path d="M13.5 19c0-2.8 1.6-4.4 4-4.4s3 1.6 3 4.4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Classes</span></sc-if>
+      </a>
+      <a href="2110 Members.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"></circle><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"></path><path d="M16 5.4a3.2 3.2 0 0 1 0 5.6M18.4 19.6c0-2.6-.9-4.2-2.4-5.2"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Members</span></sc-if>
+      </a>
+      <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14.5px;overflow:hidden">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2.5"></rect><path d="M3 9.5h18M7.5 20h9"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">POS</span></sc-if>
+      </div>
+      <a href="2110 Reports.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Reports</span></sc-if>
+      </a>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(233,233,237,.12);padding-top:12px">
+      <a href="2110 Settings.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:10px 14px;border-radius:11px;color:rgba(233,233,237,.66);font-size:14px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="17" height="17" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.65l.06.06a1.8 1.8 0 1 1-2.55 2.55l-.06-.06a1.5 1.5 0 0 0-1.65-.3 1.5 1.5 0 0 0-.9 1.37V20a1.8 1.8 0 0 1-3.6 0v-.1a1.5 1.5 0 0 0-.98-1.37 1.5 1.5 0 0 0-1.65.3l-.06.06a1.8 1.8 0 1 1-2.55-2.55l.06-.06a1.5 1.5 0 0 0 .3-1.65 1.5 1.5 0 0 0-1.37-.9H4a1.8 1.8 0 0 1 0-3.6h.1a1.5 1.5 0 0 0 1.37-.98 1.5 1.5 0 0 0-.3-1.65l-.06-.06a1.8 1.8 0 1 1 2.55-2.55l.06.06a1.5 1.5 0 0 0 1.65.3H9.5a1.5 1.5 0 0 0 .9-1.37V4a1.8 1.8 0 0 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.37 1.5 1.5 0 0 0 1.65-.3l.06-.06a1.8 1.8 0 1 1 2.55 2.55l-.06.06a1.5 1.5 0 0 0-.3 1.65v.06a1.5 1.5 0 0 0 1.37.9H20a1.8 1.8 0 0 1 0 3.6h-.1a1.5 1.5 0 0 0-1.37.9Z"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Settings</span></sc-if>
+      </a>
+      <a href="2110 Coach Preferences.dc.html" title="My preferences" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:11px;padding:10px 12px;margin-top:4px;border-radius:11px;background:rgba(233,233,237,.06);color:#e9e9ed;overflow:hidden" style-hover="background:rgba(233,233,237,.12)">
+        <div style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:12px;font-weight:600">CM</div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div style="min-width:0">
+          <div style="font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cory Martin</div>
+          <div style="font-size:11.5px;color:rgba(233,233,237,.55)">Facility Supervisor</div>
+        </div></sc-if>
+      </a>
+    </div>
+  </nav>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;margin-left:{{ navWidth }};transition:margin-left .18s ease">
+    <header style="height:64px;flex:none;position:sticky;top:0;z-index:30;background:var(--surface);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1">
+      <button type="button" onClick="{{ toggleNav }}" title="{{ navToggleTitle }}" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"></rect><path d="M9.5 4.5v15"></path><path d="{{ navChevron }}"></path></svg>
+      </button>
+      <div style="display:flex;align-items:center;gap:9px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:10px;width:320px;min-width:0;flex-shrink:1;overflow:hidden;color:var(--muted)">
+        <svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search products" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:13.5px;outline:none" />
+      </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13px;cursor:pointer" style-hover="background:var(--row)">
+          <span style="display:grid;place-items:center;width:16px;height:16px">{{ themeIcon }}</span>{{ themeLabel }}
+        </button>
+        <div style="position:relative;flex:none">
+        <button type="button" onClick="{{ toggleNotif }}" title="Notifications" style="position:relative;width:36px;height:36px;display:grid;place-items:center;border:1px solid {{ notifBorder }};border-radius:999px;background:{{ notifBg }};color:{{ notifFg }};cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.4 1.4 5.4H4.6S6 14 6 10Z"></path><path d="M10 19a2.2 2.2 0 0 0 4 0"></path></svg>
+          <span style="display:{{ badgeDisplay }};position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c8452e;color:#fff;font-size:10px;font-weight:600;place-items:center">{{ notifCount }}</span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:344px;max-width:calc(100vw - 40px);z-index:60;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider)">
+              <span style="font-size:14.5px;font-weight:600">Notifications</span>
+              <button type="button" onClick="{{ markAllRead }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">Mark all read</button>
+            </div>
+            <div style="max-height:390px;overflow-y:auto">
+              <sc-for list="{{ notifItems }}" as="n" hint-placeholder-count="4">
+                <a href="{{ n.href }}" style="display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--divider);background:{{ n.rowBg }};color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:28px;height:28px;flex:none;border-radius:999px;background:{{ n.iconBg }};color:{{ n.iconFg }};display:grid;place-items:center;font-size:11px;font-weight:600">{{ n.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;text-wrap:pretty">{{ n.text }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);margin-top:1px">{{ n.when }}</span>
+                  </span>
+                  <span style="display:{{ n.dotDisplay }};width:7px;height:7px;flex:none;margin-top:6px;border-radius:999px;background:var(--accent)"></span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ notifEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:26px 16px;font-size:13.5px;color:var(--muted);text-align:center">You're all caught up.</div>
+              </sc-if>
+            </div>
+            <a href="2110 Coach Preferences.dc.html" style="display:block;padding:12px 16px;font-size:12.5px;text-align:center">Notification settings</a>
+          </div>
+        </sc-if>
+      </div>
+        <button type="button" onClick="{{ newSale }}" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;white-space:nowrap;flex:none;cursor:pointer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+          New sale
+        </button>
+      </div>
+    </header>
+
+    <main style="flex:1;padding:24px 30px 28px;display:flex;flex-direction:column;gap:18px;min-height:0">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div>
+          <h2 style="margin:0 0 2px;font-size:28px;font-weight:500;letter-spacing:-.02em">Point of sale</h2>
+          <div style="font-size:13.5px;color:var(--muted)">{{ tillSummary }}</div>
+        </div>
+        <div style="display:flex;gap:4px;padding:4px;border:1px solid var(--divider);border-radius:11px;margin-left:auto;flex-wrap:wrap">
+          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="5">
+            <button type="button" onClick="{{ c.select }}" style="padding:6px 14px;border:0;border-radius:8px;background:{{ c.bg }};color:{{ c.fg }};font:inherit;font-size:13px;font-weight:{{ c.weight }};white-space:nowrap;cursor:pointer">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:{{ layoutCols }};gap:18px;align-items:start">
+
+        <div style="min-width:0;display:flex;flex-direction:column;gap:18px">
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:18px 20px">
+            <sc-if value="{{ hasPreselect }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-bottom:12px;padding:10px 13px;border-radius:10px;background:var(--row);font-size:12.5px;display:flex;align-items:center;gap:9px">
+                <span style="width:18px;height:18px;flex:none;border-radius:999px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+                </span>
+                <span style="min-width:0">{{ preselectText }}</span>
+              </div>
+            </sc-if>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px">
+              <sc-for list="{{ products }}" as="p" hint-placeholder-count="9">
+                <button type="button" onClick="{{ p.add }}" style="position:relative;min-height:104px;padding:13px 14px;border:1px solid {{ p.border }};border-radius:12px;background:transparent;color:var(--text);font:inherit;text-align:left;display:flex;flex-direction:column;gap:4px;cursor:pointer" style-hover="background:var(--row);border-color:var(--accent)">
+                  <span style="display:{{ p.qtyDisplay }};position:absolute;top:8px;right:8px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:11px;font-weight:600;place-items:center">{{ p.qty }}</span>
+                  <span style="font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:{{ p.tagColor }};font-weight:600">{{ p.category }}</span>
+                  <span style="flex:1;font-size:14px;font-weight:500;text-wrap:pretty">{{ p.name }}</span>
+                  <span style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+                    <span style="font-size:15px;font-weight:600;font-variant-numeric:tabular-nums">{{ p.price }}<span style="display:{{ p.recurDisplay }};font-size:11px;font-weight:400;color:var(--muted)">{{ p.recur }}</span></span>
+                    <span style="font-size:11.5px;color:var(--muted)">{{ p.meta }}</span>
+                  </span>
+                </button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:26px 4px;font-size:13.5px;color:var(--muted)">No products match "{{ query }}".</div>
+            </sc-if>
+          </section>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:8px">
+              <h5 style="margin:0;font-size:15.5px;font-weight:600">Recent transactions</h5>
+              <a href="#" style="font-size:13px">Full till report</a>
+            </div>
+            <sc-for list="{{ recent }}" as="r" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:16px;padding:11px 2px;border-bottom:1px solid var(--divider)">
+                <span style="width:74px;flex:none;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums">{{ r.time }}</span>
+                <a href="{{ r.href }}" style="width:132px;flex:none;font-size:13.5px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" style-hover="color:var(--link)">{{ r.member }}</a>
+                <span style="flex:1;min-width:0;font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.items }}</span>
+                <span style="flex:none;width:88px;text-align:center;font-size:11.5px;padding:3px 0;border-radius:7px;background:{{ r.payBg }};color:{{ r.payFg }}">{{ r.method }}</span>
+                <span style="flex:none;width:78px;text-align:right;font-size:13.5px;font-weight:500;font-variant-numeric:tabular-nums">{{ r.total }}</span>
+              </div>
+            </sc-for>
+          </section>
+        </div>
+
+        <aside style="min-width:0;background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;display:flex;flex-direction:column;gap:14px;position:sticky;top:82px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <h5 style="margin:0;font-size:15.5px;font-weight:600">Current sale</h5>
+            <button type="button" onClick="{{ clearCart }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;cursor:pointer;padding:0" style-hover="color:#c8452e">Clear</button>
+          </div>
+
+          <label style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Member</span>
+            <select value="{{ member }}" onChange="{{ setMember }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+              <sc-for list="{{ memberOptions }}" as="m" hint-placeholder-count="8">
+                <option value="{{ m.v }}">{{ m.v }}</option>
+              </sc-for>
+            </select>
+          </label>
+
+          <sc-if value="{{ hasMember }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ memberHref }}" style="display:flex;align-items:center;gap:6px;font-size:12.5px;margin-top:-6px">
+              View profile
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5h11v11"></path><path d="M19 5 6 18"></path></svg>
+            </a>
+          </sc-if>
+
+          <div style="height:1px;background:var(--divider)"></div>
+
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:18px 0;font-size:13.5px;color:var(--muted);text-wrap:pretty">No items yet. Tap a product to start a sale.</div>
+          </sc-if>
+
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ cart }}" as="i" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:13.5px;font-weight:500;text-wrap:pretty">{{ i.name }}</div>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11.5px;color:{{ i.eachColor }};font-variant-numeric:tabular-nums">{{ i.each }}</span>
+                    <button type="button" onClick="{{ i.toggleEdit }}" title="Override price" style="width:20px;height:20px;flex:none;display:grid;place-items:center;border:0;border-radius:5px;background:transparent;color:var(--muted);cursor:pointer;padding:0" style-hover="background:var(--row);color:var(--text)">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L20 8l-4-4L4 16v4Z"></path></svg>
+                    </button>
+                  </div>
+                  <sc-if value="{{ i.priceOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:5px;margin-top:4px">
+                      <span style="font-size:12px;color:var(--muted)">$</span>
+                      <input value="{{ i.amountValue }}" onChange="{{ i.setAmount }}" type="number" min="0" step="5" placeholder="{{ i.pricePlaceholder }}" style="width:78px;height:28px;padding:0 8px;border:1px solid var(--divider);border-radius:7px;background:transparent;color:var(--text);font:inherit;font-size:12.5px;font-variant-numeric:tabular-nums" />
+                      <button type="button" onClick="{{ i.resetPrice }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:11.5px;padding:0 2px;cursor:pointer" style-hover="color:var(--text)">Reset</button>
+                    </div>
+                  </sc-if>
+                </div>
+                <div style="display:flex;align-items:center;gap:2px;flex:none">
+                  <button type="button" onClick="{{ i.dec }}" style="width:26px;height:26px;display:grid;place-items:center;border:1px solid var(--divider);border-radius:7px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"></path></svg>
+                  </button>
+                  <span style="width:24px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums">{{ i.qty }}</span>
+                  <button type="button" onClick="{{ i.inc }}" style="width:26px;height:26px;display:grid;place-items:center;border:1px solid var(--divider);border-radius:7px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+                  </button>
+                </div>
+                <span style="width:64px;flex:none;text-align:right;font-size:13.5px;font-weight:500;font-variant-numeric:tabular-nums">{{ i.line }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="height:1px;background:var(--divider)"></div>
+
+          <div>
+            <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Discount</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <sc-for list="{{ discModes }}" as="d" hint-placeholder-count="2">
+                <button type="button" onClick="{{ d.select }}" style="width:36px;height:34px;flex:none;border:1px solid {{ d.border }};border-radius:9px;background:{{ d.bg }};color:{{ d.fg }};font:inherit;font-size:13px;font-weight:{{ d.weight }};cursor:pointer" style-hover="background:var(--row)">{{ d.label }}</button>
+              </sc-for>
+              <input value="{{ discValue }}" onChange="{{ setDisc }}" type="number" min="0" step="5" placeholder="0" style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;font-variant-numeric:tabular-nums" />
+              <button type="button" onClick="{{ clearDisc }}" style="height:34px;flex:none;padding:0 10px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;cursor:pointer" style-hover="background:var(--row);color:var(--text)">Clear</button>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasLinked }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Purchasing for</div>
+              <select value="{{ onBehalf }}" onChange="{{ setOnBehalf }}" style="width:100%;height:34px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:13.5px">
+                <option value="">Themselves</option>
+                <sc-for list="{{ linkedAccounts }}" as="l" hint-placeholder-count="2">
+                  <option value="{{ l.v }}">{{ l.label }}</option>
+                </sc-for>
+              </select>
+              <sc-if value="{{ hasOnBehalf }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ onBehalfHref }}" style="display:block;margin-top:6px;font-size:12px">{{ onBehalfNote }}</a>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ linkedEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:12px;color:var(--muted);text-wrap:pretty">No shared accounts on this profile. Add one on the member's profile to purchase on their behalf.</div>
+          </sc-if>
+
+          <div style="display:grid;grid-template-columns:1fr auto;gap:5px 12px;font-size:13.5px;font-variant-numeric:tabular-nums">
+            <sc-if value="{{ hasDiscount }}" hint-placeholder-val="{{ false }}">
+              <span style="color:var(--muted)">Items</span><span style="text-align:right">{{ grossTotal }}</span>
+              <span style="color:var(--accent)">{{ discountLabel }}</span><span style="text-align:right;color:var(--accent)">{{ discountText }}</span>
+            </sc-if>
+            <span style="color:var(--muted)">Subtotal</span><span style="text-align:right">{{ subtotal }}</span>
+            <span style="color:var(--muted)">GST (5%)</span><span style="text-align:right">{{ tax }}</span>
+            <span style="font-size:17px;font-weight:600">Total</span><span style="text-align:right;font-size:17px;font-weight:600">{{ total }}</span>
+          </div>
+
+          <div>
+            <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Payment method</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <sc-for list="{{ methods }}" as="m" hint-placeholder-count="4">
+                <button type="button" onClick="{{ m.select }}" style="height:36px;border:1px solid {{ m.border }};border-radius:9px;background:{{ m.bg }};color:{{ m.fg }};font:inherit;font-size:13px;font-weight:{{ m.weight }};cursor:pointer" style-hover="background:var(--row)">{{ m.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <button type="button" onClick="{{ charge }}" disabled="{{ chargeDisabled }}" style="height:44px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:14.5px;font-weight:600;cursor:{{ chargeCursor }};opacity:{{ chargeOpacity }}">{{ chargeLabel }}</button>
+
+          <sc-if value="{{ showReceipt }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:11px 13px;border-radius:10px;background:var(--row);font-size:13px;display:flex;align-items:center;gap:9px">
+              <span style="width:20px;height:20px;flex:none;border-radius:999px;background:var(--ok);color:var(--surface);display:grid;place-items:center">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+              </span>
+              <span style="min-width:0">{{ receiptText }}</span>
+            </div>
+          </sc-if>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</div></div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;}}">
+class Component extends DCLogic {
+  state = {
+    theme: Component.savedTheme(this.props.theme), collapsed: false, notifOpen: false, notifRead: {},
+    category: "All", query: "", cart: {}, amounts: {}, editing: {}, member: "Walk-in",
+    discMode: "%", discValue: "", onBehalf: "",
+    method: "Card", receipt: null, vw: 1440,
+  };
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ vw: window.innerWidth });
+    window.addEventListener("resize", this._onResize);
+    this._onResize();
+    const params = new URLSearchParams(location.search);
+    const q = params.get("member");
+    if (q) this.setState({ member: decodeURIComponent(q) });
+    const type = params.get("type"), coach = params.get("coach");
+    if (type) {
+      const want = decodeURIComponent(type);
+      const wantCoach = coach ? decodeURIComponent(coach) : "";
+      const hit = this.matchProduct(want, wantCoach);
+      if (hit) {
+        this.setState(st => ({
+          category: hit[2],
+          cart: { ...st.cart, [hit[0]]: (st.cart[hit[0]] || 0) + 1 },
+          preselected: hit[1],
+        }));
+      }
+    }
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this._onResize); }
+
+  catalog() {
+    // [id, name, category, price, meta, recur]
+    return [
+      // Personal training
+      ["pt-cory", "Personal Training – Cory", "Personal Training", 115, "1 session"],
+      ["pt-stu", "Personal Training – Stu", "Personal Training", 125, "1 session"],
+      ["pt-chris", "Personal Training – Chris", "Personal Training", 130, "1 session"],
+      ["pt-jhesica", "Personal Training – Jhesica", "Personal Training", 115, "1 session"],
+      ["pt-cole", "Personal Training – Cole", "Personal Training", 90, "1 session"],
+      ["pt-group", "Group Personal Training", "Personal Training", 57.5, "Per person"],
+      ["pt-elite", "Elite Dryland Training", "Personal Training", 250, "Program"],
+      ["consult", "Fitness Consult", "Personal Training", 50, "Single consult"],
+
+      // Memberships and classes
+      ["mem-2x", "Membership – 2x/Week", "Memberships", 129, "Auto-renews", "/month"],
+      ["mem-3x", "Membership – 3x/Week", "Memberships", 159, "Auto-renews", "/month"],
+      ["mem-unl", "Membership – Unlimited", "Memberships", 189, "Auto-renews", "/month"],
+      ["cls-10", "10 Class Pass", "Memberships", 200, "10 classes"],
+      ["cls-drop", "Class Drop-In", "Memberships", 25, "Single class"],
+      ["cls-free", "FREE Class Trial", "Memberships", 0, "First class"],
+      ["trial-7", "First Week FREE! 7 Day Trial", "Memberships", 0, "7 days"],
+
+      // Remote coaching
+      ["rem-std", "Remote Coaching – Standard", "Personal Training", 189, "Auto-renews", "/month"],
+      ["rem-slv", "Remote Coaching – Silver", "Personal Training", 249, "Auto-renews", "/month"],
+      ["rem-gld", "Remote Coaching – Gold", "Personal Training", 299, "Auto-renews", "/month"],
+      ["rem-con", "Remote Coaching Consult", "Personal Training", 0, "Intro call"],
+
+      // Nutrition
+      ["nut-macro", "Nutrition Coaching Macro – Member Add-On", "Other", 49, "Add-on", "/month"],
+      ["nut-meal", "Nutrition Coaching Meal Plan – Member Add-On", "Other", 99, "Add-on", "/month"],
+      ["nut-3mo", "Nutrition Coaching – 3 Months", "Other", 299, "Prepaid"],
+
+      // Assessments
+      ["bb", "Blueprint & Baseline Assessment", "Assessments", 200, "90 min"],
+      ["bod-1", "BodPod – Single", "Assessments", 75, "Single scan"],
+      ["bod-3", "BodPod – 3 Pack", "Assessments", 200, "3 scans"],
+
+      // Gift cards
+      ["gc-custom", "2110 Fitness Gift Card – Custom Amount", "Other", 0, "Amount at checkout", "", true],
+      ["gc-outcome", "2110 Fitness Gift Card – Outcome Session", "Other", 0, "Amount at checkout", "", true],
+      ["gc-consult", "2110 Fitness Gift Card – Fitness Consult", "Other", 0, "Amount at checkout", "", true],
+      ["gc-group", "2110 Fitness Gift Card – Group Training", "Other", 0, "Amount at checkout", "", true],
+      ["gc-bod1", "2110 Fitness Gift Card – BodPod Single", "Other", 0, "Amount at checkout", "", true],
+      ["gc-bod3", "2110 Fitness Gift Card – BodPod 3 Pack", "Other", 0, "Amount at checkout", "", true],
+      ["gc-cls", "2110 Fitness Gift Card – Unlimited Class Membership", "Other", 0, "Amount at checkout", "", true],
+      ["gc-pt", "2110 Fitness Gift Card – Personal Training Friends & Family", "Other", 0, "Amount at checkout", "", true],
+
+      // Retail
+      ["tee-99", "T-Shirt – 99 Problems & My Gym Ain't One", "Other", 30, "S–XL"],
+      ["nike-fleece", "NIKE Therma-FIT Fleece Pullover", "Other", 135, "S–XL"],
+    ];  }
+
+  matchProduct(type, coachName) {
+    const all = this.catalog();
+    const first = (coachName || "").split(" ")[0].toLowerCase();
+    const byId = (id) => all.find(r => r[0] === id);
+    if (type === "Personal Training") {
+      // a coach's own rate when we have one, otherwise the base PT product
+      const own = first && all.find(r => r[2] === "Personal Training" && r[1].toLowerCase().endsWith("– " + first));
+      return own || byId("pt-cory");
+    }
+    const map = {
+      "Group Training": "pt-group",
+      "Class": "cls-drop",
+      "Remote Consult": "rem-con",
+      "Bodpod": "bod-1",
+      "Blueprint and Baseline": "bb",
+    };
+    return map[type] ? byId(map[type]) : null;
+  }
+
+  // payer -> accounts they are approved to purchase for; written on the member's profile
+  static loadLinks() {
+    const base = {
+      "Kim Alvarez": ["Beth Nunes"],
+      "Dan Whitfield": ["Nina Park", "Sarah Chen"],
+      "Rafael Diaz": ["Amy Cole"],
+      "Cory Martin": ["Jon Reyes"],
+    };
+    try {
+      const raw = localStorage.getItem("2110-shared-accounts");
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved && typeof saved === "object") return saved;
+      }
+    } catch (e) {}
+    return base;
+  }
+  static saveLinks(map) {
+    try { localStorage.setItem("2110-shared-accounts", JSON.stringify(map)); } catch (e) {}
+  }
+
+  sharedAccounts() {
+    return Component.loadLinks();
+  }
+
+  members() {
+    return ["Walk-in", "Dan Whitfield", "Sarah Chen", "Marcus Ellis", "Priya Raman", "Alicia Braun",
+      "Rosa Delgado", "Tom Okafor", "Owen Pratt", "Kim Alvarez", "Beth Nunes", "Rafael Diaz",
+      "Amy Cole", "Lena Ortiz", "Nina Park", "Jon Reyes", "Neil Vance"];
+  }
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const money = (n) => "$" + n.toFixed(2);
+    const catColors = {
+      "Personal Training": dark ? "#9184d9" : "#0f6e6b",
+      Memberships: dark ? "#6fb3c8" : "#2f6f8f",
+      Assessments: dark ? "#b58fc4" : "#6d3f80",
+      Other: dark ? "#9a9fb5" : "#5c6270",
+    };
+    const paidChip = dark ? ["rgba(127,214,165,.16)", "#7fd6a5"] : ["rgba(15,110,107,.12)", "#0f6e6b"];
+
+    const all = this.catalog();
+    const q = this.state.query.trim().toLowerCase();
+    const cat = this.state.category;
+    const visible = all.filter(([, name, category]) => {
+      if (cat !== "All" && category !== cat) return false;
+      if (q && !name.toLowerCase().includes(q)) return false;
+      return true;
+    });
+
+    const cartMap = this.state.cart;
+    const amounts = this.state.amounts || {};
+    const unit = ([id, , , price, , , variable]) => {
+      const v = amounts[id];
+      if (v != null && v !== "") return Math.max(0, Number(v) || 0);
+      return variable ? 0 : price;
+    };
+    const lines = all.filter(([id]) => cartMap[id] > 0).map(row => {
+      const [id, name, , , , , variable] = row;
+      const u = unit(row);
+      const listPrice = row[3];
+      const overridden = !variable && amounts[id] != null && amounts[id] !== "" && Number(amounts[id]) !== listPrice;
+      return {
+        id, qty: cartMap[id],
+        name: name.replace("2110 Fitness Gift Card – ", "Gift Card · "),
+        each: variable && !u
+          ? "Enter an amount"
+          : overridden ? money(u) + " each · was " + money(listPrice) : money(u) + " each",
+        eachColor: overridden ? "var(--accent)" : "var(--muted)",
+        isVariable: !!variable,
+        priceOpen: !!variable || !!(this.state.editing || {})[id],
+        toggleEdit: () => this.setState(st => ({
+          editing: { ...(st.editing || {}), [id]: !(st.editing || {})[id] },
+        })),
+        line: money(u * cartMap[id]),
+        amountValue: amounts[id] != null ? String(amounts[id]) : "",
+        pricePlaceholder: variable ? "0.00" : listPrice.toFixed(2),
+        resetPrice: () => this.setState(st => {
+          const next = { ...(st.amounts || {}) };
+          delete next[id];
+          return { amounts: next };
+        }),
+        setAmount: (ev) => {
+          const v = ev.target.value;
+          this.setState(st => ({ amounts: { ...(st.amounts || {}), [id]: v } }));
+        },
+        inc: () => this.bump(id, 1),
+        dec: () => this.bump(id, -1),
+      };
+    });
+    const gross = all.reduce((a, row) => a + (cartMap[row[0]] || 0) * unit(row), 0);
+    const discMode = this.state.discMode || "%";
+    const discRaw = Math.max(0, Number(this.state.discValue) || 0);
+    const discPct = Math.min(100, discRaw);
+    const discAmt = Math.min(gross, discMode === "%" ? gross * (discPct / 100) : discRaw);
+    const sub = gross - discAmt;
+    // a variable line with no amount blocks the sale
+    const needsAmount = all.some(row => cartMap[row[0]] > 0 && row[6] && !unit(row));
+    const tax = sub * 0.05;
+
+    const member = this.state.member;
+    const hasMember = member !== "Walk-in";
+
+    const recent = [
+      ["8:42 AM", "Priya Raman", "Remote consult", "Card", 42],
+      ["8:10 AM", "Owen Pratt", "Protein shake, Gym towel", "Debit", 19.43],
+      ["7:36 AM", "Nina Park", "PT 20-pack", "Card", 892.5],
+      ["7:04 AM", "Walk-in", "Class drop-in", "Cash", 21],
+      ["6:58 AM", "Dan Whitfield", "Protein bar", "Membership", 4.2],
+    ].map(([time, m, items, method, total]) => ({
+      time, member: m, items, method, total: money(total),
+      href: m === "Walk-in" ? "2110 Members.dc.html" : "2110 Members.dc.html?member=" + encodeURIComponent(m),
+      payBg: paidChip[0], payFg: paidChip[1],
+    }));
+
+    return {
+      ...this.notifVals(),
+      theme: this.state.theme,
+      themeLabel: dark ? "Dark" : "Light",
+      themeIcon: dark ? this.moon() : this.sun(),
+      toggleTheme: () => this.flipTheme(),
+      expanded: !this.state.collapsed,
+      navWidth: this.state.collapsed ? "76px" : "232px",
+      navAlign: this.state.collapsed ? "center" : "flex-start",
+      navToggleTitle: this.state.collapsed ? "Expand sidebar" : "Collapse sidebar",
+      navChevron: this.state.collapsed ? "m14.2 9.4 2.6 2.6-2.6 2.6" : "m17.3 9.4-2.6 2.6 2.6 2.6",
+      toggleNav: () => this.setState(st => ({ collapsed: !st.collapsed })),
+
+      layoutCols: (this.state.vw || 1440) >= 1120 ? "minmax(0,1fr) minmax(0,336px)" : "minmax(0,1fr)",
+      tillSummary: "Till open since 5:45 AM · " + recent.length + " sales today · " + money(979.13) + " taken",
+      query: this.state.query,
+      setQuery: (ev) => this.setState({ query: ev.target.value }),
+      categories: ["All", "Personal Training", "Memberships", "Assessments", "Other"].map(label => {
+        const on = cat === label;
+        return {
+          label, bg: on ? "var(--row)" : "transparent", fg: on ? "var(--text)" : "var(--muted)",
+          weight: on ? 600 : 400, select: () => this.setState({ category: label }),
+        };
+      }),
+      products: visible.map(([id, name, category, price, meta, recur, variable]) => ({
+        id, name, category, meta,
+        price: variable ? "Custom" : price === 0 ? "Free" : money(price),
+        recur: recur || "",
+        recurDisplay: recur ? "inline" : "none",
+        tagColor: catColors[category],
+        qty: (this.state.cart[id] || 0) > 0 ? String(this.state.cart[id]) : "",
+        qtyDisplay: (this.state.cart[id] || 0) > 0 ? "grid" : "none",
+        border: (this.state.cart[id] || 0) > 0 ? "var(--accent)" : "var(--divider)",
+        add: () => this.bump(id, 1),
+      })),
+      noResults: visible.length === 0,
+      hasPreselect: !!this.state.preselected,
+      preselectText: this.state.preselected ? this.state.preselected + " added from the schedule." : "",
+
+      cart: lines,
+      cartEmpty: lines.length === 0,
+      clearCart: () => this.setState({ cart: {}, amounts: {}, editing: {}, discValue: "", onBehalf: "", receipt: null }),
+      grossTotal: money(gross),
+      hasDiscount: discRaw > 0,
+      discountText: "-" + money(discAmt),
+      discountLabel: discMode === "%" ? "Discount (" + discPct + "%)" : "Discount",
+      discModes: ["%", "$"].map(m => {
+        const on = discMode === m;
+        return {
+          label: m,
+          bg: on ? "var(--row)" : "transparent",
+          fg: on ? "var(--text)" : "var(--muted)",
+          border: on ? "var(--accent)" : "var(--divider)",
+          weight: on ? 600 : 400,
+          select: () => this.setState({ discMode: m }),
+        };
+      }),
+      discValue: this.state.discValue,
+      setDisc: (ev) => this.setState({ discValue: ev.target.value }),
+      clearDisc: () => this.setState({ discValue: "" }),
+      // who this purchase is FOR — only accounts the payer is linked to
+      linkedAccounts: (this.sharedAccounts()[member] || []).map(n => ({ v: n, label: n })),
+      hasLinked: (this.sharedAccounts()[member] || []).length > 0,
+      linkedEmpty: hasMember && (this.sharedAccounts()[member] || []).length === 0,
+      onBehalf: this.state.onBehalf,
+      setOnBehalf: (ev) => this.setState({ onBehalf: ev.target.value }),
+      hasOnBehalf: !!this.state.onBehalf,
+      onBehalfNote: this.state.onBehalf
+        ? "Charged to " + member + " · credited to " + this.state.onBehalf + "'s account"
+        : "",
+      onBehalfHref: this.state.onBehalf
+        ? "2110 Members.dc.html?member=" + encodeURIComponent(this.state.onBehalf)
+        : "#",
+      subtotal: money(sub), tax: money(tax), total: money(sub + tax),
+      needsAmount,
+      chargeDisabled: needsAmount || lines.length === 0,
+      chargeOpacity: (needsAmount || lines.length === 0) ? .45 : 1,
+      chargeCursor: (needsAmount || lines.length === 0) ? "not-allowed" : "pointer",
+      member, hasMember,
+      memberHref: "2110 Members.dc.html?member=" + encodeURIComponent(member),
+      memberOptions: this.members().map(v => ({ v })),
+      setMember: (ev) => this.setState({ member: ev.target.value }),
+      methods: ["Card", "Debit", "Cash", "On account"].map(label => {
+        const on = this.state.method === label;
+        return {
+          label, weight: on ? 600 : 400,
+          bg: on ? "var(--row)" : "transparent",
+          fg: on ? "var(--text)" : "var(--muted)",
+          border: on ? "var(--accent)" : "var(--divider)",
+          select: () => this.setState({ method: label }),
+        };
+      }),
+      chargeLabel: lines.length === 0
+        ? "Charge"
+        : needsAmount ? "Enter a gift card amount" : "Charge " + money(sub + tax) + " · " + this.state.method,
+      charge: () => {
+        if (lines.length === 0 || needsAmount) return;
+        this.setState({
+          receipt: this.state.onBehalf
+            ? money(sub + tax) + " charged to " + member + " for " + this.state.onBehalf + " · " + this.state.method
+            : money(sub + tax) + " charged to " + (hasMember ? member : "walk-in") + " · " + this.state.method,
+          cart: {}, amounts: {}, editing: {}, discValue: "", onBehalf: "",
+        });
+      },
+      newSale: () => this.setState({ cart: {}, amounts: {}, editing: {}, discValue: "", onBehalf: "", member: "Walk-in", method: "Card", receipt: null }),
+      showReceipt: !!this.state.receipt,
+      receiptText: this.state.receipt || "",
+
+      recent,
+    };
+  }
+
+  bump(id, n) {
+    this.setState(st => {
+      const next = { ...st.cart, [id]: Math.max(0, (st.cart[id] || 0) + n) };
+      if (next[id] === 0) delete next[id];
+      return { cart: next, receipt: null };
+    });
+  }
+
+  static savedTheme(fallback) {
+    try { return localStorage.getItem("2110-theme") || fallback || "light"; }
+    catch (e) { return fallback || "light"; }
+  }
+  flipTheme() {
+    this.setState(st => {
+      const next = st.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("2110-theme", next); } catch (e) {}
+      return { theme: next };
+    });
+  }
+
+  notifData() {
+    return [
+      ["b1", "Sarah Chen booked Personal Training", "Today, 10:00 AM · booked 6 min ago", "SC", "member"],
+      ["b2", "Owen Pratt joined Conditioning", "Today, 4:30 PM class · 14 min ago", "OP", "member"],
+      ["b3", "Kim Alvarez joined Group Training", "Today, 11:35 AM · 38 min ago", "KA", "member"],
+      ["b4", "Rafael Diaz booked Bodpod", "Thu, Sep 3, 2:20 PM · 1 hr ago", "RD", "member"],
+      ["b5", "Amy Cole joined Recovery class", "Sun, Sep 6, 10:00 AM · 2 hrs ago", "AC", "member"],
+    ];
+  }
+  notifVals() {
+    const dark = this.state.theme === "dark";
+    const read = this.state.notifRead || {};
+    const items = this.notifData().map(([id, text, when, initials]) => {
+      const isRead = !!read[id];
+      const name = text.split(" ").slice(0, 2).join(" ");
+      return {
+        id, text, when, initials,
+        href: "2110 Members.dc.html?member=" + encodeURIComponent(name),
+        rowBg: isRead ? "transparent" : (dark ? "rgba(145,132,217,.07)" : "rgba(15,110,107,.05)"),
+        dotDisplay: isRead ? "none" : "block",
+        iconBg: "var(--row)", iconFg: "var(--muted)",
+      };
+    });
+    const unread = items.filter(i => i.dotDisplay === "block").length;
+    const open = !!this.state.notifOpen;
+    return {
+      notifItems: items,
+      notifEmpty: items.length === 0,
+      notifCount: String(unread),
+      badgeDisplay: unread > 0 ? "grid" : "none",
+      notifOpen: open,
+      notifBg: open ? "var(--row)" : "transparent",
+      notifFg: open ? "var(--text)" : "var(--muted)",
+      notifBorder: open ? "var(--accent)" : "var(--divider)",
+      toggleNotif: () => this.setState(st => ({ notifOpen: !st.notifOpen })),
+      markAllRead: (ev) => {
+        ev.preventDefault();
+        const all = {};
+        this.notifData().forEach(([id]) => { all[id] = true; });
+        this.setState({ notifRead: all });
+      },
+    };
+  }
+
+  sun() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" },
+      React.createElement("circle", { cx: 12, cy: 12, r: 4 }),
+      React.createElement("path", { d: "M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" }));
+  }
+  moon() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" },
+      React.createElement("path", { d: "M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" }));
+  }
+}
+
+</script>
+</body>
+</html>

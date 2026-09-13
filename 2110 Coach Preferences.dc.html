@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/styles.css">
+<script src="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;max-width:100%;overflow-x:clip}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+#app{--accent:#0f6e6b;--accent-deep:#0a3f3e;--on-accent:#ffffff}
+#app[data-theme="dark"]{--accent:#9184d9;--accent-deep:#2b2741;--on-accent:#12141f;--link:#b5abfc;--link-hover:#d2cefd}
+#app[data-theme="light"]{--link:#0f6e6b;--link-hover:#0a504e;--bg:#f4f3ef;--surface:#ffffff;--text:#1c1e1c;--divider:rgba(28,30,28,.10);--muted:#6d7270;--ok:#0f6e6b;--row:rgba(28,30,28,.045);--card:0 1px 2px rgba(28,30,28,.05),0 10px 28px rgba(28,30,28,.06)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] option,#app[data-theme="dark"] input,#app[data-theme="dark"] textarea{background:#12141f;color:#e9e9ed;color-scheme:dark}
+#app[data-theme="dark"] select option:checked{background:#2b2741;color:#e9e9ed}
+#app[data-theme="light"] select,#app[data-theme="light"] option{background:#ffffff;color:#1c1e1c;color-scheme:light}
+#app[data-theme="dark"]{--bg:#161826;--surface:#232532;--text:#e9e9ed;--divider:rgba(233,233,237,.14);--muted:#9397ab;--ok:#7fd6a5;--row:rgba(233,233,237,.05);--card:0 0 0 1px #3f424d,0 10px 28px rgba(0,0,0,.5)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] input,#app[data-theme="dark"] option{color-scheme:dark}
+#app[data-theme="dark"] select{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] select option{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] input{color-scheme:dark}
+</style>
+</helmet>
+<div id="frame" style="width:100%;overflow-x:clip"><div id="app" data-theme="{{ theme }}" style="width:100%;min-height:100vh;display:flex;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55">
+
+  <nav style="width:{{ navWidth }};flex:none;min-width:0;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow:hidden;background:#12141f;color:#e9e9ed;display:flex;flex-direction:column;padding:26px 16px 20px;gap:24px;transition:width .18s ease">
+    <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:10px;padding-left:6px">
+      <div style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:12.5px">2</div>
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600;font-size:17px;letter-spacing:.04em;white-space:nowrap">2110 Fitness</span></sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <a href="2110 Scheduling Dashboard.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.8V20h14V9.8"></path><path d="M10 20v-6h4v6"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Dashboard</span></sc-if>
+      </a>
+      <a href="2110 Schedule.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Schedule</span></sc-if>
+      </a>
+      <a href="2110 Classes.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.6"></circle><circle cx="16" cy="8" r="2.6"></circle><path d="M3.5 19c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"></path><path d="M13.5 19c0-2.8 1.6-4.4 4-4.4s3 1.6 3 4.4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Classes</span></sc-if>
+      </a>
+      <a href="2110 Members.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"></circle><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"></path><path d="M16 5.4a3.2 3.2 0 0 1 0 5.6M18.4 19.6c0-2.6-.9-4.2-2.4-5.2"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Members</span></sc-if>
+      </a>
+      <a href="2110 POS.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2.5"></rect><path d="M3 9.5h18M7.5 20h9"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">POS</span></sc-if>
+      </a>
+      <a href="2110 Reports.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Reports</span></sc-if>
+      </a>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(233,233,237,.12);padding-top:12px">
+      <a href="2110 Settings.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:10px 14px;border-radius:11px;color:rgba(233,233,237,.66);font-size:14px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="17" height="17" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.65l.06.06a1.8 1.8 0 1 1-2.55 2.55l-.06-.06a1.5 1.5 0 0 0-1.65-.3 1.5 1.5 0 0 0-.9 1.37V20a1.8 1.8 0 0 1-3.6 0v-.1a1.5 1.5 0 0 0-.98-1.37 1.5 1.5 0 0 0-1.65.3l-.06.06a1.8 1.8 0 1 1-2.55-2.55l.06-.06a1.5 1.5 0 0 0 .3-1.65 1.5 1.5 0 0 0-1.37-.9H4a1.8 1.8 0 0 1 0-3.6h.1a1.5 1.5 0 0 0 1.37-.98 1.5 1.5 0 0 0-.3-1.65l-.06-.06a1.8 1.8 0 1 1 2.55-2.55l.06.06a1.5 1.5 0 0 0 1.65.3H9.5a1.5 1.5 0 0 0 .9-1.37V4a1.8 1.8 0 0 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.37 1.5 1.5 0 0 0 1.65-.3l.06-.06a1.8 1.8 0 1 1 2.55 2.55l-.06.06a1.5 1.5 0 0 0-.3 1.65v.06a1.5 1.5 0 0 0 1.37.9H20a1.8 1.8 0 0 1 0 3.6h-.1a1.5 1.5 0 0 0-1.37.9Z"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Settings</span></sc-if>
+      </a>
+      <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:11px;padding:10px 12px;margin-top:4px;border-radius:11px;background:var(--accent);color:var(--on-accent);overflow:hidden">
+        <div style="width:30px;height:30px;flex:none;border-radius:999px;background:rgba(18,20,31,.22);color:var(--on-accent);display:grid;place-items:center;font-size:12px;font-weight:600">CM</div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div style="min-width:0">
+          <div style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cory Martin</div>
+          <div style="font-size:11.5px;opacity:.8">Facility Supervisor</div>
+        </div></sc-if>
+      </div>
+    </div>
+  </nav>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;margin-left:{{ navWidth }};transition:margin-left .18s ease">
+    <header style="height:64px;flex:none;position:sticky;top:0;z-index:30;background:var(--surface);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1">
+      <button type="button" onClick="{{ toggleNav }}" title="{{ navToggleTitle }}" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"></rect><path d="M9.5 4.5v15"></path><path d="{{ navChevron }}"></path></svg>
+      </button>
+      <div style="position:relative;width:320px;min-width:0;flex-shrink:1">
+      <div style="display:flex;align-items:center;gap:9px;height:36px;padding:0 14px;border:1px solid {{ searchBorder }};border-radius:10px;overflow:hidden;color:var(--muted)">
+        <svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input value="{{ searchQuery }}" onChange="{{ setSearch }}" onFocus="{{ openSearch }}" placeholder="Search members, sessions, pages" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:13.5px;outline:none" />
+        <button type="button" onClick="{{ clearSearch }}" style="display:{{ clearDisplay }};width:20px;height:20px;flex:none;place-items:center;border:0;border-radius:999px;background:var(--row);color:var(--muted);cursor:pointer;padding:0">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+        <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:42px;left:0;width:100%;min-width:300px;z-index:60;background:var(--surface);border-radius:12px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="max-height:340px;overflow-y:auto">
+              <sc-for list="{{ searchResults }}" as="s" hint-placeholder-count="4">
+                <a href="{{ s.href }}" style="display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--divider);color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:26px;height:26px;flex:none;border-radius:{{ s.radius }};background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10.5px;font-weight:600">{{ s.badge }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.title }}</span>
+                    <span style="display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.sub }}</span>
+                  </span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:22px 14px;font-size:13px;color:var(--muted);text-align:center">No matches for "{{ searchQuery }}".</div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13px;cursor:pointer" style-hover="background:var(--row)">
+          <span style="display:grid;place-items:center;width:16px;height:16px">{{ themeIcon }}</span>{{ themeLabel }}
+        </button>
+        <div style="position:relative;flex:none">
+        <button type="button" onClick="{{ toggleNotif }}" title="Notifications" style="position:relative;width:36px;height:36px;display:grid;place-items:center;border:1px solid {{ notifBorder }};border-radius:999px;background:{{ notifBg }};color:{{ notifFg }};cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.4 1.4 5.4H4.6S6 14 6 10Z"></path><path d="M10 19a2.2 2.2 0 0 0 4 0"></path></svg>
+          <span style="display:{{ badgeDisplay }};position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c8452e;color:#fff;font-size:10px;font-weight:600;place-items:center">{{ notifCount }}</span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:344px;max-width:calc(100vw - 40px);z-index:60;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider)">
+              <span style="font-size:14.5px;font-weight:600">Notifications</span>
+              <button type="button" onClick="{{ markAllRead }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">Mark all read</button>
+            </div>
+            <div style="max-height:390px;overflow-y:auto">
+              <sc-for list="{{ notifItems }}" as="n" hint-placeholder-count="4">
+                <a href="{{ n.href }}" style="display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--divider);background:{{ n.rowBg }};color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:28px;height:28px;flex:none;border-radius:999px;background:{{ n.iconBg }};color:{{ n.iconFg }};display:grid;place-items:center;font-size:11px;font-weight:600">{{ n.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;text-wrap:pretty">{{ n.text }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);margin-top:1px">{{ n.when }}</span>
+                  </span>
+                  <span style="display:{{ n.dotDisplay }};width:7px;height:7px;flex:none;margin-top:6px;border-radius:999px;background:var(--accent)"></span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ notifEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:26px 16px;font-size:13.5px;color:var(--muted);text-align:center">You're all caught up.</div>
+              </sc-if>
+            </div>
+            <a href="2110 Coach Preferences.dc.html" style="display:block;padding:12px 16px;font-size:12.5px;text-align:center">Notification settings</a>
+          </div>
+        </sc-if>
+      </div>
+        <button type="button" onClick="{{ save }}" style="height:36px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;white-space:nowrap;flex:none;cursor:pointer">{{ saveLabel }}</button>
+      </div>
+    </header>
+
+    <main style="flex:1;padding:24px 30px 28px;display:flex;flex-direction:column;gap:18px;min-height:0">
+
+      <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:22px 24px;display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap">
+        <div style="width:64px;height:64px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:21px;font-weight:600">CM</div>
+        <div style="flex:1;min-width:220px">
+          <h2 style="margin:0;font-size:27px;font-weight:500;letter-spacing:-.02em">Cory Martin</h2>
+          <div style="font-size:13.5px;color:var(--muted);margin-top:3px">Facility Supervisor · cory@2110fitness.com</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+            <span style="padding:4px 11px;border-radius:999px;background:var(--row);font-size:12.5px">Full access</span>
+            <span style="padding:4px 11px;border-radius:999px;background:var(--row);font-size:12.5px;color:var(--muted)">48 sessions this week</span>
+            <span style="padding:4px 11px;border-radius:999px;background:var(--row);font-size:12.5px;color:var(--muted)">Staff since Mar 2021</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex:none">
+          <a href="2110 Schedule.dc.html" style="height:38px;display:grid;place-items:center;padding:0 16px;border:1px solid var(--divider);border-radius:999px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">My schedule</a>
+          <a href="2110 Settings.dc.html" style="height:38px;display:grid;place-items:center;padding:0 16px;border:1px solid var(--divider);border-radius:999px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">Facility settings</a>
+        </div>
+      </section>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px;align-items:start">
+
+        <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <h5 style="margin:0;font-size:15.5px;font-weight:600">Schedule preferences</h5>
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px">
+              <div style="font-size:13.5px;font-weight:600">My weekly hours</div>
+              <span style="font-size:12px;color:var(--muted)">{{ hoursSummary }}</span>
+            </div>
+            <div style="display:grid;grid-template-columns:64px minmax(0,1fr) 12px minmax(0,1fr) 34px;gap:8px 8px;align-items:center">
+              <sc-for list="{{ weekHours }}" as="d" hint-placeholder-count="7">
+                <button type="button" onClick="{{ d.toggle }}" style="height:34px;border:1px solid {{ d.border }};border-radius:9px;background:{{ d.bg }};color:{{ d.fg }};font:inherit;font-size:13px;font-weight:{{ d.weight }};cursor:pointer">{{ d.label }}</button>
+                <select value="{{ d.start }}" onChange="{{ d.setStart }}" disabled="{{ d.off }}" style="height:34px;min-width:0;padding:0 7px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:{{ d.timeFg }};font:inherit;font-size:13px;opacity:{{ d.opacity }}">
+                  <sc-for list="{{ timeOptions }}" as="t" hint-placeholder-count="8">
+                    <option value="{{ t.v }}">{{ t.v }}</option>
+                  </sc-for>
+                </select>
+                <span style="text-align:center;font-size:12px;color:var(--muted);opacity:{{ d.opacity }}">–</span>
+                <select value="{{ d.end }}" onChange="{{ d.setEnd }}" disabled="{{ d.off }}" style="height:34px;min-width:0;padding:0 7px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:{{ d.timeFg }};font:inherit;font-size:13px;opacity:{{ d.opacity }}">
+                  <sc-for list="{{ timeOptions }}" as="t" hint-placeholder-count="8">
+                    <option value="{{ t.v }}">{{ t.v }}</option>
+                  </sc-for>
+                </select>
+                <span style="font-size:11.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums">{{ d.hours }}</span>
+              </sc-for>
+            </div>
+            <div style="font-size:12px;color:var(--muted);margin-top:9px;text-wrap:pretty">Tap a day to mark it off. Changes apply to your own calendar right away.</div>
+          </div>
+
+          <div style="height:1px;background:var(--divider)"></div>
+
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px">
+              <div style="font-size:13.5px;font-weight:600">Time off</div>
+              <span style="font-size:12px;color:var(--muted)">Auto-approved</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ timeOff }}" as="t" hint-placeholder-count="2">
+                <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;background:var(--row)">
+                  <span style="width:7px;height:7px;flex:none;border-radius:999px;background:{{ t.dot }}"></span>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.range }}</div>
+                    <div style="font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.reason }}</div>
+                  </div>
+                  <button type="button" onClick="{{ t.remove }}" title="Remove" style="width:28px;height:28px;flex:none;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--divider);color:#c8452e">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+                  </button>
+                </div>
+              </sc-for>
+              <sc-if value="{{ noTimeOff }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:10px 2px;font-size:13px;color:var(--muted)">No time off booked.</div>
+              </sc-if>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">From</span>
+                <input type="date" value="{{ offFrom }}" onChange="{{ setOffFrom }}" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+              </label>
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">To</span>
+                <input type="date" value="{{ offTo }}" onChange="{{ setOffTo }}" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+              </label>
+            </div>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,150px);gap:10px;margin-top:10px">
+              <label style="display:flex;flex-direction:column;gap:5px;min-width:0">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Reason</span>
+                <input value="{{ offReason }}" onChange="{{ setOffReason }}" placeholder="Vacation, course, out of office" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+              </label>
+              <label style="display:flex;flex-direction:column;gap:5px;min-width:0">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Type</span>
+                <select value="{{ offType }}" onChange="{{ setOffType }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                  <option value="Full days">Full days</option>
+                  <option value="Partial day">Partial day</option>
+                </select>
+              </label>
+            </div>
+            <button type="button" onClick="{{ addTimeOff }}" style="height:38px;margin-top:12px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer">Block this time off</button>
+          </div>
+        </section>
+
+        <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <h5 style="margin:0;font-size:15.5px;font-weight:600">Account</h5>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Display name</span>
+              <input value="Cory Martin" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+            </label>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Mobile</span>
+              <input value="+1 403 555 8801" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Email</span>
+            <input value="cory@2110fitness.com" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+          </label>
+          <label style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Password</span>
+            <input type="password" value="••••••••" readOnly="{{ true }}" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px;letter-spacing:.14em" />
+          </label>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:2px">
+            <button type="button" style="height:38px;padding:0 16px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:var(--row)">Change password</button>
+            <button type="button" style="height:38px;padding:0 16px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:var(--row)">Reset password</button>
+            <button type="button" style="height:38px;padding:0 16px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:#c8452e;font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:var(--row)">Sign out</button>
+          </div>
+        </section>
+        <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0">
+          <h5 style="margin:0 0 4px;font-size:15.5px;font-weight:600">My notifications</h5>
+          <sc-for list="{{ toggles }}" as="t" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--divider)">
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13.5px">{{ t.label }}</div>
+                <div style="font-size:12px;color:var(--muted);text-wrap:pretty">{{ t.hint }}</div>
+              </div>
+              <button type="button" onClick="{{ t.toggle }}" style="width:42px;height:24px;flex:none;padding:0;border:0;border-radius:999px;background:{{ t.trackBg }};position:relative;cursor:pointer;transition:background .14s ease">
+                <span style="position:absolute;top:3px;left:{{ t.knobLeft }};width:18px;height:18px;border-radius:999px;background:{{ t.knobBg }};transition:left .14s ease"></span>
+              </button>
+            </div>
+          </sc-for>
+        </section>
+
+        <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <h5 style="margin:0;font-size:15.5px;font-weight:600">Appearance</h5>
+          <div>
+            <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Theme</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <sc-for list="{{ themeChoices }}" as="t" hint-placeholder-count="2">
+                <button type="button" onClick="{{ t.select }}" style="height:38px;border:1px solid {{ t.border }};border-radius:9px;background:{{ t.bg }};color:{{ t.fg }};font:inherit;font-size:13.5px;font-weight:{{ t.weight }};cursor:pointer" style-hover="background:var(--row)">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <div style="font-size:12px;color:var(--muted);margin-top:7px;text-wrap:pretty">Saved to this coach's profile and applied on every screen.</div>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Landing screen</span>
+            <select value="{{ landing }}" onChange="{{ setLanding }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+              <sc-for list="{{ landingOptions }}" as="l" hint-placeholder-count="4">
+                <option value="{{ l.v }}">{{ l.v }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Default calendar view</span>
+            <select value="{{ calView }}" onChange="{{ setCalView }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+              <option value="Day">Day</option>
+              <option value="Week">Week</option>
+              <option value="Month">Month</option>
+            </select>
+          </label>
+        </section>
+
+
+      </div>
+    </main>
+  </div>
+</div></div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;}}">
+class Component extends DCLogic {
+  state = {
+    theme: Component.savedTheme(this.props.theme), collapsed: false, notifOpen: false, notifRead: {}, searchQuery: "", searchOpen: false, saved: false,
+    landing: "Dashboard", calView: "Week",
+    hours: Component.availAll().CM.hours,
+    flags: { dayAhead: true, manualBooking: true, classJoin: true },
+    offFrom: "", offTo: "", offReason: "", offType: "Full days",
+    timeOff: Component.availAll().CM.timeOff,
+  };
+
+  // Coach availability — weekly hours + time off, shared with the schedule grid
+  static availDefaults() {
+    const w = (on, start, end) => ({ on, start, end });
+    return {
+      CM: {
+        hours: { Mon: w(true, 360, 1140), Tue: w(true, 360, 1140), Wed: w(true, 360, 1140), Thu: w(true, 360, 1140), Fri: w(true, 360, 900), Sat: w(false, 480, 720), Sun: w(false, 480, 720) },
+        timeOff: [
+          { from: "2026-09-21", to: "2026-09-25", reason: "Vacation", type: "Full days" },
+          { from: "2026-10-09", to: "2026-10-09", reason: "Certification course", type: "Full days" },
+        ],
+      },
+      JT: {
+        hours: { Mon: w(true, 360, 1200), Tue: w(true, 360, 1200), Wed: w(true, 360, 1200), Thu: w(true, 360, 1200), Fri: w(true, 420, 1080), Sat: w(true, 480, 780), Sun: w(true, 540, 720) },
+        timeOff: [],
+      },
+      AR: {
+        hours: { Mon: w(true, 420, 1020), Tue: w(true, 420, 1020), Wed: w(true, 420, 1020), Thu: w(true, 420, 1020), Fri: w(true, 420, 960), Sat: w(true, 480, 720), Sun: w(true, 480, 720) },
+        timeOff: [],
+      },
+    };
+  }
+  static availAll() {
+    const base = Component.availDefaults();
+    try {
+      const raw = localStorage.getItem("2110-availability");
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved && typeof saved === "object") {
+          const out = {};
+          Object.keys(base).forEach(k => { out[k] = saved[k] || base[k]; });
+          Object.keys(saved).forEach(k => { out[k] = saved[k]; });
+          return out;
+        }
+      }
+    } catch (e) {}
+    return base;
+  }
+  static saveAvail(all) {
+    try { localStorage.setItem("2110-availability", JSON.stringify(all)); } catch (e) {}
+  }
+  writeAvail(coachId, patch) {
+    const all = Component.availAll();
+    all[coachId] = { ...(all[coachId] || {}), ...patch };
+    Component.saveAvail(all);
+  }
+  static savedTheme(fallback) {
+    try { return localStorage.getItem("2110-theme") || fallback || "light"; }
+    catch (e) { return fallback || "light"; }
+  }
+  setHours(day, patch) {
+    this.setState(st => {
+      const hours = { ...st.hours, [day]: { ...st.hours[day], ...patch } };
+      this.writeAvail("CM", { hours });
+      return { hours, saved: false };
+    });
+  }
+  setTimeOff(list) {
+    this.writeAvail("CM", { timeOff: list });
+    this.setState({ timeOff: list, saved: false });
+  }
+  setTheme(next) {
+    try { localStorage.setItem("2110-theme", next); } catch (e) {}
+    this.setState({ theme: next, saved: false });
+  }
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const accent = dark ? "#9184d9" : "#0f6e6b";
+    const flags = this.state.flags;
+
+    const toggle = (key, label, hint) => ({
+      label, hint,
+      trackBg: flags[key] ? accent : "var(--divider)",
+      knobBg: flags[key] ? (dark ? "#12141f" : "#ffffff") : "var(--muted)",
+      knobLeft: flags[key] ? "21px" : "3px",
+      toggle: () => this.setState(st => ({ flags: { ...st.flags, [key]: !st.flags[key] }, saved: false })),
+    });
+
+    const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const clock = (m) => {
+      const h = Math.floor(m / 60), mm = m % 60;
+      const h12 = h % 12 === 0 ? 12 : h % 12;
+      return h12 + ":" + String(mm).padStart(2, "0") + " " + (h < 12 ? "AM" : "PM");
+    };
+    const mins = (label) => {
+      const [, hh, mm, ap] = label.match(/(\d+):(\d+)\s(AM|PM)/);
+      let h = Number(hh) % 12;
+      if (ap === "PM") h += 12;
+      return h * 60 + Number(mm);
+    };
+    const times = [];
+    for (let m = 300; m <= 1320; m += 30) times.push(clock(m));
+
+    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const pretty = (iso) => {
+      const [y, m, d] = iso.split("-").map(Number);
+      return MONTHS[m - 1] + " " + d + ", " + y;
+    };
+    const fmtRange = (from, to) => (from === to ? pretty(from) : pretty(from) + " – " + pretty(to));
+
+    const pill = (on) => ({
+      bg: on ? "var(--row)" : "transparent",
+      fg: on ? "var(--text)" : "var(--muted)",
+      border: on ? accent : "var(--divider)",
+      weight: on ? 600 : 400,
+    });
+
+    return {
+      ...this.notifVals(),
+      ...this.searchVals(),
+      theme: this.state.theme,
+      themeLabel: dark ? "Dark" : "Light",
+      themeIcon: dark ? this.moon() : this.sun(),
+      toggleTheme: () => this.setTheme(dark ? "light" : "dark"),
+      expanded: !this.state.collapsed,
+      navWidth: this.state.collapsed ? "76px" : "232px",
+      navAlign: this.state.collapsed ? "center" : "flex-start",
+      navToggleTitle: this.state.collapsed ? "Expand sidebar" : "Collapse sidebar",
+      navChevron: this.state.collapsed ? "m14.2 9.4 2.6 2.6-2.6 2.6" : "m17.3 9.4-2.6 2.6 2.6 2.6",
+      toggleNav: () => this.setState(st => ({ collapsed: !st.collapsed })),
+
+      saveLabel: this.state.saved ? "Saved" : "Save preferences",
+      save: () => this.setState({ saved: true }),
+
+      themeChoices: ["Light", "Dark"].map(label => {
+        const on = (label === "Dark") === dark;
+        return { label, ...pill(on), select: () => this.setTheme(label.toLowerCase()) };
+      }),
+      landing: this.state.landing,
+      landingOptions: ["Dashboard", "Schedule", "Members", "POS", "Reports"].map(v => ({ v })),
+      setLanding: (ev) => this.setState({ landing: ev.target.value, saved: false }),
+      calView: this.state.calView,
+      setCalView: (ev) => this.setState({ calView: ev.target.value, saved: false }),
+
+      timeOptions: times.map(v => ({ v })),
+      weekHours: DAYS.map(label => {
+        const h = this.state.hours[label];
+        const span = (h.end - h.start) / 60;
+        return {
+          label, ...pill(h.on), off: !h.on,
+          start: clock(h.start), end: clock(h.end),
+          hours: h.on ? (Number.isInteger(span) ? span + "h" : span.toFixed(1) + "h") : "Off",
+          timeFg: h.on ? "var(--text)" : "var(--muted)",
+          opacity: h.on ? 1 : .45,
+          toggle: () => this.setHours(label, { on: !h.on }),
+          setStart: (ev) => {
+            const v = mins(ev.target.value);
+            this.setHours(label, { start: v, end: Math.max(v + 60, h.end) });
+          },
+          setEnd: (ev) => {
+            const v = mins(ev.target.value);
+            this.setHours(label, { end: v, start: Math.min(h.start, v - 60) });
+          },
+        };
+      }),
+      hoursSummary: (() => {
+        const on = DAYS.filter(d => this.state.hours[d].on);
+        if (!on.length) return "No days set";
+        const total = on.reduce((a, d) => a + (this.state.hours[d].end - this.state.hours[d].start) / 60, 0);
+        return on.length + " days · " + (Number.isInteger(total) ? total : total.toFixed(1)) + "h a week";
+      })(),
+
+      toggles: [
+        toggle("dayAhead", "Tomorrow's schedule", "Sent the night before with my session list"),
+        toggle("manualBooking", "New manual bookings", "When a member books a session with me themselves"),
+        toggle("classJoin", "Class sign-ups", "When someone joins one of my classes"),
+      ],
+
+      timeOff: this.state.timeOff.map((t, i) => ({
+        range: fmtRange(t.from, t.to),
+        reason: t.type === "Partial day" ? t.reason + " · partial day" : t.reason,
+        dot: accent,
+        remove: () => this.setTimeOff(this.state.timeOff.filter((_, j) => j !== i)),
+      })),
+      noTimeOff: this.state.timeOff.length === 0,
+      offFrom: this.state.offFrom, offTo: this.state.offTo,
+      offReason: this.state.offReason, offType: this.state.offType,
+      setOffFrom: (ev) => this.setState({ offFrom: ev.target.value }),
+      setOffTo: (ev) => this.setState({ offTo: ev.target.value }),
+      setOffReason: (ev) => this.setState({ offReason: ev.target.value }),
+      setOffType: (ev) => this.setState({ offType: ev.target.value }),
+      addTimeOff: () => {
+        const { offFrom, offTo, offReason, offType } = this.state;
+        if (!offFrom) return;
+        const entry = {
+          from: offFrom, to: offTo || offFrom,
+          reason: offReason.trim() || "Time off", type: offType,
+        };
+        this.setTimeOff(this.state.timeOff.concat([entry]).sort((a, b) => a.from.localeCompare(b.from)));
+        this.setState({ offFrom: "", offTo: "", offReason: "" });
+      },
+    };
+  }
+
+  notifData() {
+    return [
+      ["b1", "Sarah Chen booked Personal Training", "Today, 10:00 AM · booked 6 min ago", "SC", "member"],
+      ["b2", "Owen Pratt joined Conditioning", "Today, 4:30 PM class · 14 min ago", "OP", "member"],
+      ["b3", "Kim Alvarez joined Group Training", "Today, 11:35 AM · 38 min ago", "KA", "member"],
+      ["b4", "Rafael Diaz booked Bodpod", "Thu, Sep 3, 2:20 PM · 1 hr ago", "RD", "member"],
+      ["b5", "Amy Cole joined Recovery class", "Sun, Sep 6, 10:00 AM · 2 hrs ago", "AC", "member"],
+    ];
+  }
+  notifVals() {
+    const dark = this.state.theme === "dark";
+    const read = this.state.notifRead || {};
+    const items = this.notifData().map(([id, text, when, initials]) => {
+      const isRead = !!read[id];
+      const name = text.split(" ").slice(0, 2).join(" ");
+      return {
+        id, text, when, initials,
+        href: "2110 Members.dc.html?member=" + encodeURIComponent(name),
+        rowBg: isRead ? "transparent" : (dark ? "rgba(145,132,217,.07)" : "rgba(15,110,107,.05)"),
+        dotDisplay: isRead ? "none" : "block",
+        iconBg: "var(--row)", iconFg: "var(--muted)",
+      };
+    });
+    const unread = items.filter(i => i.dotDisplay === "block").length;
+    const open = !!this.state.notifOpen;
+    return {
+      notifItems: items,
+      notifEmpty: items.length === 0,
+      notifCount: String(unread),
+      badgeDisplay: unread > 0 ? "grid" : "none",
+      notifOpen: open,
+      notifBg: open ? "var(--row)" : "transparent",
+      notifFg: open ? "var(--text)" : "var(--muted)",
+      notifBorder: open ? "var(--accent)" : "var(--divider)",
+      toggleNotif: () => this.setState(st => ({ notifOpen: !st.notifOpen })),
+      markAllRead: (ev) => {
+        ev.preventDefault();
+        const all = {};
+        this.notifData().forEach(([id]) => { all[id] = true; });
+        this.setState({ notifRead: all });
+      },
+    };
+  }
+
+  searchIndex() {
+    const members = ["Dan Whitfield","Sarah Chen","Marcus Ellis","Priya Raman","Alicia Braun","Rosa Delgado",
+      "Tom Okafor","Owen Pratt","Kim Alvarez","Beth Nunes","Rafael Diaz","Amy Cole","Lena Ortiz","Nina Park",
+      "Jon Reyes","Neil Vance"];
+    const items = members.map(n => ({
+      title: n, sub: "Member profile", kind: "member",
+      badge: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+      radius: "999px",
+      href: "2110 Members.dc.html?member=" + encodeURIComponent(n),
+    }));
+    const pages = [
+      ["Dashboard", "Today's overview", "2110 Scheduling Dashboard.dc.html"],
+      ["Schedule", "Day, week and month calendar", "2110 Schedule.dc.html"],
+      ["Members", "Member list and profiles", "2110 Members.dc.html"],
+      ["POS", "Point of sale", "2110 POS.dc.html"],
+      ["Reports", "Revenue, sessions, coaches", "2110 Reports.dc.html"],
+      ["Settings", "Facility, staff, services", "2110 Settings.dc.html"],
+      ["My preferences", "Hours, time off, notifications", "2110 Coach Preferences.dc.html"],
+    ].map(([title, sub, href]) => ({ title, sub, href, kind: "page", badge: "→", radius: "8px" }));
+    const sessions = [
+      ["Personal Training", "Session type · 55 min · $50"],
+      ["Group Training", "Session type · 45 min · up to 6"],
+      ["Class", "Session type · 50 min · up to 16"],
+      ["Remote Consult", "Session type · 30 min · $40"],
+      ["Bodpod", "Session type · 25 min · $45"],
+      ["Blueprint and Baseline", "Session type · 90 min · no charge"],
+    ].map(([title, sub]) => ({ title, sub, kind: "session", badge: "◷", radius: "8px", href: "2110 Schedule.dc.html" }));
+    return items.concat(sessions, pages);
+  }
+  searchVals() {
+    const q = (this.state.searchQuery || "").trim().toLowerCase();
+    const hits = q ? this.searchIndex().filter(i =>
+      i.title.toLowerCase().includes(q) || i.sub.toLowerCase().includes(q)).slice(0, 8) : [];
+    const open = !!this.state.searchOpen && q.length > 0;
+    return {
+      searchQuery: this.state.searchQuery || "",
+      searchResults: hits,
+      searchEmpty: open && hits.length === 0,
+      searchOpen: open,
+      searchBorder: open ? "var(--accent)" : "var(--divider)",
+      clearDisplay: q ? "grid" : "none",
+      setSearch: (ev) => this.setState({ searchQuery: ev.target.value, searchOpen: true }),
+      openSearch: () => this.setState({ searchOpen: true }),
+      clearSearch: () => this.setState({ searchQuery: "", searchOpen: false }),
+    };
+  }
+
+  sun() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" },
+      React.createElement("circle", { cx: 12, cy: 12, r: 4 }),
+      React.createElement("path", { d: "M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" }));
+  }
+  moon() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" },
+      React.createElement("path", { d: "M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" }));
+  }
+}
+
+</script>
+</body>
+</html>

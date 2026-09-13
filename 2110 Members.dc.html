@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/styles.css">
+<script src="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;max-width:100%;overflow-x:clip}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+#app{--accent:#0f6e6b;--accent-deep:#0a3f3e;--on-accent:#ffffff}
+#app[data-theme="dark"]{--accent:#9184d9;--accent-deep:#2b2741;--on-accent:#12141f;--link:#b5abfc;--link-hover:#d2cefd}
+#app[data-theme="light"]{--link:#0f6e6b;--link-hover:#0a504e;--bg:#f4f3ef;--surface:#ffffff;--text:#1c1e1c;--divider:rgba(28,30,28,.10);--muted:#6d7270;--ok:#0f6e6b;--row:rgba(28,30,28,.045);--card:0 1px 2px rgba(28,30,28,.05),0 10px 28px rgba(28,30,28,.06)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] option,#app[data-theme="dark"] input,#app[data-theme="dark"] textarea{background:#12141f;color:#e9e9ed;color-scheme:dark}
+#app[data-theme="dark"] select option:checked{background:#2b2741;color:#e9e9ed}
+#app[data-theme="light"] select,#app[data-theme="light"] option{background:#ffffff;color:#1c1e1c;color-scheme:light}
+#app[data-theme="dark"]{--bg:#161826;--surface:#232532;--text:#e9e9ed;--divider:rgba(233,233,237,.14);--muted:#9397ab;--ok:#7fd6a5;--row:rgba(233,233,237,.05);--card:0 0 0 1px #3f424d,0 10px 28px rgba(0,0,0,.5)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] input,#app[data-theme="dark"] option{color-scheme:dark}
+#app[data-theme="dark"] select{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] select option{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] input{color-scheme:dark}
+</style>
+</helmet>
+<div id="frame" style="width:100%;overflow-x:clip"><div id="app" data-theme="{{ theme }}" style="width:100%;min-height:100vh;display:flex;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55">
+
+  <nav style="width:{{ navWidth }};flex:none;min-width:0;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow:hidden;background:#12141f;color:#e9e9ed;display:flex;flex-direction:column;padding:26px 16px 20px;gap:24px;transition:width .18s ease">
+    <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:10px;padding-left:6px">
+      <div style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:12.5px">2</div>
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600;font-size:17px;letter-spacing:.04em;white-space:nowrap">2110 Fitness</span></sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <a href="2110 Scheduling Dashboard.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.8V20h14V9.8"></path><path d="M10 20v-6h4v6"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Dashboard</span></sc-if>
+      </a>
+      <a href="2110 Schedule.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Schedule</span></sc-if>
+      </a>
+      <a href="2110 Classes.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.6"></circle><circle cx="16" cy="8" r="2.6"></circle><path d="M3.5 19c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"></path><path d="M13.5 19c0-2.8 1.6-4.4 4-4.4s3 1.6 3 4.4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Classes</span></sc-if>
+      </a>
+      <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14.5px;overflow:hidden">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"></circle><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"></path><path d="M16 5.4a3.2 3.2 0 0 1 0 5.6M18.4 19.6c0-2.6-.9-4.2-2.4-5.2"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Members</span></sc-if>
+      </div>
+      <a href="2110 POS.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2.5"></rect><path d="M3 9.5h18M7.5 20h9"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">POS</span></sc-if>
+      </a>
+      <a href="2110 Reports.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Reports</span></sc-if>
+      </a>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(233,233,237,.12);padding-top:12px">
+      <a href="2110 Settings.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:10px 14px;border-radius:11px;color:rgba(233,233,237,.66);font-size:14px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="17" height="17" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.65l.06.06a1.8 1.8 0 1 1-2.55 2.55l-.06-.06a1.5 1.5 0 0 0-1.65-.3 1.5 1.5 0 0 0-.9 1.37V20a1.8 1.8 0 0 1-3.6 0v-.1a1.5 1.5 0 0 0-.98-1.37 1.5 1.5 0 0 0-1.65.3l-.06.06a1.8 1.8 0 1 1-2.55-2.55l.06-.06a1.5 1.5 0 0 0 .3-1.65 1.5 1.5 0 0 0-1.37-.9H4a1.8 1.8 0 0 1 0-3.6h.1a1.5 1.5 0 0 0 1.37-.98 1.5 1.5 0 0 0-.3-1.65l-.06-.06a1.8 1.8 0 1 1 2.55-2.55l.06.06a1.5 1.5 0 0 0 1.65.3H9.5a1.5 1.5 0 0 0 .9-1.37V4a1.8 1.8 0 0 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.37 1.5 1.5 0 0 0 1.65-.3l.06-.06a1.8 1.8 0 1 1 2.55 2.55l-.06.06a1.5 1.5 0 0 0-.3 1.65v.06a1.5 1.5 0 0 0 1.37.9H20a1.8 1.8 0 0 1 0 3.6h-.1a1.5 1.5 0 0 0-1.37.9Z"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Settings</span></sc-if>
+      </a>
+      <a href="2110 Coach Preferences.dc.html" title="My preferences" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:11px;padding:10px 12px;margin-top:4px;border-radius:11px;background:rgba(233,233,237,.06);color:#e9e9ed;overflow:hidden" style-hover="background:rgba(233,233,237,.12)">
+        <div style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:12px;font-weight:600">CM</div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div style="min-width:0">
+          <div style="font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cory Martin</div>
+          <div style="font-size:11.5px;color:rgba(233,233,237,.55)">Facility Supervisor</div>
+        </div></sc-if>
+      </a>
+    </div>
+  </nav>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;margin-left:{{ navWidth }};transition:margin-left .18s ease">
+    <header style="height:64px;flex:none;position:sticky;top:0;z-index:30;background:var(--surface);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1">
+      <button type="button" onClick="{{ toggleNav }}" title="{{ navToggleTitle }}" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"></rect><path d="M9.5 4.5v15"></path><path d="{{ navChevron }}"></path></svg>
+      </button>
+      <div style="display:flex;align-items:center;gap:9px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:10px;width:320px;min-width:0;flex-shrink:1;overflow:hidden;color:var(--muted)">
+        <svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search members" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:13.5px;outline:none" />
+      </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13px;cursor:pointer" style-hover="background:var(--row)">
+          <span style="display:grid;place-items:center;width:16px;height:16px">{{ themeIcon }}</span>{{ themeLabel }}
+        </button>
+        <div style="position:relative;flex:none">
+        <button type="button" onClick="{{ toggleNotif }}" title="Notifications" style="position:relative;width:36px;height:36px;display:grid;place-items:center;border:1px solid {{ notifBorder }};border-radius:999px;background:{{ notifBg }};color:{{ notifFg }};cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.4 1.4 5.4H4.6S6 14 6 10Z"></path><path d="M10 19a2.2 2.2 0 0 0 4 0"></path></svg>
+          <span style="display:{{ badgeDisplay }};position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c8452e;color:#fff;font-size:10px;font-weight:600;place-items:center">{{ notifCount }}</span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:344px;max-width:calc(100vw - 40px);z-index:60;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider)">
+              <span style="font-size:14.5px;font-weight:600">Notifications</span>
+              <button type="button" onClick="{{ markAllRead }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">Mark all read</button>
+            </div>
+            <div style="max-height:390px;overflow-y:auto">
+              <sc-for list="{{ notifItems }}" as="n" hint-placeholder-count="4">
+                <a href="{{ n.href }}" style="display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--divider);background:{{ n.rowBg }};color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:28px;height:28px;flex:none;border-radius:999px;background:{{ n.iconBg }};color:{{ n.iconFg }};display:grid;place-items:center;font-size:11px;font-weight:600">{{ n.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;text-wrap:pretty">{{ n.text }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);margin-top:1px">{{ n.when }}</span>
+                  </span>
+                  <span style="display:{{ n.dotDisplay }};width:7px;height:7px;flex:none;margin-top:6px;border-radius:999px;background:var(--accent)"></span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ notifEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:26px 16px;font-size:13.5px;color:var(--muted);text-align:center">You're all caught up.</div>
+              </sc-if>
+            </div>
+            <a href="2110 Coach Preferences.dc.html" style="display:block;padding:12px 16px;font-size:12.5px;text-align:center">Notification settings</a>
+          </div>
+        </sc-if>
+      </div>
+        <button type="button" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;white-space:nowrap;flex:none;cursor:pointer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+          Add member
+        </button>
+      </div>
+    </header>
+
+    <main style="flex:1;padding:24px 30px 28px;display:flex;flex-direction:column;gap:18px;min-height:0">
+
+      <sc-if value="{{ showProfile }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <a href="2110 Members.dc.html" style="display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted)" style-hover="color:var(--text)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"></path></svg>
+            All members
+          </a>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:22px 24px;display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap">
+            <div style="width:64px;height:64px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:21px;font-weight:600">{{ p.initials }}</div>
+            <div style="flex:1;min-width:200px">
+              <h2 style="margin:0;font-size:27px;font-weight:500;letter-spacing:-.02em">{{ p.name }}</h2>
+              <div style="font-size:13.5px;color:var(--muted);margin-top:3px">Member since {{ p.since }} · Coach {{ p.coach }}</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+                <span style="padding:4px 11px;border-radius:999px;background:{{ p.planBg }};color:{{ p.planFg }};font-size:12.5px;font-weight:500">{{ p.plan }}</span>
+                <span style="padding:4px 11px;border-radius:999px;background:var(--row);font-size:12.5px;color:var(--muted)">{{ p.remaining }}</span>
+                <span style="padding:4px 11px;border-radius:999px;background:{{ p.balBg }};color:{{ p.balFg }};font-size:12.5px;font-weight:500">{{ p.balance }}</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex:none">
+              <a href="2110 Schedule.dc.html" style="height:38px;display:grid;place-items:center;padding:0 16px;border:1px solid var(--divider);border-radius:999px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">Book session</a>
+              <a href="{{ p.posHref }}" style="height:38px;display:grid;place-items:center;padding:0 18px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13.5px;font-weight:600">Charge account</a>
+            </div>
+          </section>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:start">
+            <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px">
+                <h5 style="margin:0;font-size:15.5px;font-weight:600">Shared accounts</h5>
+                <button type="button" onClick="{{ p.toggleAdd }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">{{ p.addLabel }}</button>
+              </div>
+              <sc-if value="{{ p.addOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:6px;margin-bottom:14px">
+                  <select value="{{ p.addValue }}" onChange="{{ p.setAddVal }}" style="flex:1;min-width:0;height:34px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:13px">
+                    <option value="">Choose a member…</option>
+                    <sc-for list="{{ p.addCandidates }}" as="c" hint-placeholder-count="6">
+                      <option value="{{ c.v }}">{{ c.label }}</option>
+                    </sc-for>
+                  </select>
+                  <button type="button" onClick="{{ p.confirmAdd }}" style="height:34px;flex:none;padding:0 14px;border:0;border-radius:9px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13px;font-weight:600;cursor:pointer">Link</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ p.hasPaysFor }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">Can purchase for</div>
+                <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:14px">
+                  <sc-for list="{{ p.paysFor }}" as="s" hint-placeholder-count="2">
+                    <div style="display:flex;align-items:center;gap:4px;margin:0 -8px">
+                      <a href="{{ s.href }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:9px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">
+                        <span style="width:24px;height:24px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10px;font-weight:600">{{ s.initials }}</span>
+                        <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.n }}</span>
+                      </a>
+                      <button type="button" onClick="{{ s.remove }}" title="Remove link" style="width:26px;height:26px;flex:none;display:grid;place-items:center;border:0;border-radius:7px;background:transparent;color:var(--muted);cursor:pointer;padding:0" style-hover="background:var(--row);color:var(--text)">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+                      </button>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ p.hasPayer }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">Sessions paid by</div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <sc-for list="{{ p.payerNames }}" as="s" hint-placeholder-count="1">
+                    <a href="{{ s.href }}" style="display:flex;align-items:center;gap:9px;padding:6px 8px;margin:0 -8px;border-radius:9px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">
+                      <span style="width:24px;height:24px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10px;font-weight:600">{{ s.initials }}</span>
+                      <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.n }}</span>
+                    </a>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ p.shareEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:13px;color:var(--muted);text-wrap:pretty">No linked accounts. Add one to let someone else pay for this member's sessions.</div>
+              </sc-if>
+            </section>
+
+            <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px">
+              <h5 style="margin:0 0 12px;font-size:15.5px;font-weight:600">Contact</h5>
+              <div style="display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:13.5px">
+                <span style="color:var(--muted)">Phone</span><span style="font-variant-numeric:tabular-nums">{{ p.phone }}</span>
+                <span style="color:var(--muted)">Email</span><span style="min-width:0;overflow:hidden;text-overflow:ellipsis">{{ p.email }}</span>
+                <span style="color:var(--muted)">Emergency</span><span>{{ p.emergency }}</span>
+                <span style="color:var(--muted)">Waiver</span><span style="color:var(--ok)">{{ p.waiver }}</span>
+              </div>
+            </section>
+
+            <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px">
+              <h5 style="margin:0 0 12px;font-size:15.5px;font-weight:600">Membership</h5>
+              <div style="display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:13.5px">
+                <span style="color:var(--muted)">Plan</span><span>{{ p.plan }}</span>
+                <span style="color:var(--muted)">Renews</span><span>{{ p.renews }}</span>
+                <span style="color:var(--muted)">Sessions left</span><span>{{ p.remaining }}</span>
+                <span style="color:var(--muted)">Attendance</span><span>{{ p.attendance }}</span>
+                <span style="color:var(--muted)">Balance</span><span style="color:{{ p.balFg }}">{{ p.balance }}</span>
+              </div>
+            </section>
+
+            <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px">
+              <h5 style="margin:0 0 12px;font-size:15.5px;font-weight:600">Notes</h5>
+              <div style="font-size:13.5px;color:var(--muted);text-wrap:pretty">{{ p.notes }}</div>
+            </section>
+          </div>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:6px">
+              <h5 style="margin:0;font-size:15.5px;font-weight:600">Session history</h5>
+              <a href="2110 Schedule.dc.html" style="font-size:13px">Open schedule</a>
+            </div>
+            <sc-for list="{{ p.history }}" as="h" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:16px;padding:11px 2px;border-bottom:1px solid var(--divider)">
+                <span style="width:112px;flex:none;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums">{{ h.date }}</span>
+                <span style="width:66px;flex:none;font-size:13px;font-weight:600;color:{{ h.color }}">{{ h.short }}</span>
+                <span style="flex:1;min-width:0;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ h.type }}</span>
+                <span style="flex:none;width:104px;font-size:12.5px;color:var(--muted);text-align:right">{{ h.coach }}</span>
+                <span style="flex:none;width:96px;text-align:center;font-size:11.5px;padding:3px 0;border-radius:7px;background:{{ h.payBg }};color:{{ h.payFg }}">{{ h.pay }}</span>
+              </div>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showMissing }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:28px 30px">
+          <div style="width:40px;height:40px;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5M9 9l4 4M13 9l-4 4"></path></svg>
+          </div>
+          <div>
+            <h2 style="margin:0;font-size:23px;font-weight:500;letter-spacing:-.02em">No member named "{{ missingName }}"</h2>
+            <div style="font-size:13.5px;color:var(--muted);margin-top:4px">That name isn't in the member list. It may be a group session, or the record hasn't been created yet.</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a href="2110 Members.dc.html" style="height:38px;display:grid;place-items:center;padding:0 18px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13.5px;font-weight:600">All members</a>
+            <a href="2110 Schedule.dc.html" style="height:38px;display:grid;place-items:center;padding:0 16px;border:1px solid var(--divider);border-radius:999px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">Back to schedule</a>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showList }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+            <div>
+              <h2 style="margin:0 0 2px;font-size:28px;font-weight:500;letter-spacing:-.02em">Members</h2>
+              <div style="font-size:13.5px;color:var(--muted)">{{ listSummary }}</div>
+            </div>
+            <div style="display:flex;gap:4px;padding:4px;border:1px solid var(--divider);border-radius:11px;margin-left:auto">
+              <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+                <button type="button" onClick="{{ f.select }}" style="padding:6px 14px;border:0;border-radius:8px;background:{{ f.bg }};color:{{ f.fg }};font:inherit;font-size:13px;font-weight:{{ f.weight }};white-space:nowrap;cursor:pointer">{{ f.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:6px 0 2px;overflow:hidden">
+            <div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr) 108px;gap:14px;padding:10px 22px;border-bottom:1px solid var(--divider);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)">
+              <span>Member</span><span>Plan</span><span>Coach</span><span>Last session</span><span style="text-align:right">Balance</span>
+            </div>
+            <sc-for list="{{ members }}" as="m" hint-placeholder-count="8">
+              <a href="{{ m.href }}" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr) 108px;gap:14px;align-items:center;padding:12px 22px;border-bottom:1px solid var(--divider);color:var(--text)" style-hover="background:var(--row)">
+                <span style="display:flex;align-items:center;gap:11px;min-width:0">
+                  <span style="width:32px;height:32px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:11.5px;font-weight:600">{{ m.initials }}</span>
+                  <span style="min-width:0">
+                    <span style="display:block;font-size:14.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.email }}</span>
+                  </span>
+                </span>
+                <span style="min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.plan }}</span>
+                <span style="min-width:0;font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.coach }}</span>
+                <span style="min-width:0;font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.last }}</span>
+                <span style="font-size:13px;font-weight:500;text-align:right;color:{{ m.balFg }};font-variant-numeric:tabular-nums">{{ m.balance }}</span>
+              </a>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+    </main>
+  </div>
+</div></div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;}}">
+class Component extends DCLogic {
+  state = { theme: Component.savedTheme(this.props.theme), collapsed: false, notifOpen: false, notifRead: {}, filter: "All", query: "" };
+
+  componentDidMount() {
+    const q = new URLSearchParams(location.search).get("member");
+    if (q) this.setState({ member: decodeURIComponent(q) });
+    window.addEventListener("popstate", () => {
+      const m = new URLSearchParams(location.search).get("member");
+      this.setState({ member: m ? decodeURIComponent(m) : null });
+    });
+  }
+
+  data() {
+    // [name, plan, coach, lastSession, balance, since, phone, email]
+    return [
+      ["Dan Whitfield", "PT 20-pack", "Cory Martin", "Sep 2, 6:00 AM", 0, "Mar 2024", "+1 403 615 5330", "dan.whitfield@gmail.com"],
+      ["Sarah Chen", "PT 10-pack", "Cory Martin", "Sep 2, 10:00 AM", 0, "Jan 2025", "+1 403 774 2019", "sarah.chen@outlook.com"],
+      ["Marcus Ellis", "PT 10-pack", "Cory Martin", "Sep 2, 8:30 AM", 50, "Nov 2023", "+1 403 550 8842", "m.ellis@shaw.ca"],
+      ["Priya Raman", "Remote coaching", "Jess Tran", "Sep 2, 7:15 AM", 0, "Jun 2025", "+1 403 221 9075", "priya.raman@gmail.com"],
+      ["Alicia Braun", "B&B pending", "Andre Reyes", "Sep 2, 1:00 PM", 0, "Sep 2026", "+1 403 908 3311", "abraun@yahoo.ca"],
+      ["Rosa Delgado", "Assessment only", "Cory Martin", "Sep 2, 2:15 PM", 45, "Feb 2026", "+1 403 447 1206", "rosa.d@gmail.com"],
+      ["Tom Okafor", "Class membership", "Jess Tran", "Sep 5, 9:10 AM", 0, "Aug 2025", "+1 403 662 4418", "t.okafor@gmail.com"],
+      ["Owen Pratt", "Class membership", "Jess Tran", "Sep 2, 4:30 PM", 0, "Apr 2025", "+1 403 771 8890", "owen.pratt@gmail.com"],
+      ["Kim Alvarez", "Group 8-pack", "Jess Tran", "Sep 2, 11:35 AM", 30, "Jul 2025", "+1 403 330 2255", "kim.alvarez@gmail.com"],
+      ["Beth Nunes", "Group 8-pack", "Jess Tran", "Sep 2, 11:35 AM", 0, "May 2025", "+1 403 118 7742", "beth.nunes@gmail.com"],
+      ["Rafael Diaz", "Class membership", "Andre Reyes", "Sep 1, 6:00 PM", 0, "Oct 2024", "+1 403 480 6631", "rafa.diaz@gmail.com"],
+      ["Amy Cole", "Class membership", "Jess Tran", "Sep 5, 10:20 AM", 20, "Jan 2026", "+1 403 209 5514", "amy.cole@gmail.com"],
+      ["Lena Ortiz", "PT 10-pack", "Andre Reyes", "Sep 3, 8:45 AM", 0, "Dec 2025", "+1 403 845 1190", "lena.ortiz@gmail.com"],
+      ["Nina Park", "PT 20-pack", "Andre Reyes", "Aug 31, 6:00 AM", 0, "Feb 2025", "+1 403 512 7708", "nina.park@gmail.com"],
+      ["Jon Reyes", "B&B pending", "Cory Martin", "Sep 4, 1:00 PM", 0, "Sep 2026", "+1 403 337 9021", "jon.reyes@gmail.com"],
+      ["Neil Vance", "Assessment only", "Andre Reyes", "Sep 3, 2:20 PM", 45, "Mar 2026", "+1 403 776 3340", "neil.vance@gmail.com"],
+    ];
+  }
+
+  // payer -> accounts they are approved to purchase for; shared across pages
+  static loadLinks() {
+    const base = {
+      "Kim Alvarez": ["Beth Nunes"],
+      "Dan Whitfield": ["Nina Park", "Sarah Chen"],
+      "Rafael Diaz": ["Amy Cole"],
+      "Cory Martin": ["Jon Reyes"],
+    };
+    try {
+      const raw = localStorage.getItem("2110-shared-accounts");
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved && typeof saved === "object") return saved;
+      }
+    } catch (e) {}
+    return base;
+  }
+  static saveLinks(map) {
+    try { localStorage.setItem("2110-shared-accounts", JSON.stringify(map)); } catch (e) {}
+  }
+
+  links() {
+    return this.state.shareLinks || Component.loadLinks();
+  }
+  writeLinks(next) {
+    Component.saveLinks(next);
+    this.setState({ shareLinks: next });
+  }
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const money = (n) => (n > 0 ? "$" + n.toFixed(2) + " due" : "$0.00");
+    const initialsOf = (n) => n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+    const href = (n) => "2110 Members.dc.html?member=" + encodeURIComponent(n);
+    const rows = this.data();
+    const active = this.state.member;
+
+    const typeColors = {
+      "Personal Training": dark ? "#9184d9" : "#0f6e6b",
+      "Group Training": dark ? "#6fb3c8" : "#2f6f8f",
+      "Remote Consult": dark ? "#c8a86f" : "#8a6a24",
+      "Class": dark ? "#8fc79f" : "#3d7a52",
+      "Bodpod": dark ? "#c88f9f" : "#8f4a5c",
+      "Blueprint and Baseline": dark ? "#9a9fb5" : "#5c6270",
+    };
+    const shortOf = { "Personal Training": "PT", "Group Training": "Group", "Remote Consult": "Remote", "Class": "Class", "Bodpod": "Bodpod", "Blueprint and Baseline": "Blueprint and Baseline" };
+    const paidChip = dark ? ["rgba(127,214,165,.16)", "#7fd6a5"] : ["rgba(15,110,107,.12)", "#0f6e6b"];
+    const dueChip = dark ? ["rgba(200,69,46,.2)", "#f0a293"] : ["rgba(200,69,46,.1)", "#a5341f"];
+
+    let profile = null, missing = null;
+    if (active) {
+      const r = rows.find(x => x[0].toLowerCase() === active.toLowerCase());
+      if (!r) missing = active;
+      if (r) {
+        const [name, plan, coach, last, bal, since, phone, email] = r;
+        const primaryType = plan.startsWith("PT") ? "Personal Training"
+          : plan.startsWith("Group") ? "Group Training"
+          : plan.startsWith("Remote") ? "Remote Consult"
+          : plan.startsWith("Class") ? "Class"
+          : plan.startsWith("Assessment") ? "Bodpod" : "Blueprint and Baseline";
+        const hist = [
+          ["Sep 2, 2026", primaryType, coach, bal > 0 ? "Not paid" : "Session package"],
+          ["Aug 26, 2026", primaryType, coach, "Session package"],
+          ["Aug 19, 2026", primaryType, coach, "Card on file"],
+          ["Aug 12, 2026", "Bodpod", coach, "Card on file"],
+          ["Aug 5, 2026", primaryType, coach, "Session package"],
+        ];
+        profile = {
+          name, plan, coach, since, phone, email,
+          posHref: "2110 POS.dc.html?member=" + encodeURIComponent(name),
+          initials: initialsOf(name),
+          remaining: plan.includes("pack") ? "7 sessions left" : "Unlimited",
+          renews: plan.includes("membership") ? "Oct 1, 2026" : "On package completion",
+          attendance: "92% last 90 days",
+          emergency: "On file",
+          paysFor: (this.links()[name] || []).map(n => ({
+            n, initials: initialsOf(n), href: href(n),
+            remove: (ev) => {
+              ev.preventDefault();
+              const cur = this.links();
+              const next = { ...cur, [name]: (cur[name] || []).filter(x => x !== n) };
+              if (!next[name].length) delete next[name];
+              this.writeLinks(next);
+            },
+          })),
+          hasPaysFor: (this.links()[name] || []).length > 0,
+          payerNames: Object.keys(this.links())
+            .filter(p => this.links()[p].indexOf(name) >= 0)
+            .map(p => ({ n: p, initials: initialsOf(p), href: href(p) })),
+          hasPayer: Object.keys(this.links())
+            .some(p => this.links()[p].indexOf(name) >= 0),
+          shareEmpty: (this.links()[name] || []).length === 0
+            && !Object.keys(this.links()).some(p => this.links()[p].indexOf(name) >= 0),
+          addOpen: !!this.state.addShareOpen,
+          addLabel: this.state.addShareOpen ? "Cancel" : "Add",
+          toggleAdd: () => this.setState(st => ({ addShareOpen: !st.addShareOpen, addShareVal: "" })),
+          addValue: this.state.addShareVal || "",
+          addCandidates: this.data().map(r => r[0])
+            .filter(n => n !== name && (this.links()[name] || []).indexOf(n) < 0)
+            .map(n => ({ v: n, label: n })),
+          setAddVal: (ev) => this.setState({ addShareVal: ev.target.value }),
+          confirmAdd: () => {
+            const pick = this.state.addShareVal;
+            if (!pick) return;
+            const cur = this.links();
+            const next = { ...cur, [name]: (cur[name] || []).concat([pick]) };
+            Component.saveLinks(next);
+            this.setState({ shareLinks: next, addShareOpen: false, addShareVal: "" });
+          },
+          waiver: "Signed",
+          notes: "Right shoulder mobility work before overhead pressing. Prefers early sessions and texts to confirm the night before.",
+          balance: money(bal),
+          balBg: bal > 0 ? dueChip[0] : "var(--row)",
+          balFg: bal > 0 ? dueChip[1] : "var(--muted)",
+          planBg: "var(--row)", planFg: "var(--text)",
+          history: hist.map(([date, type, c, pay]) => {
+            const paid = pay !== "Not paid";
+            return {
+              date, type, coach: c, pay,
+              short: shortOf[type] || type,
+              color: typeColors[type],
+              payBg: paid ? paidChip[0] : dueChip[0],
+              payFg: paid ? paidChip[1] : dueChip[1],
+            };
+          }),
+        };
+      }
+    }
+
+    const q = this.state.query.trim().toLowerCase();
+    const filter = this.state.filter;
+    const visible = rows.filter(r => {
+      if (q && !(r[0].toLowerCase().includes(q) || r[7].toLowerCase().includes(q))) return false;
+      if (filter === "Balance due") return r[4] > 0;
+      if (filter === "Packages") return r[1].includes("pack");
+      if (filter === "Memberships") return r[1].includes("membership") || r[1].includes("Remote");
+      return true;
+    });
+
+    return {
+      ...this.notifVals(),
+      theme: this.state.theme,
+      themeLabel: dark ? "Dark" : "Light",
+      themeIcon: dark ? this.moon() : this.sun(),
+      toggleTheme: () => this.flipTheme(),
+      expanded: !this.state.collapsed,
+      navWidth: this.state.collapsed ? "76px" : "232px",
+      navAlign: this.state.collapsed ? "center" : "flex-start",
+      navToggleTitle: this.state.collapsed ? "Expand sidebar" : "Collapse sidebar",
+      navChevron: this.state.collapsed ? "m14.2 9.4 2.6 2.6-2.6 2.6" : "m17.3 9.4-2.6 2.6 2.6 2.6",
+      toggleNav: () => this.setState(st => ({ collapsed: !st.collapsed })),
+      query: this.state.query,
+      setQuery: (ev) => this.setState({ query: ev.target.value }),
+      showProfile: !!profile,
+      showList: !profile && !missing,
+      showMissing: !!missing,
+      missingName: missing || "",
+      p: profile || {},
+      listSummary: visible.length + " of " + rows.length + " members",
+      filters: ["All", "Balance due", "Packages", "Memberships"].map(label => {
+        const on = filter === label;
+        return {
+          label, bg: on ? "var(--row)" : "transparent", fg: on ? "var(--text)" : "var(--muted)",
+          weight: on ? 600 : 400, select: () => this.setState({ filter: label }),
+        };
+      }),
+      members: visible.map(([name, plan, coach, last, bal, , , email]) => ({
+        name, plan, coach, last, email,
+        href: href(name),
+        initials: initialsOf(name),
+        balance: money(bal),
+        balFg: bal > 0 ? dueChip[1] : "var(--muted)",
+      })),
+    };
+  }
+
+  static savedTheme(fallback) {
+    try { return localStorage.getItem("2110-theme") || fallback || "light"; }
+    catch (e) { return fallback || "light"; }
+  }
+  flipTheme() {
+    this.setState(st => {
+      const next = st.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("2110-theme", next); } catch (e) {}
+      return { theme: next };
+    });
+  }
+
+  notifData() {
+    return [
+      ["b1", "Sarah Chen booked Personal Training", "Today, 10:00 AM · booked 6 min ago", "SC", "member"],
+      ["b2", "Owen Pratt joined Conditioning", "Today, 4:30 PM class · 14 min ago", "OP", "member"],
+      ["b3", "Kim Alvarez joined Group Training", "Today, 11:35 AM · 38 min ago", "KA", "member"],
+      ["b4", "Rafael Diaz booked Bodpod", "Thu, Sep 3, 2:20 PM · 1 hr ago", "RD", "member"],
+      ["b5", "Amy Cole joined Recovery class", "Sun, Sep 6, 10:00 AM · 2 hrs ago", "AC", "member"],
+    ];
+  }
+  notifVals() {
+    const dark = this.state.theme === "dark";
+    const read = this.state.notifRead || {};
+    const items = this.notifData().map(([id, text, when, initials]) => {
+      const isRead = !!read[id];
+      const name = text.split(" ").slice(0, 2).join(" ");
+      return {
+        id, text, when, initials,
+        href: "2110 Members.dc.html?member=" + encodeURIComponent(name),
+        rowBg: isRead ? "transparent" : (dark ? "rgba(145,132,217,.07)" : "rgba(15,110,107,.05)"),
+        dotDisplay: isRead ? "none" : "block",
+        iconBg: "var(--row)", iconFg: "var(--muted)",
+      };
+    });
+    const unread = items.filter(i => i.dotDisplay === "block").length;
+    const open = !!this.state.notifOpen;
+    return {
+      notifItems: items,
+      notifEmpty: items.length === 0,
+      notifCount: String(unread),
+      badgeDisplay: unread > 0 ? "grid" : "none",
+      notifOpen: open,
+      notifBg: open ? "var(--row)" : "transparent",
+      notifFg: open ? "var(--text)" : "var(--muted)",
+      notifBorder: open ? "var(--accent)" : "var(--divider)",
+      toggleNotif: () => this.setState(st => ({ notifOpen: !st.notifOpen })),
+      markAllRead: (ev) => {
+        ev.preventDefault();
+        const all = {};
+        this.notifData().forEach(([id]) => { all[id] = true; });
+        this.setState({ notifRead: all });
+      },
+    };
+  }
+
+  sun() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" },
+      React.createElement("circle", { cx: 12, cy: 12, r: 4 }),
+      React.createElement("path", { d: "M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" }));
+  }
+  moon() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" },
+      React.createElement("path", { d: "M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" }));
+  }
+}
+
+</script>
+</body>
+</html>

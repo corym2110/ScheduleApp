@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/styles.css">
+<script src="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;max-width:100%;overflow-x:clip}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+#app{--accent:#0f6e6b;--accent-deep:#0a3f3e;--on-accent:#ffffff}
+#app[data-theme="dark"]{--accent:#9184d9;--accent-deep:#2b2741;--on-accent:#12141f;--link:#b5abfc;--link-hover:#d2cefd}
+#app[data-theme="light"]{--link:#0f6e6b;--link-hover:#0a504e;--bg:#f4f3ef;--surface:#ffffff;--text:#1c1e1c;--divider:rgba(28,30,28,.10);--muted:#6d7270;--ok:#0f6e6b;--row:rgba(28,30,28,.045);--card:0 1px 2px rgba(28,30,28,.05),0 10px 28px rgba(28,30,28,.06)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] option,#app[data-theme="dark"] input,#app[data-theme="dark"] textarea{background:#12141f;color:#e9e9ed;color-scheme:dark}
+#app[data-theme="dark"] select option:checked{background:#2b2741;color:#e9e9ed}
+#app[data-theme="light"] select,#app[data-theme="light"] option{background:#ffffff;color:#1c1e1c;color-scheme:light}
+#app[data-theme="dark"]{--bg:#161826;--surface:#232532;--text:#e9e9ed;--divider:rgba(233,233,237,.14);--muted:#9397ab;--ok:#7fd6a5;--row:rgba(233,233,237,.05);--card:0 0 0 1px #3f424d,0 10px 28px rgba(0,0,0,.5)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] input,#app[data-theme="dark"] option{color-scheme:dark}
+#app[data-theme="dark"] select{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] select option{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] input{color-scheme:dark}
+</style>
+</helmet>
+<div id="frame" style="width:100%;overflow-x:clip"><div id="app" data-theme="{{ theme }}" style="width:100%;min-height:100vh;display:flex;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55">
+
+  <nav style="width:{{ navWidth }};flex:none;min-width:0;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow:hidden;background:#12141f;color:#e9e9ed;display:flex;flex-direction:column;padding:26px 16px 20px;gap:24px;transition:width .18s ease">
+    <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:10px;padding-left:6px">
+      <div style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:12.5px">2</div>
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600;font-size:17px;letter-spacing:.04em;white-space:nowrap">2110 Fitness</span></sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <a href="2110 Scheduling Dashboard.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.8V20h14V9.8"></path><path d="M10 20v-6h4v6"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Dashboard</span></sc-if>
+      </a>
+      <a href="2110 Schedule.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Schedule</span></sc-if>
+      </a>
+      <a href="2110 Classes.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.6"></circle><circle cx="16" cy="8" r="2.6"></circle><path d="M3.5 19c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"></path><path d="M13.5 19c0-2.8 1.6-4.4 4-4.4s3 1.6 3 4.4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Classes</span></sc-if>
+      </a>
+      <a href="2110 Members.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"></circle><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"></path><path d="M16 5.4a3.2 3.2 0 0 1 0 5.6M18.4 19.6c0-2.6-.9-4.2-2.4-5.2"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Members</span></sc-if>
+      </a>
+      <a href="2110 POS.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2.5"></rect><path d="M3 9.5h18M7.5 20h9"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">POS</span></sc-if>
+      </a>
+      <a href="2110 Reports.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Reports</span></sc-if>
+      </a>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(233,233,237,.12);padding-top:12px">
+      <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:10px 14px;border-radius:11px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14px;overflow:hidden">
+        <svg width="17" height="17" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.65l.06.06a1.8 1.8 0 1 1-2.55 2.55l-.06-.06a1.5 1.5 0 0 0-1.65-.3 1.5 1.5 0 0 0-.9 1.37V20a1.8 1.8 0 0 1-3.6 0v-.1a1.5 1.5 0 0 0-.98-1.37 1.5 1.5 0 0 0-1.65.3l-.06.06a1.8 1.8 0 1 1-2.55-2.55l.06-.06a1.5 1.5 0 0 0 .3-1.65 1.5 1.5 0 0 0-1.37-.9H4a1.8 1.8 0 0 1 0-3.6h.1a1.5 1.5 0 0 0 1.37-.98 1.5 1.5 0 0 0-.3-1.65l-.06-.06a1.8 1.8 0 1 1 2.55-2.55l.06.06a1.5 1.5 0 0 0 1.65.3H9.5a1.5 1.5 0 0 0 .9-1.37V4a1.8 1.8 0 0 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.37 1.5 1.5 0 0 0 1.65-.3l.06-.06a1.8 1.8 0 1 1 2.55 2.55l-.06.06a1.5 1.5 0 0 0-.3 1.65v.06a1.5 1.5 0 0 0 1.37.9H20a1.8 1.8 0 0 1 0 3.6h-.1a1.5 1.5 0 0 0-1.37.9Z"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Settings</span></sc-if>
+      </div>
+      <a href="2110 Coach Preferences.dc.html" title="My preferences" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:11px;padding:10px 12px;margin-top:4px;border-radius:11px;background:rgba(233,233,237,.06);color:#e9e9ed;overflow:hidden" style-hover="background:rgba(233,233,237,.12)">
+        <div style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:12px;font-weight:600">CM</div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div style="min-width:0">
+          <div style="font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cory Martin</div>
+          <div style="font-size:11.5px;color:rgba(233,233,237,.55)">Facility Supervisor</div>
+        </div></sc-if>
+      </a>
+    </div>
+  </nav>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;margin-left:{{ navWidth }};transition:margin-left .18s ease">
+    <header style="height:64px;flex:none;position:sticky;top:0;z-index:30;background:var(--surface);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1">
+      <button type="button" onClick="{{ toggleNav }}" title="{{ navToggleTitle }}" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"></rect><path d="M9.5 4.5v15"></path><path d="{{ navChevron }}"></path></svg>
+      </button>
+      <div style="position:relative;width:320px;min-width:0;flex-shrink:1">
+      <div style="display:flex;align-items:center;gap:9px;height:36px;padding:0 14px;border:1px solid {{ searchBorder }};border-radius:10px;overflow:hidden;color:var(--muted)">
+        <svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input value="{{ searchQuery }}" onChange="{{ setSearch }}" onFocus="{{ openSearch }}" placeholder="Search members, sessions, pages" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:13.5px;outline:none" />
+        <button type="button" onClick="{{ clearSearch }}" style="display:{{ clearDisplay }};width:20px;height:20px;flex:none;place-items:center;border:0;border-radius:999px;background:var(--row);color:var(--muted);cursor:pointer;padding:0">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+        <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:42px;left:0;width:100%;min-width:300px;z-index:60;background:var(--surface);border-radius:12px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="max-height:340px;overflow-y:auto">
+              <sc-for list="{{ searchResults }}" as="s" hint-placeholder-count="4">
+                <a href="{{ s.href }}" style="display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--divider);color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:26px;height:26px;flex:none;border-radius:{{ s.radius }};background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10.5px;font-weight:600">{{ s.badge }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.title }}</span>
+                    <span style="display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.sub }}</span>
+                  </span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:22px 14px;font-size:13px;color:var(--muted);text-align:center">No matches for "{{ searchQuery }}".</div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13px;cursor:pointer" style-hover="background:var(--row)">
+          <span style="display:grid;place-items:center;width:16px;height:16px">{{ themeIcon }}</span>{{ themeLabel }}
+        </button>
+        <div style="position:relative;flex:none">
+        <button type="button" onClick="{{ toggleNotif }}" title="Notifications" style="position:relative;width:36px;height:36px;display:grid;place-items:center;border:1px solid {{ notifBorder }};border-radius:999px;background:{{ notifBg }};color:{{ notifFg }};cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.4 1.4 5.4H4.6S6 14 6 10Z"></path><path d="M10 19a2.2 2.2 0 0 0 4 0"></path></svg>
+          <span style="display:{{ badgeDisplay }};position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c8452e;color:#fff;font-size:10px;font-weight:600;place-items:center">{{ notifCount }}</span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:344px;max-width:calc(100vw - 40px);z-index:60;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider)">
+              <span style="font-size:14.5px;font-weight:600">Notifications</span>
+              <button type="button" onClick="{{ markAllRead }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">Mark all read</button>
+            </div>
+            <div style="max-height:390px;overflow-y:auto">
+              <sc-for list="{{ notifItems }}" as="n" hint-placeholder-count="4">
+                <a href="{{ n.href }}" style="display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--divider);background:{{ n.rowBg }};color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:28px;height:28px;flex:none;border-radius:999px;background:{{ n.iconBg }};color:{{ n.iconFg }};display:grid;place-items:center;font-size:11px;font-weight:600">{{ n.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;text-wrap:pretty">{{ n.text }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);margin-top:1px">{{ n.when }}</span>
+                  </span>
+                  <span style="display:{{ n.dotDisplay }};width:7px;height:7px;flex:none;margin-top:6px;border-radius:999px;background:var(--accent)"></span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ notifEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:26px 16px;font-size:13.5px;color:var(--muted);text-align:center">You're all caught up.</div>
+              </sc-if>
+            </div>
+            <a href="2110 Coach Preferences.dc.html" style="display:block;padding:12px 16px;font-size:12.5px;text-align:center">Notification settings</a>
+          </div>
+        </sc-if>
+      </div>
+        <button type="button" onClick="{{ save }}" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;white-space:nowrap;flex:none;cursor:pointer">{{ saveLabel }}</button>
+      </div>
+    </header>
+
+    <main style="flex:1;padding:24px 30px 28px;display:flex;flex-direction:column;gap:18px;min-height:0">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div>
+          <h2 style="margin:0 0 2px;font-size:28px;font-weight:500;letter-spacing:-.02em">Settings</h2>
+          <div style="font-size:13.5px;color:var(--muted)">{{ sectionLabel }}</div>
+        </div>
+        <div style="display:flex;gap:4px;padding:4px;border:1px solid var(--divider);border-radius:11px;margin-left:auto;flex-wrap:wrap">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+            <button type="button" onClick="{{ t.select }}" style="padding:6px 14px;border:0;border-radius:8px;background:{{ t.bg }};color:{{ t.fg }};font:inherit;font-size:13px;font-weight:{{ t.weight }};white-space:nowrap;cursor:pointer">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-if value="{{ isFacility }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px;align-items:start">
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+            <h5 style="margin:0;font-size:15.5px;font-weight:600">Facility</h5>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Business name</span>
+              <input value="2110 Fitness" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+            </label>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Address</span>
+              <input value="2110 Centre Street NE, Calgary, AB" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+            </label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Phone</span>
+                <input value="+1 403 555 2110" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+              </label>
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Time zone</span>
+                <select style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                  <option>Mountain (MDT)</option>
+                  <option>Pacific (PDT)</option>
+                  <option>Central (CDT)</option>
+                  <option>Eastern (EDT)</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+            <h5 style="margin:0;font-size:15.5px;font-weight:600">Hours &amp; calendar</h5>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Opens</span>
+                <input value="6:00 AM" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+              </label>
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Closes</span>
+                <input value="8:00 PM" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+              </label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Booking increment</span>
+              <select style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <option>5 minutes</option>
+                <option>10 minutes</option>
+                <option>15 minutes</option>
+                <option>30 minutes</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Default calendar view</span>
+              <select style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <option>Week</option>
+                <option>Day</option>
+                <option>Month</option>
+              </select>
+            </label>
+          </section>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0">
+            <h5 style="margin:0 0 4px;font-size:15.5px;font-weight:600">Booking rules</h5>
+            <sc-for list="{{ bookingToggles }}" as="t" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--divider)">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:13.5px">{{ t.label }}</div>
+                  <div style="font-size:12px;color:var(--muted);text-wrap:pretty">{{ t.hint }}</div>
+                </div>
+                <button type="button" onClick="{{ t.toggle }}" style="width:42px;height:24px;flex:none;padding:0;border:0;border-radius:999px;background:{{ t.trackBg }};position:relative;cursor:pointer;transition:background .14s ease">
+                  <span style="position:absolute;top:3px;left:{{ t.knobLeft }};width:18px;height:18px;border-radius:999px;background:{{ t.knobBg }};transition:left .14s ease"></span>
+                </button>
+              </div>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isStaff }}" hint-placeholder-val="{{ false }}">
+        <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:6px 0 2px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.1fr) minmax(0,1fr) 96px;gap:14px;padding:12px 22px;border-bottom:1px solid var(--divider);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)">
+            <span>Staff</span><span>Role</span><span>Access</span><span style="text-align:right">Status</span>
+          </div>
+          <sc-for list="{{ staff }}" as="s" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.1fr) minmax(0,1fr) 96px;gap:14px;align-items:center;padding:13px 22px;border-bottom:1px solid var(--divider)">
+              <span style="display:flex;align-items:center;gap:11px;min-width:0">
+                <span style="width:32px;height:32px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:11.5px;font-weight:600">{{ s.initials }}</span>
+                <span style="min-width:0">
+                  <span style="display:block;font-size:14.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.name }}</span>
+                  <span style="display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.email }}</span>
+                </span>
+              </span>
+              <span style="min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.role }}</span>
+              <span style="min-width:0;font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.access }}</span>
+              <span style="text-align:right;font-size:11.5px;padding:3px 0;border-radius:7px;background:{{ s.chipBg }};color:{{ s.chipFg }}">{{ s.status }}</span>
+            </div>
+          </sc-for>
+          <div style="padding:14px 22px">
+            <button type="button" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 15px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:var(--row)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+              Invite staff
+            </button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+        <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:6px 0 2px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:minmax(0,1.5fr) 108px 116px minmax(0,1fr);gap:14px;padding:12px 22px;border-bottom:1px solid var(--divider);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)">
+            <span>Session type</span><span style="text-align:right">Default length</span><span style="text-align:right">Price</span><span>Capacity</span>
+          </div>
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:minmax(0,1.5fr) 108px 116px minmax(0,1fr);gap:14px;align-items:center;padding:13px 22px;border-bottom:1px solid var(--divider)">
+              <span style="display:flex;align-items:center;gap:10px;min-width:0">
+                <span style="width:10px;height:10px;flex:none;border-radius:3px;background:{{ s.color }}"></span>
+                <span style="min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.name }}</span>
+              </span>
+              <span style="text-align:right;font-size:13.5px;font-variant-numeric:tabular-nums">{{ s.length }}</span>
+              <span style="text-align:right;font-size:13.5px;font-weight:500;font-variant-numeric:tabular-nums">{{ s.price }}</span>
+              <span style="font-size:13.5px;color:var(--muted)">{{ s.capacity }}</span>
+            </div>
+          </sc-for>
+          <div style="padding:14px 22px">
+            <button type="button" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 15px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:var(--row)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+              Add session type
+            </button>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isPayments }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px;align-items:start">
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+            <h5 style="margin:0;font-size:15.5px;font-weight:600">Payments</h5>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Currency</span>
+                <select style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                  <option>CAD</option>
+                  <option>USD</option>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Sales tax</span>
+                <input value="GST 5%" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+              </label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Card terminal</span>
+              <select style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <option>Front desk terminal · connected</option>
+                <option>Mobile reader · connected</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Late cancellation fee</span>
+              <input value="$25.00" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+            </label>
+          </section>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0">
+            <h5 style="margin:0 0 4px;font-size:15.5px;font-weight:600">Receipts &amp; billing</h5>
+            <sc-for list="{{ paymentToggles }}" as="t" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--divider)">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:13.5px">{{ t.label }}</div>
+                  <div style="font-size:12px;color:var(--muted);text-wrap:pretty">{{ t.hint }}</div>
+                </div>
+                <button type="button" onClick="{{ t.toggle }}" style="width:42px;height:24px;flex:none;padding:0;border:0;border-radius:999px;background:{{ t.trackBg }};position:relative;cursor:pointer;transition:background .14s ease">
+                  <span style="position:absolute;top:3px;left:{{ t.knobLeft }};width:18px;height:18px;border-radius:999px;background:{{ t.knobBg }};transition:left .14s ease"></span>
+                </button>
+              </div>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isNotifications }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px;align-items:start">
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0">
+            <h5 style="margin:0 0 4px;font-size:15.5px;font-weight:600">Member notifications</h5>
+            <sc-for list="{{ notifyToggles }}" as="t" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--divider)">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:13.5px">{{ t.label }}</div>
+                  <div style="font-size:12px;color:var(--muted);text-wrap:pretty">{{ t.hint }}</div>
+                </div>
+                <button type="button" onClick="{{ t.toggle }}" style="width:42px;height:24px;flex:none;padding:0;border:0;border-radius:999px;background:{{ t.trackBg }};position:relative;cursor:pointer;transition:background .14s ease">
+                  <span style="position:absolute;top:3px;left:{{ t.knobLeft }};width:18px;height:18px;border-radius:999px;background:{{ t.knobBg }};transition:left .14s ease"></span>
+                </button>
+              </div>
+            </sc-for>
+          </section>
+
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;min-width:0;display:flex;flex-direction:column;gap:14px">
+            <h5 style="margin:0;font-size:15.5px;font-weight:600">Reminder timing</h5>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Session reminder</span>
+              <select style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <option>24 hours before</option>
+                <option>12 hours before</option>
+                <option>2 hours before</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Package low warning</span>
+              <select style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <option>2 sessions left</option>
+                <option>3 sessions left</option>
+                <option>5 sessions left</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Daily summary to</span>
+              <input value="cory@2110fitness.com" style="height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+            </label>
+          </section>
+        </div>
+      </sc-if>
+
+    </main>
+  </div>
+</div></div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;}}">
+class Component extends DCLogic {
+  state = {
+    theme: Component.savedTheme(this.props.theme), collapsed: false, notifOpen: false, notifRead: {}, searchQuery: "", searchOpen: false, tab: "Facility",
+    saved: false,
+    flags: {
+      selfBook: true, waitlist: true, requireCard: false, allowDouble: false,
+      emailReceipt: true, autoCharge: true, packageAlert: true, dailySummary: false,
+      reminder: true, cancelNotice: true, waitlistOpen: true, birthday: false, marketing: false,
+    },
+  };
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const accent = dark ? "#9184d9" : "#0f6e6b";
+    const flags = this.state.flags;
+
+    const toggle = (key, label, hint) => ({
+      label, hint,
+      trackBg: flags[key] ? accent : "var(--divider)",
+      knobBg: flags[key] ? (dark ? "#12141f" : "#ffffff") : "var(--muted)",
+      knobLeft: flags[key] ? "21px" : "3px",
+      toggle: () => this.setState(st => ({ flags: { ...st.flags, [key]: !st.flags[key] }, saved: false })),
+    });
+
+    const typeColors = {
+      "Personal Training": dark ? "#9184d9" : "#0f6e6b",
+      "Group Training": dark ? "#6fb3c8" : "#2f6f8f",
+      "Remote Consult": dark ? "#c8a86f" : "#8a6a24",
+      "Class": dark ? "#8fc79f" : "#3d7a52",
+      "Bodpod": dark ? "#c88f9f" : "#8f4a5c",
+      "Blueprint and Baseline": dark ? "#9a9fb5" : "#5c6270",
+    };
+    const okChip = dark ? ["rgba(127,214,165,.16)", "#7fd6a5"] : ["rgba(15,110,107,.12)", "#0f6e6b"];
+    const offChip = dark ? ["rgba(233,233,237,.08)", "#9397ab"] : ["rgba(28,30,28,.06)", "#6d7270"];
+
+    const tab = this.state.tab;
+    const labels = {
+      Facility: "Business details, hours and booking rules",
+      Staff: "Coaches, roles and access",
+      Services: "Session types, lengths and pricing",
+      Payments: "Tax, terminals and receipts",
+      Notifications: "Member reminders and internal alerts",
+    };
+
+    return {
+      ...this.notifVals(),
+      ...this.searchVals(),
+      theme: this.state.theme,
+      themeLabel: dark ? "Dark" : "Light",
+      themeIcon: dark ? this.moon() : this.sun(),
+      toggleTheme: () => this.flipTheme(),
+      expanded: !this.state.collapsed,
+      navWidth: this.state.collapsed ? "76px" : "232px",
+      navAlign: this.state.collapsed ? "center" : "flex-start",
+      navToggleTitle: this.state.collapsed ? "Expand sidebar" : "Collapse sidebar",
+      navChevron: this.state.collapsed ? "m14.2 9.4 2.6 2.6-2.6 2.6" : "m17.3 9.4-2.6 2.6 2.6 2.6",
+      toggleNav: () => this.setState(st => ({ collapsed: !st.collapsed })),
+
+      sectionLabel: labels[tab],
+      saveLabel: this.state.saved ? "Saved" : "Save changes",
+      save: () => this.setState({ saved: true }),
+      tabs: Object.keys(labels).map(label => {
+        const on = tab === label;
+        return {
+          label, bg: on ? "var(--row)" : "transparent", fg: on ? "var(--text)" : "var(--muted)",
+          weight: on ? 600 : 400, select: () => this.setState({ tab: label }),
+        };
+      }),
+      isFacility: tab === "Facility",
+      isStaff: tab === "Staff",
+      isServices: tab === "Services",
+      isPayments: tab === "Payments",
+      isNotifications: tab === "Notifications",
+
+      bookingToggles: [
+        toggle("selfBook", "Members can self-book", "Booking opens 14 days ahead in the member app"),
+        toggle("waitlist", "Waitlists on full sessions", "Members are promoted automatically when a spot frees up"),
+        toggle("requireCard", "Require card on file", "Members must save a card before booking"),
+        toggle("allowDouble", "Allow double-booked slots", "Lets two sessions share the same time in one coach's column"),
+      ],
+      paymentToggles: [
+        toggle("emailReceipt", "Email receipts", "Sent to the member as soon as a sale is charged"),
+        toggle("autoCharge", "Auto-charge memberships", "Recurring plans bill on their renewal date"),
+        toggle("packageAlert", "Flag unpaid sessions", "Shows a balance-due badge on the session panel"),
+        toggle("dailySummary", "Print end-of-day till report", "Prints automatically when the till is closed"),
+      ],
+      notifyToggles: [
+        toggle("reminder", "Session reminders", "Text and email before each booked session"),
+        toggle("cancelNotice", "Cancellation confirmations", "Confirms cancellations and refund method"),
+        toggle("waitlistOpen", "Waitlist openings", "Notifies the next member when a spot opens"),
+        toggle("birthday", "Birthday messages", "Sends a note on the member's birthday"),
+        toggle("marketing", "Promotions and campaigns", "Marketing email to members who opted in"),
+      ],
+
+      staff: [
+        ["Cory Martin", "CM", "cory@2110fitness.com", "Facility Supervisor", "Full access", true],
+        ["Jess Tran", "JT", "jess@2110fitness.com", "Coach", "Schedule, members, POS", true],
+        ["Andre Reyes", "AR", "andre@2110fitness.com", "Coach", "Schedule, members", true],
+        ["Sam Whitlow", "SW", "sam@2110fitness.com", "Front desk", "POS, check-in", false],
+      ].map(([name, initials, email, role, access, active]) => ({
+        name, initials, email, role, access,
+        status: active ? "Active" : "Invited",
+        chipBg: active ? okChip[0] : offChip[0],
+        chipFg: active ? okChip[1] : offChip[1],
+      })),
+
+      services: [
+        ["Personal Training", "60 min", "$50.00", "1 client"],
+        ["Group Training", "60 min", "$30.00", "Up to 6"],
+        ["Class", "60 min", "$20.00", "Up to 16"],
+        ["Remote Consult", "15 min", "$40.00", "1 client"],
+        ["Bodpod", "30 min", "$45.00", "1 client"],
+        ["Blueprint and Baseline", "90 min", "No charge", "1 client"],
+      ].map(([name, length, price, capacity]) => ({
+        name, length, price, capacity, color: typeColors[name],
+      })),
+    };
+  }
+
+  static savedTheme(fallback) {
+    try { return localStorage.getItem("2110-theme") || fallback || "light"; }
+    catch (e) { return fallback || "light"; }
+  }
+  flipTheme() {
+    this.setState(st => {
+      const next = st.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("2110-theme", next); } catch (e) {}
+      return { theme: next };
+    });
+  }
+
+  notifData() {
+    return [
+      ["b1", "Sarah Chen booked Personal Training", "Today, 10:00 AM · booked 6 min ago", "SC", "member"],
+      ["b2", "Owen Pratt joined Conditioning", "Today, 4:30 PM class · 14 min ago", "OP", "member"],
+      ["b3", "Kim Alvarez joined Group Training", "Today, 11:35 AM · 38 min ago", "KA", "member"],
+      ["b4", "Rafael Diaz booked Bodpod", "Thu, Sep 3, 2:20 PM · 1 hr ago", "RD", "member"],
+      ["b5", "Amy Cole joined Recovery class", "Sun, Sep 6, 10:00 AM · 2 hrs ago", "AC", "member"],
+    ];
+  }
+  notifVals() {
+    const dark = this.state.theme === "dark";
+    const read = this.state.notifRead || {};
+    const items = this.notifData().map(([id, text, when, initials]) => {
+      const isRead = !!read[id];
+      const name = text.split(" ").slice(0, 2).join(" ");
+      return {
+        id, text, when, initials,
+        href: "2110 Members.dc.html?member=" + encodeURIComponent(name),
+        rowBg: isRead ? "transparent" : (dark ? "rgba(145,132,217,.07)" : "rgba(15,110,107,.05)"),
+        dotDisplay: isRead ? "none" : "block",
+        iconBg: "var(--row)", iconFg: "var(--muted)",
+      };
+    });
+    const unread = items.filter(i => i.dotDisplay === "block").length;
+    const open = !!this.state.notifOpen;
+    return {
+      notifItems: items,
+      notifEmpty: items.length === 0,
+      notifCount: String(unread),
+      badgeDisplay: unread > 0 ? "grid" : "none",
+      notifOpen: open,
+      notifBg: open ? "var(--row)" : "transparent",
+      notifFg: open ? "var(--text)" : "var(--muted)",
+      notifBorder: open ? "var(--accent)" : "var(--divider)",
+      toggleNotif: () => this.setState(st => ({ notifOpen: !st.notifOpen })),
+      markAllRead: (ev) => {
+        ev.preventDefault();
+        const all = {};
+        this.notifData().forEach(([id]) => { all[id] = true; });
+        this.setState({ notifRead: all });
+      },
+    };
+  }
+
+  searchIndex() {
+    const members = ["Dan Whitfield","Sarah Chen","Marcus Ellis","Priya Raman","Alicia Braun","Rosa Delgado",
+      "Tom Okafor","Owen Pratt","Kim Alvarez","Beth Nunes","Rafael Diaz","Amy Cole","Lena Ortiz","Nina Park",
+      "Jon Reyes","Neil Vance"];
+    const items = members.map(n => ({
+      title: n, sub: "Member profile", kind: "member",
+      badge: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+      radius: "999px",
+      href: "2110 Members.dc.html?member=" + encodeURIComponent(n),
+    }));
+    const pages = [
+      ["Dashboard", "Today's overview", "2110 Scheduling Dashboard.dc.html"],
+      ["Schedule", "Day, week and month calendar", "2110 Schedule.dc.html"],
+      ["Members", "Member list and profiles", "2110 Members.dc.html"],
+      ["POS", "Point of sale", "2110 POS.dc.html"],
+      ["Reports", "Revenue, sessions, coaches", "2110 Reports.dc.html"],
+      ["Settings", "Facility, staff, services", "2110 Settings.dc.html"],
+      ["My preferences", "Hours, time off, notifications", "2110 Coach Preferences.dc.html"],
+    ].map(([title, sub, href]) => ({ title, sub, href, kind: "page", badge: "→", radius: "8px" }));
+    const sessions = [
+      ["Personal Training", "Session type · 55 min · $50"],
+      ["Group Training", "Session type · 45 min · up to 6"],
+      ["Class", "Session type · 50 min · up to 16"],
+      ["Remote Consult", "Session type · 30 min · $40"],
+      ["Bodpod", "Session type · 25 min · $45"],
+      ["Blueprint and Baseline", "Session type · 45 min · no charge"],
+    ].map(([title, sub]) => ({ title, sub, kind: "session", badge: "◷", radius: "8px", href: "2110 Schedule.dc.html" }));
+    return items.concat(sessions, pages);
+  }
+  searchVals() {
+    const q = (this.state.searchQuery || "").trim().toLowerCase();
+    const hits = q ? this.searchIndex().filter(i =>
+      i.title.toLowerCase().includes(q) || i.sub.toLowerCase().includes(q)).slice(0, 8) : [];
+    const open = !!this.state.searchOpen && q.length > 0;
+    return {
+      searchQuery: this.state.searchQuery || "",
+      searchResults: hits,
+      searchEmpty: open && hits.length === 0,
+      searchOpen: open,
+      searchBorder: open ? "var(--accent)" : "var(--divider)",
+      clearDisplay: q ? "grid" : "none",
+      setSearch: (ev) => this.setState({ searchQuery: ev.target.value, searchOpen: true }),
+      openSearch: () => this.setState({ searchOpen: true }),
+      clearSearch: () => this.setState({ searchQuery: "", searchOpen: false }),
+    };
+  }
+
+  sun() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" },
+      React.createElement("circle", { cx: 12, cy: 12, r: 4 }),
+      React.createElement("path", { d: "M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" }));
+  }
+  moon() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" },
+      React.createElement("path", { d: "M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" }));
+  }
+}
+
+</script>
+</body>
+</html>

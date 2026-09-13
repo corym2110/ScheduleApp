@@ -1,0 +1,9 @@
+{
+  "name": "2110-scheduling-browser",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Design prototypes for the 2110 Fitness scheduling browser — static HTML, no build step.",
+  "scripts": {
+    "start": "npx --yes serve . -l 4000"
+  }
+}

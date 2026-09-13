@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/styles.css">
+<script src="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+#app{container-type:inline-size}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+#app{--accent:#0f6e6b;--accent-deep:#0a3f3e;--on-accent:#ffffff}
+#app[data-theme="dark"]{--accent:#9184d9;--accent-deep:#2b2741;--on-accent:#12141f;--link:#b5abfc;--link-hover:#d2cefd}
+#app[data-theme="light"]{--link:#0f6e6b;--link-hover:#0a504e;--bg:#f4f3ef;--surface:#ffffff;--text:#1c1e1c;--divider:rgba(28,30,28,.10);--muted:#6d7270;--ok:#0f6e6b;--row:rgba(28,30,28,.045);--card:0 1px 2px rgba(28,30,28,.05),0 10px 28px rgba(28,30,28,.06)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] option,#app[data-theme="dark"] input,#app[data-theme="dark"] textarea{background:#12141f;color:#e9e9ed;color-scheme:dark}
+#app[data-theme="dark"] select option:checked{background:#2b2741;color:#e9e9ed}
+#app[data-theme="light"] select,#app[data-theme="light"] option{background:#ffffff;color:#1c1e1c;color-scheme:light}
+#app[data-theme="dark"]{--bg:#161826;--surface:#232532;--text:#e9e9ed;--divider:rgba(233,233,237,.14);--muted:#9397ab;--ok:#7fd6a5;--row:rgba(233,233,237,.05);--card:0 0 0 1px #3f424d,0 10px 28px rgba(0,0,0,.5)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] input,#app[data-theme="dark"] option{color-scheme:dark}
+#app[data-theme="dark"] select{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] select option{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] input{color-scheme:dark}
+</style>
+</helmet>
+<div id="frame" style="width:100%;overflow-x:hidden"><div id="app" data-theme="{{ theme }}" style="width:100%;min-height:100vh;display:flex;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55;overflow:hidden">
+
+  <nav style="width:{{ navWidth }};flex:none;min-width:0;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow:hidden;background:#12141f;color:#e9e9ed;display:flex;flex-direction:column;padding:26px 16px 20px;gap:24px;transition:width .18s ease">
+    <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:10px;padding-left:6px">
+      <div style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:12.5px">2</div>
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600;font-size:17px;letter-spacing:.04em;white-space:nowrap">2110 Fitness</span></sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14.5px;overflow:hidden">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.8V20h14V9.8"></path><path d="M10 20v-6h4v6"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Dashboard</span></sc-if>
+      </div>
+      <a href="2110 Schedule.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Schedule</span></sc-if>
+      </a>
+      <a href="2110 Classes.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.6"></circle><circle cx="16" cy="8" r="2.6"></circle><path d="M3.5 19c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"></path><path d="M13.5 19c0-2.8 1.6-4.4 4-4.4s3 1.6 3 4.4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Classes</span></sc-if>
+      </a>
+      <a href="2110 Members.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"></circle><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"></path><path d="M16 5.4a3.2 3.2 0 0 1 0 5.6M18.4 19.6c0-2.6-.9-4.2-2.4-5.2"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Members</span></sc-if>
+      </a>
+      <a href="2110 POS.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2.5"></rect><path d="M3 9.5h18M7.5 20h9"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">POS</span></sc-if>
+      </a>
+      <a href="2110 Reports.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Reports</span></sc-if>
+      </a>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(233,233,237,.12);padding-top:12px">
+      <a href="2110 Settings.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:10px 14px;border-radius:11px;color:rgba(233,233,237,.66);font-size:14px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="17" height="17" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.65l.06.06a1.8 1.8 0 1 1-2.55 2.55l-.06-.06a1.5 1.5 0 0 0-1.65-.3 1.5 1.5 0 0 0-.9 1.37V20a1.8 1.8 0 0 1-3.6 0v-.1a1.5 1.5 0 0 0-.98-1.37 1.5 1.5 0 0 0-1.65.3l-.06.06a1.8 1.8 0 1 1-2.55-2.55l.06-.06a1.5 1.5 0 0 0 .3-1.65 1.5 1.5 0 0 0-1.37-.9H4a1.8 1.8 0 0 1 0-3.6h.1a1.5 1.5 0 0 0 1.37-.98 1.5 1.5 0 0 0-.3-1.65l-.06-.06a1.8 1.8 0 1 1 2.55-2.55l.06.06a1.5 1.5 0 0 0 1.65.3H9.5a1.5 1.5 0 0 0 .9-1.37V4a1.8 1.8 0 0 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.37 1.5 1.5 0 0 0 1.65-.3l.06-.06a1.8 1.8 0 1 1 2.55 2.55l-.06.06a1.5 1.5 0 0 0-.3 1.65v.06a1.5 1.5 0 0 0 1.37.9H20a1.8 1.8 0 0 1 0 3.6h-.1a1.5 1.5 0 0 0-1.37.9Z"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Settings</span></sc-if>
+      </a>
+      <a href="2110 Coach Preferences.dc.html" title="My preferences" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:11px;padding:10px 12px;margin-top:4px;border-radius:11px;background:rgba(233,233,237,.06);color:#e9e9ed;overflow:hidden" style-hover="background:rgba(233,233,237,.12)">
+        <div style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:12px;font-weight:600">CM</div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div style="min-width:0">
+          <div style="font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cory Martin</div>
+          <div style="font-size:11.5px;color:rgba(233,233,237,.55)">Facility Supervisor</div>
+        </div></sc-if>
+      </a>
+    </div>
+  </nav>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;margin-left:{{ navWidth }};transition:margin-left .18s ease">
+    <header style="height:64px;flex:none;background:var(--surface);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1">
+      <button type="button" onClick="{{ toggleNav }}" title="{{ navToggleTitle }}" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"></rect><path d="M9.5 4.5v15"></path><path d="{{ navChevron }}"></path></svg>
+      </button>
+      <div style="position:relative;width:320px;min-width:0;flex-shrink:1">
+      <div style="display:flex;align-items:center;gap:9px;height:36px;padding:0 14px;border:1px solid {{ searchBorder }};border-radius:10px;overflow:hidden;color:var(--muted)">
+        <svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input value="{{ searchQuery }}" onChange="{{ setSearch }}" onFocus="{{ openSearch }}" placeholder="Search members, sessions, pages" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:13.5px;outline:none" />
+        <button type="button" onClick="{{ clearSearch }}" style="display:{{ clearDisplay }};width:20px;height:20px;flex:none;place-items:center;border:0;border-radius:999px;background:var(--row);color:var(--muted);cursor:pointer;padding:0">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+        <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:42px;left:0;width:100%;min-width:300px;z-index:60;background:var(--surface);border-radius:12px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="max-height:340px;overflow-y:auto">
+              <sc-for list="{{ searchResults }}" as="s" hint-placeholder-count="4">
+                <a href="{{ s.href }}" style="display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--divider);color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:26px;height:26px;flex:none;border-radius:{{ s.radius }};background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10.5px;font-weight:600">{{ s.badge }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.title }}</span>
+                    <span style="display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.sub }}</span>
+                  </span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:22px 14px;font-size:13px;color:var(--muted);text-align:center">No matches for "{{ searchQuery }}".</div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13px;cursor:pointer" style-hover="background:var(--row)">
+          <span style="display:grid;place-items:center;width:16px;height:16px">{{ themeIcon }}</span>{{ themeLabel }}
+        </button>
+        <div style="position:relative;flex:none">
+        <button type="button" onClick="{{ toggleNotif }}" title="Notifications" style="position:relative;width:36px;height:36px;display:grid;place-items:center;border:1px solid {{ notifBorder }};border-radius:999px;background:{{ notifBg }};color:{{ notifFg }};cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.4 1.4 5.4H4.6S6 14 6 10Z"></path><path d="M10 19a2.2 2.2 0 0 0 4 0"></path></svg>
+          <span style="display:{{ badgeDisplay }};position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c8452e;color:#fff;font-size:10px;font-weight:600;place-items:center">{{ notifCount }}</span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:344px;max-width:calc(100vw - 40px);z-index:60;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider)">
+              <span style="font-size:14.5px;font-weight:600">Notifications</span>
+              <button type="button" onClick="{{ markAllRead }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">Mark all read</button>
+            </div>
+            <div style="max-height:390px;overflow-y:auto">
+              <sc-for list="{{ notifItems }}" as="n" hint-placeholder-count="4">
+                <a href="{{ n.href }}" style="display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--divider);background:{{ n.rowBg }};color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:28px;height:28px;flex:none;border-radius:999px;background:{{ n.iconBg }};color:{{ n.iconFg }};display:grid;place-items:center;font-size:11px;font-weight:600">{{ n.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;text-wrap:pretty">{{ n.text }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);margin-top:1px">{{ n.when }}</span>
+                  </span>
+                  <span style="display:{{ n.dotDisplay }};width:7px;height:7px;flex:none;margin-top:6px;border-radius:999px;background:var(--accent)"></span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ notifEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:26px 16px;font-size:13.5px;color:var(--muted);text-align:center">You're all caught up.</div>
+              </sc-if>
+            </div>
+            <a href="2110 Coach Preferences.dc.html" style="display:block;padding:12px 16px;font-size:12.5px;text-align:center">Notification settings</a>
+          </div>
+        </sc-if>
+      </div>
+        <a href="2110 Schedule.dc.html?new=1" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 16px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13.5px;font-weight:600;white-space:nowrap;flex:none">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+          New session
+        </a>
+      </div>
+    </header>
+
+    <main style="flex:1;padding:24px 30px 28px;display:flex;flex-direction:column;gap:18px;min-height:0">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px">
+        <div>
+          <h2 style="margin:0 0 2px;font-size:28px;font-weight:500;letter-spacing:-.02em">Good morning, Cory</h2>
+          <div style="font-size:13.5px;color:var(--muted)">{{ subhead }}</div>
+        </div>
+        <div style="display:flex;gap:4px;padding:4px;border:1px solid var(--divider);border-radius:11px">
+          <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3">
+            <button type="button" onClick="{{ r.select }}" style="padding:6px 14px;border:0;border-radius:8px;background:{{ r.bg }};color:{{ r.fg }};font:inherit;font-size:13px;font-weight:{{ r.weight }};cursor:pointer">{{ r.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <sc-for list="{{ statCards }}" as="c" hint-placeholder-count="4">
+          <a href="{{ c.href }}" style="background:var(--surface);border-radius:14px;box-shadow:var(--card);padding:16px 18px;color:var(--text);display:block" style-hover="background:var(--row)">
+            <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)">{{ c.label }}</div>
+            <div style="font-size:30px;font-weight:600;letter-spacing:-.02em;margin-top:6px">{{ c.value }}</div>
+            <div style="font-size:12.5px;color:{{ c.subColor }};margin-top:2px">{{ c.sub }}</div>
+          </a>
+        </sc-for>
+      </div>
+
+      <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:18px;min-height:0;min-width:0">
+
+        <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;display:flex;flex-direction:column;gap:14px;min-height:0;min-width:0">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <h5 style="margin:0;font-size:15.5px;font-weight:600">{{ panelTitle }}</h5>
+            <a href="2110 Schedule.dc.html" style="font-size:13px">View full calendar</a>
+          </div>
+
+          <div style="border-radius:12px;padding:12px 16px;background:linear-gradient(118deg,var(--accent),var(--accent-deep));color:#f5f4ff;display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap;min-width:0">
+            <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;opacity:.8;flex:none">Up next</span>
+            <span style="font-size:17px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;flex:none">10:00 AM · <a href="2110 Members.dc.html?member=Sarah%20Chen" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(245,244,255,.45);text-underline-offset:3px">Sarah Chen</a></span>
+            <span style="font-size:12.5px;opacity:.85">Personal Training · in 42 min</span>
+          </div>
+
+          <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+            <sc-for list="{{ sessions }}" as="s" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:16px;padding:11px 4px;border-bottom:1px solid var(--divider)">
+                <span style="width:104px;flex:none;font-variant-numeric:tabular-nums;font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.time }}</span>
+                <span style="width:26px;height:26px;flex:none;border-radius:999px;background:var(--row);display:grid;place-items:center;font-size:10.5px;font-weight:600;color:var(--muted)">{{ s.initials }}</span>
+                <a href="{{ s.href }}" style="flex:1;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)" style-hover="color:var(--link)">{{ s.name }}</a>
+                <span style="flex:none;width:132px;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.type }}</span>
+                <span style="flex:none;width:78px;text-align:center;font-size:11.5px;padding:3px 0;border-radius:7px;background:{{ s.chipBg }};color:{{ s.chipFg }}">{{ s.status }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <div style="display:grid;grid-template-rows:auto minmax(200px,1fr);gap:18px;min-height:0;min-width:0">
+          <section style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;display:flex;flex-direction:column;gap:12px">
+            <h5 style="margin:0;font-size:15.5px;font-weight:600">Needs attention</h5>
+            <sc-for list="{{ attention }}" as="a" hint-placeholder-count="3">
+              <a href="{{ a.href }}" style="display:flex;gap:11px;align-items:flex-start;padding:7px 8px;margin:0 -8px;border-radius:9px;color:var(--text)" style-hover="background:var(--row)">
+                <span style="width:7px;height:7px;flex:none;margin-top:7px;border-radius:999px;background:{{ a.dot }}"></span>
+                <span>
+                  <span style="display:block;font-size:13.5px">{{ a.title }}</span>
+                  <span style="display:block;font-size:12px;color:var(--muted)">{{ a.sub }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </section>
+
+          <section style="flex:1;background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:20px 22px;display:flex;flex-direction:column;gap:14px;min-height:0;min-width:0">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <h5 style="margin:0;font-size:15.5px;font-weight:600">This week</h5>
+              <span style="font-size:12.5px;color:var(--muted)">28 of 35 slots</span>
+            </div>
+            <div style="flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:end;min-height:0">
+              <sc-for list="{{ week }}" as="d" hint-placeholder-count="5">
+                <a href="{{ d.href }}" title="{{ d.title }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;color:var(--text)" style-hover="opacity:.82">
+                  <span style="flex:none;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums">{{ d.count }}</span>
+                  <span style="flex:1;min-height:0;width:100%;display:flex;align-items:flex-end">
+                    <span style="flex:none;width:100%;border-radius:8px 8px 3px 3px;background:{{ d.fill }};height:{{ d.height }}"></span>
+                  </span>
+                  <span style="flex:none;font-size:11.5px;color:var(--muted)">{{ d.label }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div></div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;}}">
+class Component extends DCLogic {
+  state = { theme: Component.savedTheme(this.props.theme), collapsed: false, notifOpen: false, notifRead: {}, searchQuery: "", searchOpen: false, range: "Day" };
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const chip = {
+      done: dark ? ["rgba(127,214,165,.16)", "#7fd6a5"] : ["rgba(15,110,107,.11)", "#0f6e6b"],
+      booked: dark ? ["rgba(145,132,217,.18)", "#b5abfc"] : ["rgba(15,110,107,.11)", "#0a504e"],
+      off: dark ? ["rgba(233,233,237,.08)", "#9397ab"] : ["rgba(28,30,28,.06)", "#6d7270"],
+    };
+    const s = (time, name, initials, type, status, key) => ({
+      time, name, initials, type, status,
+      href: /group|\(\d+\)|class/i.test(name) ? "2110 Schedule.dc.html" : "2110 Members.dc.html?member=" + encodeURIComponent(name),
+      chipBg: chip[key][0], chipFg: chip[key][1],
+    });
+    const sessions = [
+      s("6:00 AM", "Dan Whitfield", "DW", "Personal Training", "Completed", "done"),
+      s("7:15 AM", "Priya Raman", "PR", "Remote Consult", "Completed", "done"),
+      s("8:30 AM", "Marcus Ellis", "ME", "Personal Training", "Cancelled", "off"),
+      s("10:00 AM", "Sarah Chen", "SC", "Personal Training", "Up next", "booked"),
+      s("11:30 AM", "Small group (4)", "SG", "Group Training", "Booked", "booked"),
+      s("1:00 PM", "Alicia Braun", "AB", "Blueprint and Baseline", "Booked", "booked"),
+      s("2:15 PM", "Rosa Delgado", "RD", "Bodpod", "Booked", "booked"),
+      s("4:30 PM", "Tom Okafor", "TO", "Class", "Booked", "booked"),
+    ];
+    const accent = dark ? "#9184d9" : "#0f6e6b";
+    const dim = dark ? "rgba(145,132,217,.32)" : "rgba(15,110,107,.24)";
+    const week = [
+      { label: "Mon", count: 7, pct: 100 },
+      { label: "Tue", count: 5, pct: 72 },
+      { label: "Wed", count: 6, pct: 86, today: true },
+      { label: "Thu", count: 4, pct: 58 },
+      { label: "Fri", count: 6, pct: 86 },
+    ].map(d => ({ ...d, height: d.pct + "%", fill: d.today ? accent : dim }));
+
+    const stats = (r) => statsByRange[r];
+    const statsByRange = {
+      Day: { sessionsLabel: "Sessions today", sessions: "6", sessionsSub: "2 completed", utilization: "86%", revLabel: "Revenue today", revenue: "$540", revSub: "vs $480 last Wednesday" },
+      Week: { sessionsLabel: "Sessions this week", sessions: "28", sessionsSub: "9 completed", utilization: "80%", revLabel: "Revenue this week", revenue: "$2,460", revSub: "vs $2,180 last week" },
+      Month: { sessionsLabel: "Sessions this month", sessions: "112", sessionsSub: "9 completed", utilization: "83%", revLabel: "Revenue MTD", revenue: "$4,280", revSub: "vs $3,910 last month" },
+    };
+    const ranges = ["Day", "Week", "Month"].map(label => {
+      const on = this.state.range === label;
+      return {
+        label, bg: on ? "var(--row)" : "transparent", fg: on ? "var(--text)" : "var(--muted)",
+        weight: on ? 600 : 400, select: () => this.setState({ range: label }),
+      };
+    });
+
+    const range = this.state.range;
+    const weekRows = [
+      s("Mon 6:00 AM", "Dan Whitfield", "DW", "Personal Training", "Completed", "done"),
+      s("Mon 4:30 PM", "Conditioning (6)", "CO", "Class", "Completed", "done"),
+      s("Tue 7:15 AM", "Priya Raman", "PR", "Remote Consult", "Completed", "done"),
+      s("Tue 6:00 PM", "Evening group (3)", "EG", "Group Training", "Completed", "done"),
+      s("Wed 10:00 AM", "Sarah Chen", "SC", "Personal Training", "Up next", "booked"),
+      s("Wed 2:15 PM", "Rosa Delgado", "RD", "Bodpod", "Booked", "booked"),
+      s("Thu 8:45 AM", "Lena Ortiz", "LO", "Personal Training", "Booked", "booked"),
+      s("Fri 1:00 PM", "Jon Reyes", "JR", "Blueprint and Baseline", "Booked", "booked"),
+      s("Sat 9:10 AM", "Tom Okafor", "TO", "Personal Training", "Booked", "booked"),
+    ];
+    const monthRows = [
+      s("Aug 31 – Sep 6", "28 sessions", "W1", "This week", "9 done", "done"),
+      s("Sep 7 – 13", "31 sessions", "W2", "Booked", "Scheduled", "booked"),
+      s("Sep 14 – 20", "29 sessions", "W3", "Booked", "Scheduled", "booked"),
+      s("Sep 21 – 27", "18 sessions", "W4", "Cory away Sep 21–25", "Time off", "off"),
+      s("Sep 28 – 30", "12 sessions", "W5", "Booked", "Scheduled", "booked"),
+    ];
+    const listByRange = { Day: sessions, Week: weekRows, Month: monthRows };
+    const panelTitles = { Day: "Today's schedule", Week: "This week's sessions", Month: "September at a glance" };
+    const subheads = {
+      Day: "Wednesday, September 2 · 6 sessions booked",
+      Week: "Week of August 31 – September 6 · 28 sessions booked",
+      Month: "September 2026 · 112 sessions booked",
+    };
+
+    const statCards = [
+      [stats(range).sessionsLabel, stats(range).sessions, stats(range).sessionsSub, "var(--ok)", "2110 Schedule.dc.html"],
+      ["Active members", "148", "+6 this month", "var(--ok)", "2110 Members.dc.html"],
+      ["Utilization", stats(range).utilization, "of coached hours", "var(--muted)", "2110 Reports.dc.html"],
+      [stats(range).revLabel, stats(range).revenue, stats(range).revSub, "var(--muted)", "2110 Reports.dc.html"],
+    ].map(([label, value, sub, subColor, href]) => ({ label, value, sub, subColor, href }));
+
+    const attention = [
+      ["Marcus Ellis cancelled 8:30 AM", "Third cancellation this month", "#c8452e", "2110 Members.dc.html?member=Marcus%20Ellis"],
+      ["2 packages expiring this week", "Priya Raman, Dan Whitfield", "#d9a03a", "2110 Members.dc.html"],
+      ["3:00 PM slot is open", "4 members on the waitlist", accent, "2110 Schedule.dc.html?new=1"],
+    ].map(([title, sub, dot, href]) => ({ title, sub, dot, href }));
+
+    return {
+      expanded: !this.state.collapsed,
+      navWidth: this.state.collapsed ? "76px" : "232px",
+      navAlign: this.state.collapsed ? "center" : "flex-start",
+      navToggleTitle: this.state.collapsed ? "Expand sidebar" : "Collapse sidebar",
+      navChevron: this.state.collapsed ? "m14.2 9.4 2.6 2.6-2.6 2.6" : "m17.3 9.4-2.6 2.6 2.6 2.6",
+      toggleNav: () => this.setState(st => ({ collapsed: !st.collapsed })),
+      ranges, statCards, attention,
+      panelTitle: panelTitles[range],
+      subhead: subheads[range],
+      stats: statsByRange[range],
+      ...this.notifVals(),
+      ...this.searchVals(),
+      theme: this.state.theme,
+      themeLabel: dark ? "Dark" : "Light",
+      themeIcon: dark ? this.moon() : this.sun(),
+      toggleTheme: () => this.flipTheme(),
+      sessions: listByRange[range],
+      week: week.map(d => ({
+        ...d,
+        href: "2110 Schedule.dc.html",
+        title: d.label + " · " + d.count + " sessions",
+      })),
+    };
+  }
+
+  static savedTheme(fallback) {
+    try { return localStorage.getItem("2110-theme") || fallback || "light"; }
+    catch (e) { return fallback || "light"; }
+  }
+  flipTheme() {
+    this.setState(st => {
+      const next = st.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("2110-theme", next); } catch (e) {}
+      return { theme: next };
+    });
+  }
+
+  notifData() {
+    return [
+      ["b1", "Sarah Chen booked Personal Training", "Today, 10:00 AM · booked 6 min ago", "SC", "member"],
+      ["b2", "Owen Pratt joined Conditioning", "Today, 4:30 PM class · 14 min ago", "OP", "member"],
+      ["b3", "Kim Alvarez joined Group Training", "Today, 11:35 AM · 38 min ago", "KA", "member"],
+      ["b4", "Rafael Diaz booked Bodpod", "Thu, Sep 3, 2:20 PM · 1 hr ago", "RD", "member"],
+      ["b5", "Amy Cole joined Recovery class", "Sun, Sep 6, 10:00 AM · 2 hrs ago", "AC", "member"],
+    ];
+  }
+  notifVals() {
+    const dark = this.state.theme === "dark";
+    const read = this.state.notifRead || {};
+    const items = this.notifData().map(([id, text, when, initials]) => {
+      const isRead = !!read[id];
+      const name = text.split(" ").slice(0, 2).join(" ");
+      return {
+        id, text, when, initials,
+        href: "2110 Members.dc.html?member=" + encodeURIComponent(name),
+        rowBg: isRead ? "transparent" : (dark ? "rgba(145,132,217,.07)" : "rgba(15,110,107,.05)"),
+        dotDisplay: isRead ? "none" : "block",
+        iconBg: "var(--row)", iconFg: "var(--muted)",
+      };
+    });
+    const unread = items.filter(i => i.dotDisplay === "block").length;
+    const open = !!this.state.notifOpen;
+    return {
+      notifItems: items,
+      notifEmpty: items.length === 0,
+      notifCount: String(unread),
+      badgeDisplay: unread > 0 ? "grid" : "none",
+      notifOpen: open,
+      notifBg: open ? "var(--row)" : "transparent",
+      notifFg: open ? "var(--text)" : "var(--muted)",
+      notifBorder: open ? "var(--accent)" : "var(--divider)",
+      toggleNotif: () => this.setState(st => ({ notifOpen: !st.notifOpen })),
+      markAllRead: (ev) => {
+        ev.preventDefault();
+        const all = {};
+        this.notifData().forEach(([id]) => { all[id] = true; });
+        this.setState({ notifRead: all });
+      },
+    };
+  }
+
+  searchIndex() {
+    const members = ["Dan Whitfield","Sarah Chen","Marcus Ellis","Priya Raman","Alicia Braun","Rosa Delgado",
+      "Tom Okafor","Owen Pratt","Kim Alvarez","Beth Nunes","Rafael Diaz","Amy Cole","Lena Ortiz","Nina Park",
+      "Jon Reyes","Neil Vance"];
+    const items = members.map(n => ({
+      title: n, sub: "Member profile", kind: "member",
+      badge: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+      radius: "999px",
+      href: "2110 Members.dc.html?member=" + encodeURIComponent(n),
+    }));
+    const pages = [
+      ["Dashboard", "Today's overview", "2110 Scheduling Dashboard.dc.html"],
+      ["Schedule", "Day, week and month calendar", "2110 Schedule.dc.html"],
+      ["Members", "Member list and profiles", "2110 Members.dc.html"],
+      ["POS", "Point of sale", "2110 POS.dc.html"],
+      ["Reports", "Revenue, sessions, coaches", "2110 Reports.dc.html"],
+      ["Settings", "Facility, staff, services", "2110 Settings.dc.html"],
+      ["My preferences", "Hours, time off, notifications", "2110 Coach Preferences.dc.html"],
+    ].map(([title, sub, href]) => ({ title, sub, href, kind: "page", badge: "→", radius: "8px" }));
+    const sessions = [
+      ["Personal Training", "Session type · 55 min · $50"],
+      ["Group Training", "Session type · 45 min · up to 6"],
+      ["Class", "Session type · 50 min · up to 16"],
+      ["Remote Consult", "Session type · 30 min · $40"],
+      ["Bodpod", "Session type · 25 min · $45"],
+      ["Blueprint and Baseline", "Session type · 90 min · no charge"],
+    ].map(([title, sub]) => ({ title, sub, kind: "session", badge: "◷", radius: "8px", href: "2110 Schedule.dc.html" }));
+    return items.concat(sessions, pages);
+  }
+  searchVals() {
+    const q = (this.state.searchQuery || "").trim().toLowerCase();
+    const hits = q ? this.searchIndex().filter(i =>
+      i.title.toLowerCase().includes(q) || i.sub.toLowerCase().includes(q)).slice(0, 8) : [];
+    const open = !!this.state.searchOpen && q.length > 0;
+    return {
+      searchQuery: this.state.searchQuery || "",
+      searchResults: hits,
+      searchEmpty: open && hits.length === 0,
+      searchOpen: open,
+      searchBorder: open ? "var(--accent)" : "var(--divider)",
+      clearDisplay: q ? "grid" : "none",
+      setSearch: (ev) => this.setState({ searchQuery: ev.target.value, searchOpen: true }),
+      openSearch: () => this.setState({ searchOpen: true }),
+      clearSearch: () => this.setState({ searchQuery: "", searchOpen: false }),
+    };
+  }
+
+  sun() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" },
+      React.createElement("circle", { cx: 12, cy: 12, r: 4 }),
+      React.createElement("path", { d: "M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" }));
+  }
+  moon() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" },
+      React.createElement("path", { d: "M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" }));
+  }
+}
+
+</script>
+</body>
+</html>

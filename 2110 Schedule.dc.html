@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/styles.css">
+<script src="_ds/nocturne-f65540d4-ea84-46c0-96be-fd2bf5063633/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;max-width:100%;overflow-x:clip}
+#app{container-type:inline-size}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+#app{--accent:#0f6e6b;--accent-deep:#0a3f3e;--on-accent:#ffffff}
+#app[data-theme="dark"]{--accent:#9184d9;--accent-deep:#2b2741;--on-accent:#12141f;--link:#b5abfc;--link-hover:#d2cefd}
+#app[data-theme="light"]{--link:#0f6e6b;--link-hover:#0a504e;--bg:#f4f3ef;--surface:#ffffff;--text:#1c1e1c;--divider:rgba(28,30,28,.10);--muted:#6d7270;--ok:#0f6e6b;--row:rgba(28,30,28,.045);--card:0 1px 2px rgba(28,30,28,.05),0 10px 28px rgba(28,30,28,.06)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] option,#app[data-theme="dark"] input,#app[data-theme="dark"] textarea{background:#12141f;color:#e9e9ed;color-scheme:dark}
+#app[data-theme="dark"] select option:checked{background:#2b2741;color:#e9e9ed}
+#app[data-theme="light"] select,#app[data-theme="light"] option{background:#ffffff;color:#1c1e1c;color-scheme:light}
+#app[data-theme="dark"]{--bg:#161826;--surface:#232532;--text:#e9e9ed;--divider:rgba(233,233,237,.14);--muted:#9397ab;--ok:#7fd6a5;--row:rgba(233,233,237,.05);--card:0 0 0 1px #3f424d,0 10px 28px rgba(0,0,0,.5)}
+#app[data-theme="dark"] select,#app[data-theme="dark"] input,#app[data-theme="dark"] option{color-scheme:dark}
+#app[data-theme="dark"] select{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] select option{background-color:#1c1e2b;color:#e9e9ed}
+#app[data-theme="dark"] input{color-scheme:dark}
+</style>
+</helmet>
+<div id="frame" style="width:100%;overflow-x:clip"><div id="app" data-theme="{{ theme }}" style="width:100%;min-height:100vh;display:flex;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55">
+
+  <nav style="width:{{ navWidth }};flex:none;min-width:0;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow:hidden;background:#12141f;color:#e9e9ed;display:flex;flex-direction:column;padding:26px 16px 20px;gap:24px;transition:width .18s ease">
+    <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:10px;padding-left:6px">
+      <div style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:12.5px">2</div>
+      <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="font-weight:600;font-size:17px;letter-spacing:.04em;white-space:nowrap">2110 Fitness</span></sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <a href="2110 Scheduling Dashboard.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.8V20h14V9.8"></path><path d="M10 20v-6h4v6"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Dashboard</span></sc-if>
+      </a>
+      <div style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:14.5px;overflow:hidden">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Schedule</span></sc-if>
+      </div>
+      <a href="2110 Classes.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.6"></circle><circle cx="16" cy="8" r="2.6"></circle><path d="M3.5 19c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"></path><path d="M13.5 19c0-2.8 1.6-4.4 4-4.4s3 1.6 3 4.4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Classes</span></sc-if>
+      </a>
+      <a href="2110 Members.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"></circle><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"></path><path d="M16 5.4a3.2 3.2 0 0 1 0 5.6M18.4 19.6c0-2.6-.9-4.2-2.4-5.2"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Members</span></sc-if>
+      </a>
+      <a href="2110 POS.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2.5"></rect><path d="M3 9.5h18M7.5 20h9"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">POS</span></sc-if>
+      </a>
+      <a href="2110 Reports.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:11px 14px;border-radius:11px;color:rgba(233,233,237,.76);font-size:14.5px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="18" height="18" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M9.3 19V5M14.7 19v-7M20 19v-4"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Reports</span></sc-if>
+      </a>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(233,233,237,.12);padding-top:12px">
+      <a href="2110 Settings.dc.html" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:12px;padding:10px 14px;border-radius:11px;color:rgba(233,233,237,.66);font-size:14px;overflow:hidden" style-hover="background:rgba(233,233,237,.08);color:#e9e9ed">
+        <svg width="17" height="17" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.65l.06.06a1.8 1.8 0 1 1-2.55 2.55l-.06-.06a1.5 1.5 0 0 0-1.65-.3 1.5 1.5 0 0 0-.9 1.37V20a1.8 1.8 0 0 1-3.6 0v-.1a1.5 1.5 0 0 0-.98-1.37 1.5 1.5 0 0 0-1.65.3l-.06.06a1.8 1.8 0 1 1-2.55-2.55l.06-.06a1.5 1.5 0 0 0 .3-1.65 1.5 1.5 0 0 0-1.37-.9H4a1.8 1.8 0 0 1 0-3.6h.1a1.5 1.5 0 0 0 1.37-.98 1.5 1.5 0 0 0-.3-1.65l-.06-.06a1.8 1.8 0 1 1 2.55-2.55l.06.06a1.5 1.5 0 0 0 1.65.3H9.5a1.5 1.5 0 0 0 .9-1.37V4a1.8 1.8 0 0 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.37 1.5 1.5 0 0 0 1.65-.3l.06-.06a1.8 1.8 0 1 1 2.55 2.55l-.06.06a1.5 1.5 0 0 0-.3 1.65v.06a1.5 1.5 0 0 0 1.37.9H20a1.8 1.8 0 0 1 0 3.6h-.1a1.5 1.5 0 0 0-1.37.9Z"></path></svg>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><span style="white-space:nowrap">Settings</span></sc-if>
+      </a>
+      <a href="2110 Coach Preferences.dc.html" title="My preferences" style="display:flex;align-items:center;justify-content:{{ navAlign }};gap:11px;padding:10px 12px;margin-top:4px;border-radius:11px;background:rgba(233,233,237,.06);color:#e9e9ed;overflow:hidden" style-hover="background:rgba(233,233,237,.12)">
+        <div style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--accent-deep);color:#e7e5fe;display:grid;place-items:center;font-size:12px;font-weight:600">CM</div>
+        <sc-if value="{{ expanded }}" hint-placeholder-val="{{ true }}"><div style="min-width:0">
+          <div style="font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cory Martin</div>
+          <div style="font-size:11.5px;color:rgba(233,233,237,.55)">Facility Supervisor</div>
+        </div></sc-if>
+      </a>
+    </div>
+  </nav>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;margin-left:{{ navWidth }};transition:margin-left .18s ease">
+    <header style="height:64px;flex:none;position:sticky;top:0;z-index:30;background:var(--surface);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:1">
+      <button type="button" onClick="{{ toggleNav }}" title="{{ navToggleTitle }}" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"></rect><path d="M9.5 4.5v15"></path><path d="{{ navChevron }}"></path></svg>
+      </button>
+      <div style="position:relative;width:320px;min-width:0;flex-shrink:1">
+      <div style="display:flex;align-items:center;gap:9px;height:36px;padding:0 14px;border:1px solid {{ searchBorder }};border-radius:10px;overflow:hidden;color:var(--muted)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input value="{{ searchQuery }}" onChange="{{ setSearch }}" onFocus="{{ openSearch }}" placeholder="Search members, sessions, pages" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:13.5px;outline:none" />
+        <button type="button" onClick="{{ clearSearch }}" style="display:{{ clearDisplay }};width:20px;height:20px;flex:none;place-items:center;border:0;border-radius:999px;background:var(--row);color:var(--muted);cursor:pointer;padding:0">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+        <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:42px;left:0;width:100%;min-width:300px;z-index:60;background:var(--surface);border-radius:12px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="max-height:340px;overflow-y:auto">
+              <sc-for list="{{ searchResults }}" as="s" hint-placeholder-count="4">
+                <a href="{{ s.href }}" style="display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--divider);color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:26px;height:26px;flex:none;border-radius:{{ s.radius }};background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10.5px;font-weight:600">{{ s.badge }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.title }}</span>
+                    <span style="display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.sub }}</span>
+                  </span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:22px 14px;font-size:13px;color:var(--muted);text-align:center">No matches for "{{ searchQuery }}".</div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none">
+        <button type="button" onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13px;cursor:pointer" style-hover="background:var(--row)">
+          <span style="display:grid;place-items:center;width:16px;height:16px">{{ themeIcon }}</span>{{ themeLabel }}
+        </button>
+        <div style="position:relative;flex:none">
+        <button type="button" onClick="{{ toggleNotif }}" title="Notifications" style="position:relative;width:36px;height:36px;display:grid;place-items:center;border:1px solid {{ notifBorder }};border-radius:999px;background:{{ notifBg }};color:{{ notifFg }};cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.4 1.4 5.4H4.6S6 14 6 10Z"></path><path d="M10 19a2.2 2.2 0 0 0 4 0"></path></svg>
+          <span style="display:{{ badgeDisplay }};position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#c8452e;color:#fff;font-size:10px;font-weight:600;place-items:center">{{ notifCount }}</span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:44px;right:0;width:344px;max-width:calc(100vw - 40px);z-index:60;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--divider),0 18px 44px rgba(0,0,0,.22);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider)">
+              <span style="font-size:14.5px;font-weight:600">Notifications</span>
+              <button type="button" onClick="{{ markAllRead }}" style="border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;padding:0;cursor:pointer" style-hover="color:var(--text)">Mark all read</button>
+            </div>
+            <div style="max-height:390px;overflow-y:auto">
+              <sc-for list="{{ notifItems }}" as="n" hint-placeholder-count="4">
+                <a href="{{ n.href }}" style="display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--divider);background:{{ n.rowBg }};color:var(--text)" style-hover="background:var(--row)">
+                  <span style="width:28px;height:28px;flex:none;border-radius:999px;background:{{ n.iconBg }};color:{{ n.iconFg }};display:grid;place-items:center;font-size:11px;font-weight:600">{{ n.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;text-wrap:pretty">{{ n.text }}</span>
+                    <span style="display:block;font-size:12px;color:var(--muted);margin-top:1px">{{ n.when }}</span>
+                  </span>
+                  <span style="display:{{ n.dotDisplay }};width:7px;height:7px;flex:none;margin-top:6px;border-radius:999px;background:var(--accent)"></span>
+                </a>
+              </sc-for>
+              <sc-if value="{{ notifEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:26px 16px;font-size:13.5px;color:var(--muted);text-align:center">You're all caught up.</div>
+              </sc-if>
+            </div>
+            <a href="2110 Coach Preferences.dc.html" style="display:block;padding:12px 16px;font-size:12.5px;text-align:center">Notification settings</a>
+          </div>
+        </sc-if>
+      </div>
+        <button type="button" onClick="{{ newSession }}" style="display:flex;align-items:center;gap:7px;height:36px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;white-space:nowrap;flex:none;cursor:pointer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+          New session
+        </button>
+      </div>
+    </header>
+
+    <main style="flex:1;padding:24px 30px 28px;padding-right:{{ mainPadRight }};display:flex;flex-direction:column;gap:18px;min-height:0;transition:padding-right .16s ease">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div>
+          <h2 style="margin:0 0 2px;font-size:28px;font-weight:500;letter-spacing:-.02em">Schedule</h2>
+          <div style="font-size:13.5px;color:var(--muted)">{{ periodLabel }} · {{ coachSummary }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap">
+          <sc-if value="{{ showCoachSelect }}" hint-placeholder-val="{{ false }}">
+            <select value="{{ coachSelectValue }}" onChange="{{ setCoachSelect }}" style="height:36px;padding:0 9px;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--text);font:inherit;font-size:13px">
+              <sc-for list="{{ coachSelectOptions }}" as="c" hint-placeholder-count="4">
+                <option value="{{ c.v }}">{{ c.label }}</option>
+              </sc-for>
+            </select>
+          </sc-if>
+          <div style="display:flex;align-items:center;gap:4px">
+            <button type="button" onClick="{{ goToday }}" style="height:36px;padding:0 14px;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--text);font:inherit;font-size:13px;white-space:nowrap;cursor:pointer" style-hover="background:var(--row)">Today</button>
+            <button type="button" onClick="{{ prevPeriod }}" title="{{ prevTitle }}" style="width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"></path></svg>
+            </button>
+            <button type="button" onClick="{{ nextPeriod }}" title="{{ nextTitle }}" style="width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--divider);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6 6 6-6 6"></path></svg>
+            </button>
+          </div>
+          <div style="display:flex;gap:4px;padding:4px;border:1px solid var(--divider);border-radius:11px">
+            <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3">
+              <button type="button" onClick="{{ r.select }}" style="padding:6px 14px;border:0;border-radius:8px;background:{{ r.bg }};color:{{ r.fg }};font:inherit;font-size:13px;font-weight:{{ r.weight }};cursor:pointer">{{ r.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1;display:grid;grid-template-columns:{{ railCols }};gap:14px;min-height:0;min-width:0">
+
+        <sc-if value="{{ showRail }}" hint-placeholder-val="{{ true }}"><aside style="background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:14px 10px;display:flex;flex-direction:column;gap:5px;align-self:start;min-width:0">
+          <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 8px 6px">My views</span>
+          <sc-for list="{{ coaches }}" as="c" hint-placeholder-count="4">
+            <button type="button" onClick="{{ c.select }}" style="display:flex;align-items:center;gap:9px;width:100%;min-width:0;padding:8px 8px;border:0;border-left:3px solid {{ c.border }};border-radius:9px;background:{{ c.bg }};color:{{ c.fg }};font:inherit;font-size:13.5px;font-weight:{{ c.weight }};text-align:left;cursor:pointer" style-hover="background:var(--row)">
+              <span style="width:26px;height:26px;flex:none;border-radius:999px;background:{{ c.dotBg }};color:{{ c.dotFg }};display:grid;place-items:center;font-size:9.5px;font-weight:600">{{ c.initials }}</span>
+              <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span>
+              <span style="flex:none;font-size:11.5px;color:{{ c.countFg }};font-variant-numeric:tabular-nums">{{ c.count }}</span>
+            </button>
+          </sc-for>
+        </aside></sc-if>
+
+      <section style="flex:1;background:var(--surface);border-radius:16px;box-shadow:var(--card);padding:0;display:flex;flex-direction:column;min-height:0;min-width:0">
+        <sc-if value="{{ isTimeView }}" hint-placeholder-val="{{ true }}"><div style="min-width:0"><div style="min-width:0;display:flex;flex-direction:column">
+        <div style="position:sticky;top:64px;z-index:2;background:var(--surface);border-radius:16px 16px 0 0;display:grid;grid-template-columns:{{ gridCols }};border-bottom:1px solid var(--divider)">
+          <div></div>
+          <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+            <div style="padding:8px 6px;border-left:1px solid var(--divider);display:flex;flex-direction:column;gap:0;min-width:0;overflow:hidden">
+              <span style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)">{{ d.dow }}</span>
+              <span style="font-size:16px;font-weight:500;color:{{ d.numColor }}">{{ d.num }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:{{ gridCols }};padding-top:7px">
+          <div style="position:relative;display:flex;flex-direction:column">
+            <sc-if value="{{ showNowLabel }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;right:4px;top:{{ nowTop }};transform:translateY(-50%);padding:1px 5px;border-radius:5px;background:#c8452e;color:#fff;font-size:9.5px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;z-index:26">{{ nowLabel }}</span>
+            </sc-if>
+            <sc-for list="{{ hourRows }}" as="h" hint-placeholder-count="14">
+              <div style="height:72px;flex:none;padding:0 6px;font-size:10.5px;white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right;transform:translateY(-6px);opacity:{{ h.opacity }}">{{ h.h }}</div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ columns }}" as="col" hint-placeholder-count="7">
+            <div onClick="{{ col.onSlotClick }}" onDrop="{{ col.onDrop }}" onDragOver="{{ col.onDragOver }}" title="Click to book, drag a session to move it" style="position:relative;height:{{ trackHeight }};cursor:copy;border-left:1px solid var(--divider);background-image:repeating-linear-gradient(to bottom,var(--divider) 0 1px,transparent 1px 72px),repeating-linear-gradient(to bottom,var(--row) 0 1px,transparent 1px 6px)">
+              <sc-for list="{{ col.offBands }}" as="b" hint-placeholder-count="0">
+                <div style="position:absolute;left:0;right:0;top:{{ b.top }};height:{{ b.height }};z-index:0;pointer-events:none;background-color:{{ offBg }};background-image:{{ offStripe }}">
+                  <span style="display:{{ b.labelDisplay }};position:absolute;top:4px;left:6px;right:4px;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.label }}</span>
+                </div>
+              </sc-for>
+              <sc-if value="{{ col.showNow }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;left:0;right:0;top:{{ nowTop }};height:0;z-index:25;border-top:2px solid #c8452e;opacity:{{ col.nowOpacity }};pointer-events:none">
+                  <span style="display:{{ col.nowDot }};position:absolute;left:-4px;top:-5px;width:8px;height:8px;border-radius:999px;background:#c8452e"></span>
+                </div>
+              </sc-if>
+              <sc-for list="{{ col.events }}" as="e" hint-placeholder-count="3">
+                <div onMouseEnter="{{ e.enter }}" onMouseLeave="{{ e.leave }}" onClick="{{ e.select }}" draggable="{{ e.draggable }}" onDragStart="{{ e.dragStart }}" style="position:absolute;left:{{ e.left }};width:{{ e.width }};top:{{ e.top }};height:{{ e.height }};z-index:{{ e.z }};opacity:{{ e.opacity }};border-radius:6px;background:{{ e.bg }};border-left:3px solid {{ e.bar }};cursor:grab;min-width:0">
+                  <div style="height:100%;padding:{{ e.blockPad }};display:flex;flex-direction:column;justify-content:{{ e.blockJustify }};overflow:hidden;line-height:{{ e.blockLine }};min-width:0">
+                    <span style="display:{{ e.typeDisplay }};font-size:11.5px;font-weight:600;color:{{ e.bar }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ e.short }}</span>
+                    <span style="font-size:{{ e.nameSize }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:{{ e.nameDecor }}">{{ e.name }}</span>
+                    <span style="display:{{ e.timeDisplay }};font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums">{{ e.label }}</span>
+                  </div>
+                  <span style="display:{{ e.markDisplay }};position:absolute;top:2px;right:3px;width:13px;height:13px;place-items:center;border-radius:999px;background:{{ e.markBg }};color:var(--surface);font-size:8.5px;font-weight:700;line-height:1">{{ e.mark }}</span>
+                  <span style="display:{{ e.fullDisplay }};position:absolute;bottom:2px;right:3px;padding:0 4px;border-radius:4px;background:#c8452e;color:#fff;font-size:8px;font-weight:700;letter-spacing:.06em;line-height:1.5">FULL</span>
+                  <div style="display:{{ e.tip }};position:absolute;left:{{ e.tipLeft }};right:{{ e.tipRight }};top:{{ e.tipTop }};bottom:{{ e.tipBottom }};width:236px;padding:12px 14px;border-radius:11px;background:var(--surface);box-shadow:0 0 0 1px var(--divider),0 12px 30px rgba(0,0,0,.22);z-index:40;pointer-events:none;line-height:1.45">
+                    <div style="font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:{{ e.bar }}">{{ e.type }}</div>
+                    <div style="font-size:15px;font-weight:500;margin-top:2px">{{ e.name }}</div>
+                    <div style="font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums">{{ e.range }}</div>
+                    <div style="height:1px;background:var(--divider);margin:9px 0"></div>
+                    <div style="display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12px">
+                      <span style="color:var(--muted)">Coach</span><span>{{ e.coachName }}</span>
+                      <span style="color:var(--muted)">Duration</span><span>{{ e.duration }}</span>
+                      <span style="color:var(--muted)">Status</span><span>{{ e.status }}</span>
+                    </div>
+                    <div style="display:{{ e.capDisplay }};margin-top:8px">
+                      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:12px">
+                        <span>{{ e.capLabel }}</span>
+                        <span style="color:{{ e.capLeftFg }}">{{ e.capLeft }}</span>
+                      </div>
+                      <div style="height:4px;margin-top:4px;border-radius:999px;background:var(--row);overflow:hidden">
+                        <div style="width:{{ e.capBarPct }};height:100%;background:{{ e.capBarBg }}"></div>
+                      </div>
+                    </div>
+                    <sc-if value="{{ e.isGroup }}" hint-placeholder-val="{{ false }}">
+                      <div style="height:1px;background:var(--divider);margin:9px 0"></div>
+                      <div style="font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">{{ e.attendeeLabel }}</div>
+                      <div style="display:flex;flex-direction:column;gap:2px">
+                        <sc-for list="{{ e.attendees }}" as="a" hint-placeholder-count="4">
+                          <span style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.n }}</span>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+        </div></div></sc-if>
+
+        <sc-if value="{{ isMonth }}" hint-placeholder-val="{{ false }}"><div style="min-width:0">
+          <div style="position:sticky;top:64px;z-index:2;background:var(--surface);border-radius:16px 16px 0 0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-bottom:1px solid var(--divider)">
+            <sc-for list="{{ dowLabels }}" as="w" hint-placeholder-count="7">
+              <div style="padding:9px 10px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--divider)">{{ w }}</div>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr))">
+            <sc-for list="{{ monthCells }}" as="m" hint-placeholder-count="35">
+              <div style="min-height:152px;min-width:0;padding:8px;border-left:1px solid var(--divider);border-bottom:1px solid var(--divider);display:flex;flex-direction:column;gap:4px;background:{{ m.cellBg }}">
+                <span style="font-size:12.5px;font-weight:{{ m.numWeight }};color:{{ m.numColor }};font-variant-numeric:tabular-nums">{{ m.num }}</span>
+                <sc-for list="{{ m.chips }}" as="c" hint-placeholder-count="2">
+                  <div style="min-width:0;padding:2px 5px;border-radius:5px;background:{{ c.bg }};border-left:3px solid {{ c.bar }};line-height:1.25">
+                    <div style="font-size:10px;font-weight:600;color:{{ c.bar }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.type }}</div>
+                    <div style="font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</div>
+                    <div style="font-size:9.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums">{{ c.time }}</div>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ m.hasMore }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px;color:var(--muted)">{{ m.more }}</span></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div></sc-if>
+      </section>
+      </div>
+
+      <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:fixed;top:{{ panelTop }};right:0;bottom:0;width:352px;max-width:100%;z-index:50;background:var(--surface);border-left:1px solid var(--divider);box-shadow:-18px 0 40px rgba(0,0,0,.16);display:flex;flex-direction:column;overflow-y:auto">
+          <div style="padding:18px 20px 0;display:flex;align-items:flex-start;gap:12px">
+            <div style="flex:1;min-width:0">
+              <div style="font-size:18px;font-weight:500;letter-spacing:-.01em">{{ panelType }}</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:3px">{{ panelWhen }} · {{ panelTime }}</div>
+            </div>
+            <button type="button" onClick="{{ closePanel }}" title="Close" style="width:30px;height:30px;flex:none;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+            </button>
+          </div>
+
+          <div style="padding:12px 20px 0;display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.2"></circle><path d="M5.5 20c0-3.3 2.9-5.4 6.5-5.4s6.5 2.1 6.5 5.4"></path></svg>
+            <span style="color:var(--text)">{{ panelCoach }}</span>
+          </div>
+
+          <div style="padding:14px 20px 0;display:flex;gap:6px">
+            <sc-for list="{{ attendanceActions }}" as="a" hint-placeholder-count="3">
+              <button type="button" onClick="{{ a.click }}" style="flex:1;min-width:0;height:36px;display:grid;place-items:center;border:1px solid {{ a.border }};border-radius:9px;background:{{ a.bg }};color:{{ a.fg }};font:inherit;font-size:12.5px;font-weight:{{ a.weight }};white-space:nowrap;cursor:pointer" style-hover="background:var(--row)">{{ a.label }}</button>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ showFeePrompt }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:10px 20px 0;padding:11px 12px;border-radius:10px;background:{{ warnBg }};color:{{ warnFg }};display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+              <span style="flex:1;min-width:130px;font-size:12.5px;text-wrap:pretty">{{ feePromptText }}</span>
+              <button type="button" onClick="{{ chargeFee }}" style="height:30px;padding:0 13px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:12.5px;font-weight:600;cursor:pointer">Charge</button>
+              <button type="button" onClick="{{ waiveFee }}" style="height:30px;padding:0 13px;border:1px solid var(--divider);border-radius:999px;background:var(--surface);color:var(--text);font:inherit;font-size:12.5px;cursor:pointer" style-hover="background:var(--row)">Waive</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ hasFeeNote }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:9px 20px 0;font-size:12px;color:var(--muted);text-wrap:pretty">{{ feeNote }}</div>
+          </sc-if>
+
+          <div style="padding:12px 20px 0;display:flex;gap:8px">
+            <select value="{{ panelStatus }}" onChange="{{ setPanelStatus }}" style="flex:1;min-width:0;height:36px;padding:0 8px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:13.5px">
+              <sc-for list="{{ statusOptions }}" as="s" hint-placeholder-count="5">
+                <option value="{{ s.v }}">{{ s.v }}</option>
+              </sc-for>
+            </select>
+            <button type="button" onClick="{{ markComplete }}" title="Mark completed" style="width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--ok);cursor:pointer" style-hover="background:var(--row)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+            </button>
+            <button type="button" onClick="{{ openReschedule }}" style="height:36px;flex:none;padding:0 14px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;white-space:nowrap;cursor:pointer" style-hover="background:var(--row)">Reschedule</button>
+          </div>
+
+          <div style="height:1px;background:var(--divider);margin:18px 20px 0"></div>
+
+          <div style="padding:16px 20px 0">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+              <span style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">{{ panelClientLabel }}</span>
+              <button type="button" onClick="{{ clearAttendee }}" style="display:{{ backDisplay }};border:0;background:transparent;color:var(--muted);font:inherit;font-size:12px;padding:0;cursor:pointer" style-hover="color:var(--text)">Back to session</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:11px;margin-top:10px">
+              <div style="width:38px;height:38px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:12.5px;font-weight:600">{{ panelInitials }}</div>
+              <div style="min-width:0">
+                <a href="{{ panelClientHref }}" style="display:flex;align-items:center;gap:5px;font-size:15px;font-weight:500;color:var(--link);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" style-hover="color:var(--link-hover)">
+                  {{ panelClient }}
+                  <svg width="13" height="13" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5h11v11"></path><path d="M19 5 6 18"></path></svg>
+                </a>
+                <div style="font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums">{{ panelPhone }}</div>
+                <div style="font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ panelEmail }}</div>
+              </div>
+            </div>
+          </div>
+
+          <sc-if value="{{ panelIsGroup }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:14px 20px 0">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:7px">
+                <span style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">{{ panelRosterLabel }}</span>
+                <span style="font-size:12px;color:var(--muted)">{{ panelPaidCount }}</span>
+              </div>
+              <sc-if value="{{ hasCap }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-bottom:10px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:12.5px">
+                    <span>{{ capText }}</span>
+                    <span style="color:{{ capLeftFg }}">{{ capLeft }}</span>
+                  </div>
+                  <div style="height:5px;margin-top:5px;border-radius:999px;background:var(--row);overflow:hidden">
+                    <div style="width:{{ capBarPct }};height:100%;background:{{ capBarBg }}"></div>
+                  </div>
+                </div>
+              </sc-if>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <sc-for list="{{ panelRoster }}" as="p" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:stretch;gap:6px;min-width:0">
+                  <button type="button" onClick="{{ p.toggleIn }}" title="{{ p.inTitle }}" style="width:32px;flex:none;display:grid;place-items:center;border:1px solid {{ p.inBorder }};border-radius:9px;background:{{ p.inBg }};color:{{ p.inFg }};cursor:pointer" style-hover="background:var(--row)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+                  </button>
+                  <button type="button" onClick="{{ p.select }}" style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;padding:8px 10px;border:1px solid {{ p.border }};border-radius:9px;background:{{ p.bg }};color:var(--text);font:inherit;text-align:left;cursor:pointer" style-hover="background:var(--row)">
+                    <span style="width:24px;height:24px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10px;font-weight:600">{{ p.initials }}</span>
+                    <span style="flex:1;min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:{{ p.weight }}">{{ p.n }}</span>
+                    <span style="flex:none;font-size:11px;padding:2px 8px;border-radius:6px;background:{{ p.chipBg }};color:{{ p.chipFg }}">{{ p.chip }}</span>
+                  </button>
+                  </div>
+                </sc-for>
+              </div>
+              <button type="button" onClick="{{ addToGroup }}" style="display:flex;align-items:center;gap:7px;height:34px;margin-top:8px;padding:0 12px;border:1px dashed var(--divider);border-radius:9px;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+                {{ addLabel }}
+              </button>
+              <sc-if value="{{ hasWait }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:14px">
+                  <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">{{ waitLabel }}</div>
+                  <div style="display:flex;flex-direction:column;gap:4px">
+                    <sc-for list="{{ waitRows }}" as="w" hint-placeholder-count="2">
+                      <div style="display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px dashed var(--divider);border-radius:9px;min-width:0">
+                        <span style="width:22px;height:22px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10px;font-weight:600">{{ w.pos }}</span>
+                        <span style="flex:1;min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ w.n }}</span>
+                        <button type="button" onClick="{{ w.promote }}" style="height:26px;flex:none;padding:0 10px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:12px;cursor:pointer" style-hover="background:var(--row)">Book in</button>
+                        <button type="button" onClick="{{ w.drop }}" title="Remove from waitlist" style="width:26px;height:26px;flex:none;display:grid;place-items:center;border:0;border-radius:7px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+                        </button>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <div style="height:1px;background:var(--divider);margin:18px 20px 0"></div>
+
+          <div style="padding:16px 20px 0;display:flex;align-items:center;gap:12px">
+            <span style="flex:none;font-size:13.5px;color:var(--muted)">Paid with</span>
+            <select value="{{ panelPaid }}" onChange="{{ setPanelPaid }}" style="flex:1;min-width:0;height:36px;padding:0 8px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:{{ panelPaidColor }};font:inherit;font-size:13.5px;font-weight:500">
+              <sc-for list="{{ payOptions }}" as="p" hint-placeholder-count="6">
+                <option value="{{ p.v }}">{{ p.label }}</option>
+              </sc-for>
+            </select>
+          </div>
+
+          <sc-if value="{{ hasPkgNote }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:9px 20px 0;font-size:12px;color:var(--muted);text-wrap:pretty">{{ pkgNote }}</div>
+          </sc-if>
+
+          <div style="padding:16px 20px 0;font-size:17px;font-weight:500">{{ panelDue }}</div>
+
+          <sc-if value="{{ hasReceiptMsg }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:14px 20px 0;padding:10px 12px;border-radius:10px;background:var(--row);font-size:12.5px;display:flex;align-items:center;gap:9px">
+              <span style="width:18px;height:18px;flex:none;border-radius:999px;background:var(--ok);color:var(--surface);display:grid;place-items:center">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+              </span>
+              <span style="min-width:0">{{ receiptMsg }}</span>
+            </div>
+          </sc-if>
+
+          <div style="padding:14px 20px 22px;display:flex;gap:8px;margin-top:auto">
+            <a href="{{ panelStoreHref }}" style="flex:1;height:40px;display:grid;place-items:center;border:1px solid var(--divider);border-radius:999px;color:var(--text);font-size:13.5px" style-hover="background:var(--row)">Go to store</a>
+            <button type="button" onClick="{{ payNow }}" style="flex:1;height:40px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer">Pay now</button>
+            <button type="button" onClick="{{ printReceipt }}" title="Print receipt" style="width:40px;height:40px;flex:none;display:grid;place-items:center;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--muted);cursor:pointer" style-hover="background:var(--row);color:var(--text)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V4h10v5"></path><rect x="4" y="9" width="16" height="7" rx="2"></rect><path d="M7 16h10v4H7z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ moveOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ cancelMove }}" style="position:fixed;inset:0;z-index:70;background:rgba(12,14,20,.5);display:flex;align-items:center;justify-content:center;padding:24px">
+          <div onClick="{{ stopClick }}" style="width:100%;max-width:400px;background:var(--surface);color:var(--text);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:22px 24px 20px;display:flex;flex-direction:column;gap:14px">
+            <div>
+              <h3 style="margin:0;font-size:19px;font-weight:500">Move this session?</h3>
+              <div style="font-size:13px;color:var(--muted);margin-top:2px">{{ moveWho }}</div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:11px;background:var(--row)">
+              <div style="flex:1;min-width:0">
+                <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">From</div>
+                <div style="font-size:13.5px;margin-top:2px">{{ moveFrom }}</div>
+                <div style="font-size:12px;color:var(--muted)">{{ moveFromCoach }}</div>
+              </div>
+              <svg width="18" height="18" style="flex:none;color:var(--muted)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="m13 7 5 5-5 5"></path></svg>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">To</div>
+                <div style="font-size:13.5px;margin-top:2px;font-weight:500">{{ moveTo }}</div>
+                <div style="font-size:12px;color:var(--muted)">{{ moveToCoach }}</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Day</span>
+                <select value="{{ moveIso }}" onChange="{{ setMoveIso }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                  <sc-for list="{{ moveDayOptions }}" as="d" hint-placeholder-count="7">
+                    <option value="{{ d.v }}">{{ d.label }}</option>
+                  </sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Start</span>
+                <select value="{{ moveStart }}" onChange="{{ setMoveStart }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                  <sc-for list="{{ startOptions }}" as="s" hint-placeholder-count="12">
+                    <option value="{{ s.v }}">{{ s.label }}</option>
+                  </sc-for>
+                </select>
+              </label>
+            </div>
+
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Coach</span>
+              <select value="{{ moveCoach }}" onChange="{{ setMoveCoach }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <sc-for list="{{ coachOptions }}" as="c" hint-placeholder-count="3">
+                  <option value="{{ c.v }}">{{ c.label }}</option>
+                </sc-for>
+              </select>
+            </label>
+
+            <sc-if value="{{ moveIsGroup }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:12.5px;color:var(--muted);text-wrap:pretty">This is a group session — everyone booked moves with it.</div>
+            </sc-if>
+
+            <sc-if value="{{ hasMoveWarn }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:flex-start;gap:9px;padding:11px 12px;border-radius:11px;background:{{ warnBg }};color:{{ warnFg }};font-size:12.5px;text-wrap:pretty">
+                <svg width="16" height="16" style="flex:none;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.5v5"></path><path d="M12 16.8v.2"></path><circle cx="12" cy="12" r="9"></circle></svg>
+                <span style="min-width:0">{{ moveWarn }}</span>
+              </div>
+            </sc-if>
+            <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:4px">
+              <button type="button" onClick="{{ cancelMove }}" style="height:38px;padding:0 16px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:var(--row)">Keep as is</button>
+              <button type="button" onClick="{{ confirmMove }}" style="height:38px;padding:0 20px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer">{{ moveConfirmLabel }}</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ bookingOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ closeBooking }}" style="position:fixed;inset:0;z-index:60;background:rgba(12,14,20,.5);display:flex;align-items:center;justify-content:center;padding:24px">
+          <div onClick="{{ stopClick }}" style="width:100%;max-width:420px;max-height:calc(100vh - 48px);overflow-y:auto;background:var(--surface);color:var(--text);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:22px 24px 20px;display:flex;flex-direction:column;gap:14px">
+            <div>
+              <h3 style="margin:0;font-size:19px;font-weight:500">Book a session</h3>
+              <div style="font-size:13px;color:var(--muted);margin-top:2px">{{ draftWhen }}</div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Client</span>
+              <div id="client-combo" style="position:relative">
+                <input value="{{ draftClient }}" onChange="{{ setClientTyped }}" onFocus="{{ openClient }}" placeholder="Start typing a member's name" autoComplete="off" style="width:100%;height:38px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px;box-sizing:border-box" />
+                <sc-if value="{{ clientOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;top:42px;left:0;width:100%;z-index:10;background:var(--surface);border-radius:10px;box-shadow:0 0 0 1px var(--divider),0 14px 34px rgba(0,0,0,.24);overflow:hidden">
+                    <div style="max-height:152px;overflow-y:auto">
+                      <sc-for list="{{ clientHits }}" as="c" hint-placeholder-count="4">
+                        <button type="button" onMouseDown="{{ c.pick }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:7px 11px;border:0;border-bottom:1px solid var(--divider);background:transparent;color:var(--text);font:inherit;font-size:13.5px;text-align:left;cursor:pointer" style-hover="background:var(--row)">
+                          <span style="width:24px;height:24px;flex:none;border-radius:999px;background:var(--row);color:var(--muted);display:grid;place-items:center;font-size:10px;font-weight:600">{{ c.initials }}</span>
+                          <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.n }}</span>
+                        </button>
+                      </sc-for>
+                    </div>
+                    <sc-if value="{{ hasClientMore }}" hint-placeholder-val="{{ false }}">
+                      <div style="padding:6px 11px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--divider)">{{ clientMore }}</div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+              </div>
+              <sc-if value="{{ clientIsNew }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:12px;color:var(--muted)">No member by that name — this will book as a new client.</span>
+              </sc-if>
+            </div>
+
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Session type</span>
+              <select value="{{ draftType }}" onChange="{{ setType }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <sc-for list="{{ typeOptions }}" as="t" hint-placeholder-count="6">
+                  <option value="{{ t.v }}">{{ t.v }}</option>
+                </sc-for>
+              </select>
+            </label>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Start</span>
+                <select value="{{ draftStart }}" onChange="{{ setStart }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                  <sc-for list="{{ startOptions }}" as="s" hint-placeholder-count="12">
+                    <option value="{{ s.v }}">{{ s.label }}</option>
+                  </sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Length</span>
+                <select value="{{ draftDur }}" onChange="{{ setDur }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                  <sc-for list="{{ durOptions }}" as="d" hint-placeholder-count="5">
+                    <option value="{{ d.v }}">{{ d.label }}</option>
+                  </sc-for>
+                </select>
+              </label>
+            </div>
+
+            <label style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Coach</span>
+              <select value="{{ draftCoach }}" onChange="{{ setCoach }}" style="height:38px;padding:0 9px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px">
+                <sc-for list="{{ coachOptions }}" as="c" hint-placeholder-count="3">
+                  <option value="{{ c.v }}">{{ c.label }}</option>
+                </sc-for>
+              </select>
+            </label>
+
+            <sc-if value="{{ canRepeat }}" hint-placeholder-val="{{ false }}">
+              <div style="height:1px;background:var(--divider)"></div>
+              <div style="display:flex;align-items:center;gap:14px">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:13.5px">Recurring session</div>
+                  <div style="font-size:12px;color:var(--muted)">Repeat this booking weekly</div>
+                </div>
+                <button type="button" onClick="{{ toggleRepeat }}" style="width:42px;height:24px;flex:none;padding:0;border:0;border-radius:999px;background:{{ repeatTrackBg }};position:relative;cursor:pointer;transition:background .14s ease">
+                  <span style="position:absolute;top:3px;left:{{ repeatKnobLeft }};width:18px;height:18px;border-radius:999px;background:{{ repeatKnobBg }};transition:left .14s ease"></span>
+                </button>
+              </div>
+
+              <sc-if value="{{ isRepeating }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div>
+                    <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">Days and times</div>
+                    <div style="display:grid;grid-template-columns:58px minmax(0,1fr) 62px;gap:6px;align-items:center">
+                      <sc-for list="{{ repeatDayRows }}" as="d" hint-placeholder-count="7">
+                        <button type="button" onClick="{{ d.toggle }}" style="height:34px;border:1px solid {{ d.border }};border-radius:9px;background:{{ d.bg }};color:{{ d.fg }};font:inherit;font-size:13px;font-weight:{{ d.weight }};cursor:pointer">{{ d.label }}</button>
+                        <select value="{{ d.timeValue }}" onChange="{{ d.setTime }}" disabled="{{ d.off }}" style="height:34px;min-width:0;padding:0 7px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:13px;opacity:{{ d.timeOpacity }}">
+                          <sc-for list="{{ startOptions }}" as="s" hint-placeholder-count="12">
+                            <option value="{{ s.v }}">{{ s.label }}</option>
+                          </sc-for>
+                        </select>
+                        <span style="font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap">{{ d.endLabel }}</span>
+                      </sc-for>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">Ends</div>
+                    <div style="display:flex;gap:6px">
+                      <sc-for list="{{ endModeOptions }}" as="e" hint-placeholder-count="2">
+                        <button type="button" onClick="{{ e.select }}" style="flex:1;height:34px;border:1px solid {{ e.border }};border-radius:9px;background:{{ e.bg }};color:{{ e.fg }};font:inherit;font-size:13px;font-weight:{{ e.weight }};cursor:pointer">{{ e.label }}</button>
+                      </sc-for>
+                    </div>
+                    <sc-if value="{{ endDateShown }}" hint-placeholder-val="{{ false }}">
+                      <input type="date" value="{{ draftEndDate }}" onChange="{{ setEndDate }}" style="width:100%;height:38px;margin-top:8px;padding:0 11px;border:1px solid var(--divider);border-radius:9px;background:transparent;color:var(--text);font:inherit;font-size:14px" />
+                    </sc-if>
+                  </div>
+
+                  <div style="font-size:12.5px;color:var(--muted);text-wrap:pretty">{{ repeatSummary }}</div>
+                </div>
+              </sc-if>
+            </sc-if>
+
+            <sc-if value="{{ hasCapNote }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:12.5px;color:{{ capNoteFg }};text-wrap:pretty">{{ capNote }}</div>
+            </sc-if>
+            <sc-if value="{{ hasDraftWarn }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:flex-start;gap:9px;padding:11px 12px;border-radius:11px;background:{{ warnBg }};color:{{ warnFg }};font-size:12.5px;text-wrap:pretty">
+                <svg width="16" height="16" style="flex:none;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.5v5"></path><path d="M12 16.8v.2"></path><circle cx="12" cy="12" r="9"></circle></svg>
+                <span style="min-width:0">{{ draftWarn }}</span>
+              </div>
+            </sc-if>
+            <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:4px">
+              <button type="button" onClick="{{ closeBooking }}" style="height:38px;padding:0 16px;border:1px solid var(--divider);border-radius:999px;background:transparent;color:var(--text);font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:var(--row)">Cancel</button>
+              <button type="button" onClick="{{ confirmBooking }}" style="height:38px;padding:0 20px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer">{{ confirmLabel }}</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+    </main>
+  </div>
+</div></div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;}}">
+class Component extends DCLogic {
+  state = { theme: Component.savedTheme(this.props.theme), collapsed: false, notifOpen: false, notifRead: {}, searchQuery: "", searchOpen: false, range: "Week", coach: "all", hover: null, moves: {}, attendee: null, applied: {}, pendingMove: null, receiptMsg: null, bookings: [], draft: null, offset: 0, selected: null, statuses: Component.loadAtt("2110-attendance"), waitlists: Component.loadAtt("2110-waitlists"), fees: Component.loadAtt("2110-session-fees"), payments: {} };
+
+  componentDidMount() {
+    this._tick = setInterval(() => this.forceUpdate(), 30000);
+    this._onResize = () => this.setState({ vw: window.innerWidth });
+    window.addEventListener("resize", this._onResize);
+    this._onResize();
+    if (new URLSearchParams(location.search).get("new")) this._openNewOnMount = true;
+    this._closeClient = (ev) => {
+      if (!this.state.clientOpen) return;
+      const box = document.getElementById("client-combo");
+      if (box && ev.target && box.contains(ev.target)) return;
+      this.setState({ clientOpen: false });
+    };
+    this._keyClient = (ev) => {
+      if (ev.key === "Escape" && this.state.clientOpen) this.setState({ clientOpen: false });
+    };
+    document.addEventListener("mousedown", this._closeClient, true);
+    document.addEventListener("keydown", this._keyClient, true);
+  }
+  componentDidUpdate() {
+    if (this._openNewOnMount && !this.state.draft) {
+      this._openNewOnMount = false;
+      if (this._newSession) this._newSession();
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this._tick);
+    window.removeEventListener("resize", this._onResize);
+    document.removeEventListener("mousedown", this._closeClient, true);
+    document.removeEventListener("keydown", this._keyClient, true);
+  }
+
+  renderVals() {
+    const dark = this.state.theme === "dark";
+    const types = {
+      "Personal Training": dark ? "#9184d9" : "#0f6e6b",
+      "Group Training": dark ? "#6fb3c8" : "#2f6f8f",
+      "Remote Consult": dark ? "#c8a86f" : "#8a6a24",
+      "Class": dark ? "#8fc79f" : "#3d7a52",
+      "Bodpod": dark ? "#c88f9f" : "#8f4a5c",
+      "Blueprint and Baseline": dark ? "#9a9fb5" : "#5c6270",
+    };
+    const tint = (hex) => hex + (dark ? "26" : "18");
+    const okHex = dark ? "#7fd6a5" : "#0f6e6b";
+
+    // 5-minute resolution: SLOT px per 5 min, hour = 12 slots
+    const SLOT = 6, DAY_START = 6 * 60, DAY_END = 20 * 60;
+    const slots = (DAY_END - DAY_START) / 5;
+    const clock = new Date();
+    const nowMin = clock.getHours() * 60 + clock.getMinutes();
+    const nowInDay = nowMin >= DAY_START && nowMin <= DAY_END;
+    const nowTop = ((nowMin - DAY_START) / 5) * SLOT + "px";
+
+    const fmt = (min) => {
+      const h = Math.floor(min / 60), m = min % 60;
+      const h12 = h % 12 === 0 ? 12 : h % 12;
+      return h12 + ":" + String(m).padStart(2, "0") + " " + (h < 12 ? "AM" : "PM");
+    };
+    const hours = [];
+    for (let h = DAY_START / 60; h < DAY_END / 60; h++) hours.push(fmt(h * 60).replace(":00", ""));
+
+    // recurring weekly template: [weekdayIndex, startMinutes, durationMinutes, name, type, coach, roster?]
+    const base = [
+      [0, 6 * 60, 60, "Dan Whitfield", "Personal Training", "CM"],
+      [0, 6 * 60, 60, "Nina Park", "Personal Training", "AR"],
+      [0, 8 * 60 + 30, 60, "Marcus Ellis", "Personal Training", "CM"],
+      [0, 10 * 60, 60, "Sarah Chen", "Personal Training", "CM"],
+      [0, 11 * 60 + 30, 60, "", "Group Training", "JT", ["Dan Whitfield", "Owen Pratt", "Kim Alvarez", "Beth Nunes"]],
+      [0, 14 * 60 + 15, 30, "Rosa Delgado", "Bodpod", "AR"],
+      [0, 16 * 60 + 30, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Kim Alvarez", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [1, 7 * 60 + 15, 15, "Priya Raman", "Remote Consult", "AR"],
+      [1, 10 * 60, 60, "Sarah Chen", "Personal Training", "CM"],
+      [1, 13 * 60, 90, "Alicia Braun", "Blueprint and Baseline", "AR"],
+      [1, 16 * 60 + 30, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [1, 18 * 60, 60, "", "Group Training", "JT", ["Dan Whitfield", "Rafael Diaz", "Beth Nunes"]],
+      [2, 6 * 60, 60, "Dan Whitfield", "Personal Training", "CM"],
+      [2, 7 * 60 + 15, 15, "Priya Raman", "Remote Consult", "AR"],
+      [2, 8 * 60 + 30, 60, "Marcus Ellis", "Personal Training", "CM"],
+      [2, 10 * 60, 60, "Sarah Chen", "Personal Training", "CM"],
+      [2, 10 * 60, 60, "Rafael Diaz", "Personal Training", "AR"],
+      [2, 6 * 60, 60, "2110 Fitness Class", "Class", "JT", ["Owen Pratt", "Kim Alvarez", "Amy Cole"]],
+      [2, 11 * 60 + 30, 60, "", "Group Training", "JT", ["Dan Whitfield", "Owen Pratt", "Kim Alvarez", "Beth Nunes"]],
+      [2, 13 * 60, 90, "Alicia Braun", "Blueprint and Baseline", "AR"],
+      [2, 14 * 60 + 45, 30, "Rosa Delgado", "Bodpod", "AR"],
+      [2, 16 * 60 + 30, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Kim Alvarez", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [3, 8 * 60 + 45, 60, "Lena Ortiz", "Personal Training", "CM"],
+      [3, 14 * 60 + 15, 30, "Neil Vance", "Bodpod", "AR"],
+      [3, 16 * 60 + 30, 60, "Conditioning", "Class", "JT", ["Kim Alvarez", "Rafael Diaz", "Tom Okafor", "Amy Cole"]],
+      [3, 18 * 60, 60, "", "Group Training", "JT", ["Dan Whitfield", "Rafael Diaz", "Beth Nunes"]],
+      [4, 6 * 60, 60, "Dan Whitfield", "Personal Training", "CM"],
+      [4, 10 * 60, 60, "Sarah Chen", "Personal Training", "CM"],
+      [4, 11 * 60 + 30, 60, "", "Group Training", "JT", ["Dan Whitfield", "Owen Pratt", "Kim Alvarez", "Beth Nunes", "Tom Okafor", "Rafael Diaz"]],
+      [4, 13 * 60, 90, "Jon Reyes", "Blueprint and Baseline", "AR"],
+      [4, 16 * 60 + 30, 60, "Conditioning", "Class", "JT", ["Owen Pratt", "Rafael Diaz", "Beth Nunes", "Tom Okafor", "Amy Cole"]],
+      [5, 8 * 60, 60, "", "Group Training", "JT", ["Owen Pratt", "Beth Nunes", "Amy Cole", "Kim Alvarez", "Rafael Diaz"]],
+      [5, 9 * 60 + 15, 60, "Tom Okafor", "Personal Training", "CM"],
+      [5, 10 * 60 + 30, 30, "Amy Cole", "Bodpod", "AR"],
+      [6, 9 * 60, 15, "Priya Raman", "Remote Consult", "AR"],
+      [6, 10 * 60, 60, "Recovery class", "Class", "JT", ["Priya Raman", "Amy Cole", "Beth Nunes", "Dan Whitfield"]],
+    ];
+
+    const coachList = [
+      { id: "all", name: "All coaches", initials: "ALL" },
+      { id: "CM", name: "Cory Martin", initials: "CM" },
+      { id: "JT", name: "Jess Tran", initials: "JT" },
+      { id: "AR", name: "Andre Reyes", initials: "AR" },
+    ];
+    const coachId = this.state.coach;
+    const activeCoach = coachList.find(c => c.id === coachId) || coachList[0];
+
+    const view = this.state.range;
+    const off = this.state.offset;
+    const TODAY_DATE = (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })();
+    const addDays = (d, n) => { const x = new Date(d.getTime()); x.setDate(x.getDate() + n); return x; };
+    const isoOf = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    const dowIdx = (d) => (d.getDay() + 6) % 7;
+    const mondayOf = (d) => addDays(d, -dowIdx(d));
+    const todayIso = isoOf(TODAY_DATE);
+    const DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const dayDate = addDays(TODAY_DATE, off);
+    const weekStart = addDays(mondayOf(TODAY_DATE), off * 7);
+    const monthAnchor = new Date(TODAY_DATE.getFullYear(), TODAY_DATE.getMonth() + off, 1);
+
+    const bookings = this.state.bookings;
+    const series = this.state.series || [];
+    const seriesRows = (date) => {
+      const iso = isoOf(date), dow = dowIdx(date), label = DOW[dow];
+      return series.filter(s =>
+        iso >= s.fromIso && (!s.toIso || iso <= s.toIso) && s.days[label] != null
+      ).map(s => {
+        const r = [dow, s.days[label], s.dur, s.client, s.type, s.coach];
+        r.iso = iso;
+        r.seriesId = s.id;
+        return r;
+      });
+    };
+    const moves = this.state.moves || {};
+    const srcKey = (r, iso) => (r.mkey || (iso + "|" + r[1] + "|" + r[5] + "|" + (r[3] || r[4])));
+    const rowsAll = (date) => {
+      const iso = isoOf(date);
+      const dow = dowIdx(date);
+      const local = base.filter(r => r[0] === dow).concat(bookings.filter(b => b.iso === iso)).concat(seriesRows(date))
+        .filter(r => !moves[srcKey(r, iso)]);
+      const movedIn = Object.keys(moves).map(k => ({ k, m: moves[k] })).filter(x => x.m.iso === iso)
+        .map(({ k, m }) => {
+          const c = m.row.slice();
+          c[0] = dow;
+          c[1] = m.start;
+          if (m.coach) c[5] = m.coach;
+          c.iso = iso;
+          c.mkey = k;
+          c.moved = true;
+          return c;
+        });
+      return local.concat(movedIn);
+    };
+    const rowsFor = (date) => rowsAll(date).filter(r => coachId === "all" || r[5] === coachId);
+
+    // Capacity: classes and group training have a cap; 1:1 types don't. A slot's headcount is
+    // every person booked into it — a seeded roster plus anyone booked in individually.
+    const typeCaps = { "Class": 12, "Group Training": 8 };
+    const namedCaps = { "Recovery class": 10, "Conditioning": 14 };
+    const capOf = (type, name) => namedCaps[name] || typeCaps[type] || 0;
+    const rowsCache = {};
+    const rowsByIso = (iso) => (rowsCache[iso] = rowsCache[iso] || rowsAll(new Date(iso + "T00:00:00")));
+    const slotPeople = (iso, start, coach, type) => rowsByIso(iso)
+      .filter(r => r[1] === start && r[5] === coach && r[4] === type)
+      .reduce((a, r) => a.concat(Array.isArray(r[6]) && r[6].length ? r[6] : [r[3] || r[4]]), []);
+    const waitKey = (iso, start, coach, type) => iso + "|" + start + "|" + coach + "|" + type;
+    const waitFor = (iso, start, coach, type) => (this.state.waitlists || {})[waitKey(iso, start, coach, type)] || [];
+    const meta = (date) => {
+      const iso = isoOf(date);
+      return { iso, isToday: iso === todayIso, past: iso < todayIso };
+    };
+
+    // group sessions and classes are a single block; individual bookings live in the panel roster
+    const expand = (rows) => rows;
+
+    // side-by-side lanes for concurrent bookings
+    const place = (evs) => {
+      const sorted = evs.slice().sort((a, b) => a.s - b.s || a.e - b.e);
+      let i = 0;
+      while (i < sorted.length) {
+        let end = sorted[i].e, j = i + 1;
+        while (j < sorted.length && sorted[j].s < end) { end = Math.max(end, sorted[j].e); j++; }
+        const cluster = sorted.slice(i, j);
+        const lanes = [];
+        cluster.forEach(ev => {
+          let l = lanes.findIndex(last => last <= ev.s);
+          if (l === -1) { l = lanes.length; lanes.push(ev.e); } else lanes[l] = ev.e;
+          ev.lane = l;
+        });
+        const MAX = maxLanes, n = Math.min(lanes.length, MAX);
+        const overflow = cluster.filter(ev => ev.lane >= MAX - 1 && lanes.length > MAX);
+        cluster.forEach(ev => {
+          ev.lane = Math.min(ev.lane, MAX - 1);
+          ev.left = "calc(" + (ev.lane * 100 / n) + "% + 2px)";
+          ev.width = "calc(" + (100 / n) + "% - 4px)";
+        });
+        if (MAX === 1 && cluster.length > 1) {
+          // one lane: show the first booking and fold the rest into its label
+          const keep = cluster[0], rest = cluster.slice(1);
+          keep.name = keep.name + " +" + rest.length;
+          keep.isGroup = true;
+          keep.attendeeLabel = cluster.length + " at this time";
+          keep.attendees = cluster.map(o => ({ n: o.attendee || o.name }));
+          rest.forEach(o => { o.hidden = true; });
+        } else if (overflow.length > 1) {
+          const keep = overflow[0];
+          keep.name = "+" + overflow.length + " more";
+          keep.isGroup = true;
+          keep.attendeeLabel = overflow.length + " also booked";
+          keep.attendees = overflow.map(o => ({ n: o.attendee || o.name }));
+          overflow.slice(1).forEach(o => { o.hidden = true; });
+        }
+        i = j;
+      }
+      return sorted.filter(ev => !ev.hidden);
+    };
+
+    // Availability: a coach's own weekly hours and time off, read straight from their
+    // preferences page. Off time is shaded on the grid and warned about at booking.
+    const avail = Component.availAll();
+    const DOWK = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const offReason = (cid, date, start, dur) => {
+      const a = avail[cid];
+      if (!a) return null;
+      const iso2 = isoOf(date);
+      const to = (a.timeOff || []).find(t => iso2 >= t.from && iso2 <= (t.to || t.from));
+      if (to) return to.reason + (to.type === "Partial day" ? " · partial day" : "");
+      const h = (a.hours || {})[DOWK[dowIdx(date)]];
+      if (!h || !h.on) return "Not working " + ["Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays", "Sundays"][dowIdx(date)];
+      if (start < h.start) return "Before " + fmt(h.start) + " start";
+      if (start + dur > h.end) return "Past " + fmt(h.end) + " finish";
+      return null;
+    };
+    const offBands = (ids, date) => {
+      const out = [];
+      let cur = null;
+      for (let m2 = DAY_START; m2 < DAY_END; m2 += 5) {
+        const shut = ids.every(id => !!offReason(id, date, m2, 5));
+        if (shut && !cur) cur = m2;
+        if (!shut && cur !== null) { out.push([cur, m2]); cur = null; }
+      }
+      if (cur !== null) out.push([cur, DAY_END]);
+      return out.map(([s, e]) => ({
+        top: ((s - DAY_START) / 5) * SLOT + "px",
+        height: ((e - s) / 5) * SLOT + "px",
+        label: ids.length === 1 ? (offReason(ids[0], date, s, 5) || "") : "Closed",
+        labelDisplay: (e - s) >= 75 ? "block" : "none",
+      }));
+    };
+
+    // how much room a single day column has -> how much detail a block can show
+    const vw = this.state.vw || 1440;
+    const navW = this.state.collapsed ? 76 : 232;
+    const panelWide = vw >= 1180;
+    const panelTakesSpace = !!this.state.selected && panelWide;
+    const railVisible = !panelTakesSpace && vw >= 1160;
+    const railW = railVisible ? 186 : 0;
+    const dayW = Math.max(28, (vw - navW - railW - (panelTakesSpace ? 382 : 60) - 56) / 7);
+    const detail = dayW >= 128 ? "full" : dayW >= 96 ? "mid" : dayW >= 62 ? "name" : "tiny";
+    const maxLanes = dayW >= 128 ? 2 : 1;
+
+    const coachName = (id) => (coachList.find(c => c.id === id) || {}).name || id;
+    const hover = this.state.hover;
+    const block = (r, sub, colIndex, colCount, m) => {
+      const [day, start, dur, name, type, coach, roster] = r;
+      const base = m.iso + "-" + start + "-" + coach + "-";
+      const key = base + (r.attendee || "");
+      const att = this.state.statuses || {};
+      const marked = att[key];
+      const missed = marked === "No-show" || marked === "Late cancel" || marked === "Cancelled";
+      // a group block carries no attendee of its own — read the roster's own check-ins
+      const rosterIn = Array.isArray(roster) ? roster.filter(n => att[base + n] === "Checked in").length : 0;
+      const rosterMissed = Array.isArray(roster)
+        ? roster.filter(n => ["No-show", "Late cancel", "Cancelled"].indexOf(att[base + n]) >= 0).length : 0;
+      const on = hover === key;
+      const flipX = colCount > 1 && colIndex >= colCount - 3;
+      const flipY = start >= 17 * 60;
+      const group = Array.isArray(roster) && roster.length > 0;
+      const cap = capOf(type, name);
+      const head = cap ? slotPeople(m.iso, start, coach, type).length : 0;
+      const full = cap > 0 && head >= cap;
+      const waiting = cap ? waitFor(m.iso, start, coach, type).length : 0;
+      const px = Math.max((dur / 5) * SLOT, 14);
+      return {
+        s: start, e: start + dur, attendee: r.attendee,
+        detail,
+        typeDisplay: (px >= 42 && (detail === "full" || detail === "mid" || group)) ? "block" : "none",
+        timeDisplay: (px >= 54 && detail === "full") ? "block" : "none",
+        nameSize: px < 24 ? "10px" : detail === "tiny" ? "10px" : "11.5px",
+        blockPad: px < 24 ? "0 4px" : "3px 4px",
+        blockLine: px < 24 ? "1" : "1.25",
+        blockJustify: px < 24 ? "center" : "flex-start",
+        short: { "Personal Training": "PT", "Group Training": "Group", "Remote Consult": "Remote", "Class": "Class", "Bodpod": "Bodpod", "Blueprint and Baseline": "Blueprint and Baseline" }[type] || type,
+        name: (() => {
+          const inTag = rosterIn ? " · " + rosterIn + " in" : "";
+          const full = group
+            ? (name ? name + " · " : "") + roster.length + (type === "Class" ? " signed in" : " booked") + inTag
+            : name;
+          if (detail === "full" || detail === "mid") return full;
+          // group blocks have no client name — keep the count, never a leading token
+          if (group) return roster.length + (detail === "name" ? " booked" + inTag : "");
+          if (detail === "name") return full.split(" ")[0];
+          return full.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+        })(),
+        type,
+        hasCap: cap > 0,
+        capDisplay: cap > 0 ? "block" : "none",
+        capLabel: cap ? head + " of " + cap + (type === "Class" ? " signed in" : " booked") : "",
+        capLeft: !cap ? "" : full
+          ? (waiting ? "Full · " + waiting + " on the waitlist" : "Full")
+          : (cap - head) + " spot" + (cap - head === 1 ? "" : "s") + " left",
+        capLeftFg: full ? "#c8452e" : "var(--muted)",
+        capBarPct: cap ? Math.min(100, Math.round(head / cap * 100)) + "%" : "0%",
+        capBarBg: full ? "#c8452e" : types[type],
+        fullDisplay: full && px >= 22 ? "block" : "none",
+        isGroup: group,
+        attendees: group ? roster.map(n => {
+          const s = att[base + n];
+          return { n: s === "Checked in" ? n + " · in" : s === "No-show" ? n + " · no-show" : s === "Late cancel" ? n + " · late cancel" : n };
+        }) : [],
+        attendeeLabel: group ? (type === "Class" ? roster.length + " signed in" : roster.length + " booked") : "", label: sub ? fmt(start) + " · " + sub : fmt(start) + "–" + fmt(start + dur),
+        bar: types[type], bg: tint(types[type]),
+        top: ((start - DAY_START) / 5) * SLOT + "px",
+        height: Math.max((dur / 5) * SLOT, 14) + "px",
+        range: fmt(start) + " – " + fmt(start + dur),
+        duration: dur + " min",
+        coachName: coachName(coach),
+        status: marked || (rosterIn || rosterMissed
+          ? rosterIn + " of " + roster.length + " checked in"
+          : m.past ? "Completed"
+          : !m.isToday ? "Booked"
+          : start + dur <= nowMin ? "Completed"
+          : start <= nowMin ? "In session" : "Booked"),
+        nameDecor: missed ? "line-through" : "none",
+        mark: marked === "Checked in" || (!marked && rosterIn) ? "✓" : marked === "No-show" ? "!" : marked === "Late cancel" ? "✕" : "",
+        markDisplay: (marked === "Checked in" || missed || rosterIn) && px >= 22 ? "grid" : "none",
+        markBg: (marked === "Checked in" || (!marked && rosterIn)) ? "var(--ok)" : "#c8452e",
+        opacity: missed ? .42 : (m.past || (m.isToday && start + dur <= nowMin)) ? .55 : 1,
+        tipLeft: flipX ? "auto" : "0",
+        tipRight: flipX ? "0" : "auto",
+        tipTop: flipY ? "auto" : "calc(100% + 6px)",
+        tipBottom: flipY ? "calc(100% + 6px)" : "auto",
+        z: on ? 30 : 1,
+        tip: on ? "block" : "none",
+        select: (ev) => {
+          ev.stopPropagation();
+          this.setState({
+            attendee: null,
+            selected: {
+              key, base, type, coach, coachName: coachName(coach),
+              client: r.attendee || name || type,
+              isAggregate: !r.attendee && (group || /group|\(\d+\)|class|booked|signed in/i.test(name || type)),
+              dateLabel: DOW[day] + ", " + MONTHS[new Date(m.iso + "T00:00:00").getMonth()] + " " + new Date(m.iso + "T00:00:00").getDate() + ", " + new Date(m.iso + "T00:00:00").getFullYear(),
+              timeLabel: fmt(start) + " – " + fmt(start + dur),
+              attendees: group ? roster.slice() : [],
+              row: r, iso: m.iso, start, dur,
+              defaultStatus: m.past ? "Completed" : !m.isToday ? "Booked" : start + dur <= nowMin ? "Completed" : start <= nowMin ? "In session" : "Booked",
+            },
+          });
+        },
+        draggable: true,
+        dragStart: (ev) => {
+          this._drag = { row: r, iso: m.iso, start, dur, coach, key };
+          try { ev.dataTransfer.setData("text/plain", key); ev.dataTransfer.effectAllowed = "move"; } catch (e) {}
+        },
+        enter: () => this.setState({ hover: key }),
+        leave: () => this.setState({ hover: null }),
+      };
+    };
+
+    const draft = this.state.draft;
+    const pmv = this.state.pendingMove;
+    const dayOf = (iso) => new Date(iso + "T00:00:00");
+    const draftWarn = draft ? offReason(draft.coach, dayOf(draft.iso), draft.start, draft.dur) : null;
+    const draftCap = draft ? capOf(draft.type, draft.sessionName || "") : 0;
+    const draftHead = draftCap ? slotPeople(draft.iso, draft.start, draft.coach, draft.type).length : 0;
+    const draftFull = draftCap > 0 && draftHead >= draftCap;
+    const moveWarn = pmv ? offReason(pmv.coach, dayOf(pmv.iso), pmv.start, pmv.dur) : null;
+    const typeOptions = Object.keys(types).map(v => ({ v }));
+    const startOptions = [];
+    for (let m = DAY_START; m < DAY_END; m += 5) startOptions.push({ v: String(m), label: fmt(m) });
+    const durOptions = [15, 30, 45, 60, 75, 90].map(v => ({ v: String(v), label: v + " min" }));
+    const stdDur = { "Personal Training": 60, "Group Training": 60, "Class": 60, "Remote Consult": 15, "Bodpod": 30, "Blueprint and Baseline": 90 };
+    const coachOptions = coachList.slice(1).map(c => ({ v: c.id, label: c.name }));
+
+    const openSlot = (date, coach) => (ev) => {
+      const box = ev.currentTarget.getBoundingClientRect();
+      const mins = DAY_START + Math.round(((ev.clientY - box.top) / SLOT) * 5 / 5) * 5;
+      const start = Math.max(DAY_START, Math.min(DAY_END - 30, mins));
+      this.setState({
+        draft: {
+          iso: isoOf(date), dow: dowIdx(date),
+          when: DOW[dowIdx(date)] + ", " + MONTHS[date.getMonth()].slice(0, 3) + " " + date.getDate(),
+          start, dur: stdDur["Personal Training"], type: "Personal Training",
+          coach: coach || (coachId !== "all" ? coachId : "CM"), client: "",
+          repeat: false, repeatDays: { [DOW[dowIdx(date)]]: start },
+          endMode: "open", endDate: "",
+        },
+      });
+    };
+    const dropOn = (date, coach) => (ev) => {
+      ev.preventDefault();
+      const d = this._drag;
+      if (!d) return;
+      const box = ev.currentTarget.getBoundingClientRect();
+      const raw = DAY_START + Math.round(((ev.clientY - box.top) / SLOT) * 5 / 5) * 5;
+      const start = Math.max(DAY_START, Math.min(DAY_END - d.dur, Math.round(raw / 5) * 5));
+      const iso = isoOf(date);
+      const targetCoach = coach || d.coach;
+      if (iso === d.iso && start === d.start && targetCoach === d.coach) { this._drag = null; return; }
+      const who = d.row.attendee || d.row[3] || d.row[4];
+      this.setState({
+        hover: null,
+        pendingMove: {
+          key: d.row.mkey || (d.iso + "|" + d.start + "|" + d.coach + "|" + (d.row[3] || d.row[4])),
+          row: d.row, dur: d.dur,
+          fromIso: d.iso, fromStart: d.start, fromCoach: d.coach,
+          iso, start, coach: targetCoach,
+          who, type: d.row[4],
+          isGroup: Array.isArray(d.row[6]) && d.row[6].length > 0,
+        },
+      });
+      this._drag = null;
+    };
+    const allowDrop = (ev) => { ev.preventDefault(); try { ev.dataTransfer.dropEffect = "move"; } catch (e) {} };
+
+    const patch = (k) => (ev) => {
+      const v = ev.target.value;
+      this.setState(st => {
+        const d = { ...st.draft, [k]: k === "start" || k === "dur" ? Number(v) : v };
+        if (k === "type") {
+          d.dur = stdDur[v] || d.dur;
+          if (v !== "Personal Training" && v !== "Group Training") d.repeat = false;
+        }
+        if (k === "start" && d.repeat) {
+          // keep any day still on the old shared time in step with the new one
+          const old = st.draft.start, days = { ...d.repeatDays };
+          Object.keys(days).forEach(k2 => { if (days[k2] === old) days[k2] = d.start; });
+          d.repeatDays = days;
+        }
+        return { draft: d };
+      });
+    };
+
+    // does the period on screen actually contain "now"? line, pill and hour-fade all read this
+    const periodHasToday = view === "Day"
+      ? isoOf(dayDate) === todayIso
+      : view === "Month"
+        ? false
+        : [0, 1, 2, 3, 4, 5, 6].some(i => isoOf(addDays(weekStart, i)) === todayIso);
+    const showNowMarker = nowInDay && periodHasToday;
+
+    let days, columns, gridCols, periodDates;
+    if (view === "Day") {
+      const m = meta(dayDate);
+      const cols = coachId === "all" ? coachList.slice(1) : coachList.filter(c => c.id === coachId);
+      const rows = rowsFor(dayDate);
+      periodDates = [dayDate];
+      days = cols.map(c => ({ dow: c.initials, num: c.name.split(" ")[0], numColor: "var(--text)" }));
+      columns = cols.map((c, ci) => ({
+        showNow: showNowMarker,
+        nowDot: "block",
+        nowOpacity: 1,
+        offBands: offBands([c.id], dayDate),
+        onSlotClick: openSlot(dayDate, c.id),
+        onDrop: dropOn(dayDate, c.id), onDragOver: allowDrop,
+        events: place(expand(rows.filter(r => r[5] === c.id)).map(r => block(r, null, ci, cols.length, m))),
+      }));
+      gridCols = "56px repeat(" + cols.length + ",minmax(0,1fr))";
+    } else {
+      periodDates = [0, 1, 2, 3, 4, 5, 6].map(i => addDays(weekStart, i));
+      days = periodDates.map(d => {
+        const m = meta(d);
+        return { dow: DOW[dowIdx(d)], num: String(d.getDate()), numColor: m.isToday ? "var(--accent)" : "var(--text)" };
+      });
+      columns = periodDates.map((d, i) => {
+        const m = meta(d);
+        return {
+          showNow: showNowMarker,
+          nowDot: m.isToday ? "block" : "none",
+          nowOpacity: m.isToday ? 1 : .4,
+          offBands: offBands(coachId === "all" ? coachList.slice(1).map(c => c.id) : [coachId], d),
+          onSlotClick: openSlot(d, null),
+          onDrop: dropOn(d, null), onDragOver: allowDrop,
+          events: place(expand(rowsFor(d)).map(r => block(r, coachId === "all" ? r[5] : null, i, 7, m))),
+        };
+      });
+      gridCols = "56px repeat(7,minmax(0,1fr))";
+    }
+
+    const dowLabels = DOW;
+    const monthCells = [];
+    const gridStart = mondayOf(monthAnchor);
+    const daysInMonth = new Date(monthAnchor.getFullYear(), monthAnchor.getMonth() + 1, 0).getDate();
+    const weekRows = Math.ceil((dowIdx(monthAnchor) + daysInMonth) / 7);
+    const monthDates = [];
+    for (let i = 0; i < weekRows * 7; i++) {
+      const d = addDays(gridStart, i);
+      const inMonth = d.getMonth() === monthAnchor.getMonth();
+      const m = meta(d);
+      const dayEvents = rowsFor(d);
+      if (inMonth) monthDates.push(d);
+      monthCells.push({
+        num: String(d.getDate()),
+        chips: dayEvents.slice(0, 2).map(([, start, , name, type]) => ({
+          time: fmt(start).replace(":00", "").replace(" ", ""),
+          name, type, bar: types[type], bg: tint(types[type]),
+        })),
+        hasMore: dayEvents.length > 2,
+        more: "+" + (dayEvents.length - 2) + " more",
+        cellBg: m.isToday ? tint(types["Personal Training"]) : "transparent",
+        numColor: m.isToday ? "var(--accent)" : inMonth ? "var(--text)" : "var(--muted)",
+        numWeight: m.isToday ? 600 : 400,
+      });
+    }
+    if (view === "Month") periodDates = monthDates;
+
+    const long = (d) => MONTHS[d.getMonth()] + " " + d.getDate();
+    const weekEnd = addDays(weekStart, 6);
+    const periodLabel = view === "Day"
+      ? ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][dowIdx(dayDate)] + ", " + long(dayDate) + ", " + dayDate.getFullYear()
+      : view === "Week" ? "Week of " + long(weekStart) + " – " + long(weekEnd) + ", " + weekEnd.getFullYear()
+      : MONTHS[monthAnchor.getMonth()] + " " + monthAnchor.getFullYear();
+
+    const step = (n) => () => this.setState(st => ({ offset: st.offset + n, hover: null }));
+    const periodRows = periodDates.reduce((a, d) => a.concat(rowsFor(d)), []);
+    const allPeriodRows = periodDates.reduce((a, d) => a.concat(rowsAll(d)), []);
+
+    const coaches = coachList.map(c => {
+      const on = coachId === c.id;
+      return {
+        ...c, on,
+        count: c.id === "all" ? allPeriodRows.length : allPeriodRows.filter(r => r[5] === c.id).length,
+        bg: on ? "var(--row)" : "transparent",
+        fg: on ? "var(--text)" : "var(--muted)",
+        border: on ? "var(--accent)" : "transparent",
+        dotBg: on ? "var(--accent)" : "var(--row)",
+        dotFg: on ? "var(--on-accent)" : "var(--muted)",
+        countFg: on ? "var(--text)" : "var(--muted)",
+        weight: on ? 600 : 400,
+        select: () => this.setState({ coach: c.id }),
+      };
+    });
+
+    // pre-billed blocks: a member buys N sessions of a type up front, and bookings draw down the balance
+    const pk = (id, type, label, qty, window, from, to) =>
+      ({ id, type, label, qty, window, from, to, unlimited: qty > 900 });
+    const packages = {
+      "Dan Whitfield": [pk("dw-pt-sep", "Personal Training", "PT 8-pack", 8, "Sep 1 – 15", "2026-09-01", "2026-09-15")],
+      "Sarah Chen": [pk("sc-pt-sep", "Personal Training", "PT 10-pack", 10, "Sep 1 – 30", "2026-09-01", "2026-09-30")],
+      "Marcus Ellis": [pk("me-pt-sep", "Personal Training", "PT 4-pack", 4, "Sep 1 – 15", "2026-09-01", "2026-09-15")],
+      "Lena Ortiz": [pk("lo-pt-sep", "Personal Training", "PT 8-pack", 8, "Sep 1 – 30", "2026-09-01", "2026-09-30")],
+      "Nina Park": [pk("np-pt-sep", "Personal Training", "PT 20-pack", 20, "Sep 1 – Oct 31", "2026-09-01", "2026-10-31")],
+      "Tom Okafor": [pk("to-cls-sep", "Class", "Class membership", 999, "Monthly", "2026-09-01", "2026-09-30")],
+      "Kim Alvarez": [pk("ka-grp-sep", "Group Training", "Group 8-pack", 8, "Sep 1 – 30", "2026-09-01", "2026-09-30")],
+      "Beth Nunes": [pk("bn-grp-sep", "Group Training", "Group 8-pack", 8, "Sep 1 – 30", "2026-09-01", "2026-09-30")],
+      "Owen Pratt": [pk("op-cls-sep", "Class", "Class membership", 999, "Monthly", "2026-09-01", "2026-09-30")],
+      "Priya Raman": [pk("pr-rem-sep", "Remote Consult", "Remote 4-pack", 4, "Sep 1 – 30", "2026-09-01", "2026-09-30")],
+      "Rafael Diaz": [pk("rd-cls-sep", "Class", "Class membership", 999, "Monthly", "2026-09-01", "2026-09-30")],
+      "Amy Cole": [pk("ac-cls-sep", "Class", "Class membership", 999, "Monthly", "2026-09-01", "2026-09-30")],
+    };
+
+    // Deterministic drawdown: every session this member has of the pack's type inside the
+    // pack window is enumerated in date order and takes the next slot. Order decides the
+    // balance, not the order someone happened to click, so past and future sessions both
+    // reconcile and every session agrees on how many are left.
+    const packSlotsCache = {};
+    const packSlots = (pkg, client) => {
+      const ck = pkg.id + "|" + client;
+      if (packSlotsCache[ck]) return packSlotsCache[ck];
+      const keys = [];
+      let d = new Date(pkg.from + "T00:00:00");
+      const end = new Date(pkg.to + "T00:00:00");
+      while (d <= end) {
+        const iso = isoOf(d);
+        rowsAll(d).forEach(r => {
+          if (r[4] !== pkg.type) return;
+          const roster = r[6];
+          const group = Array.isArray(roster) && roster.length > 0;
+          const mine = group ? roster.indexOf(client) >= 0 : r[3] === client;
+          if (!mine) return;
+          const base = iso + "-" + r[1] + "-" + r[5] + "-";
+          keys.push({ key: group ? base + "|" + client : base, iso, start: r[1] });
+        });
+        d = addDays(d, 1);
+      }
+      keys.sort((a, b) => a.iso.localeCompare(b.iso) || a.start - b.start);
+      // a session explicitly paid another way gives its slot back to the pack
+      const pays = this.state.payments || {};
+      const live = keys.filter(k => {
+        const p = pays[k.key];
+        return !p || p === "pkg:" + pkg.id;
+      }).map(k => k.key);
+      packSlotsCache[ck] = live;
+      return live;
+    };
+    const packagesFor = (client, type, thisKey) => (packages[client] || [])
+      .filter(p => p.type === type)
+      .map(p => {
+        if (p.unlimited) return { ...p, used: 0, left: p.qty, slot: 0, covered: true };
+        const slots = packSlots(p, client);
+        const i = slots.indexOf(thisKey);
+        const used = i >= 0 ? i : slots.length;
+        return { ...p, used, left: p.qty - used, slot: i, covered: i >= 0 && i < p.qty };
+      });
+
+    const paidChip = dark ? ["rgba(127,214,165,.16)", "#7fd6a5"] : ["rgba(15,110,107,.12)", "#0f6e6b"];
+    const dueChip = dark ? ["rgba(200,69,46,.2)", "#f0a293"] : ["rgba(200,69,46,.1)", "#a5341f"];
+    const prices = { "Personal Training": 50, "Group Training": 30, "Remote Consult": 40, "Class": 20, "Bodpod": 45, "Blueprint and Baseline": 0 };
+    const contacts = {
+      "Dan Whitfield": ["+1 403 615 5330", "dan.whitfield@gmail.com"],
+      "Sarah Chen": ["+1 403 774 2019", "sarah.chen@outlook.com"],
+      "Marcus Ellis": ["+1 403 550 8842", "m.ellis@shaw.ca"],
+      "Priya Raman": ["+1 403 221 9075", "priya.raman@gmail.com"],
+      "Alicia Braun": ["+1 403 908 3311", "abraun@yahoo.ca"],
+      "Rosa Delgado": ["+1 403 447 1206", "rosa.d@gmail.com"],
+      "Tom Okafor": ["+1 403 662 4418", "t.okafor@gmail.com"],
+      "Owen Pratt": ["+1 403 771 8890", "owen.pratt@gmail.com"],
+      "Kim Alvarez": ["+1 403 330 2255", "kim.alvarez@gmail.com"],
+      "Beth Nunes": ["+1 403 118 7742", "beth.nunes@gmail.com"],
+      "Rafael Diaz": ["+1 403 480 6631", "rafa.diaz@gmail.com"],
+      "Amy Cole": ["+1 403 209 5514", "amy.cole@gmail.com"],
+      "Lena Ortiz": ["+1 403 845 1190", "lena.ortiz@gmail.com"],
+      "Nina Park": ["+1 403 512 7708", "nina.park@gmail.com"],
+      "Jon Reyes": ["+1 403 337 9021", "jon.reyes@gmail.com"],
+      "Neil Vance": ["+1 403 776 3340", "neil.vance@gmail.com"],
+    };
+    const sel = this.state.selected;
+    const wideEnough = panelWide;
+    const statusOptions = ["Booked", "Checked in", "In session", "Completed", "No-show", "Late cancel", "Cancelled"].map(v => ({ v }));
+    const payOptions = ["Not Paid", "Card on file", "Cash", "Debit"].map(v => ({ v, label: v }));
+    let panel = {};
+    if (sel) {
+      // a group block can be viewed whole, or narrowed to one person's booking
+      const who = this.state.attendee && sel.attendees.indexOf(this.state.attendee) >= 0 ? this.state.attendee : null;
+      const payKey = who ? (sel.base || sel.key + "|") + who : sel.key;
+      const client = who || sel.client;
+      const status = this.state.statuses[payKey] || sel.defaultStatus;
+      const fee = (this.state.fees || {})[payKey];
+      const capName = sel.attendees.length ? sel.client : "";
+      const cap = capOf(sel.type, capName);
+      const head = cap ? slotPeople(sel.iso, sel.start, sel.coach, sel.type).length : 0;
+      const full = cap > 0 && head >= cap;
+      const wKey = waitKey(sel.iso, sel.start, sel.coach, sel.type);
+      const waiting = waitFor(sel.iso, sel.start, sel.coach, sel.type);
+      const seatNoun = sel.type === "Class" ? " signed in" : " booked";
+      const price = prices[sel.type] || 0;
+
+      // what this person has already pre-paid for this session type
+      const pkgs = packagesFor(client, sel.type, payKey);
+      const autoPkg = pkgs.find(p => p.covered);
+      const chosen = this.state.payments[payKey];
+      // auto-reconcile: an unpaid session inside a pack window takes its slot on its own
+      const effective = chosen || (autoPkg ? "pkg:" + autoPkg.id : "Not Paid");
+      const activePkg = effective.indexOf("pkg:") === 0
+        ? pkgs.find(p => "pkg:" + p.id === effective) : null;
+      const paid = activePkg ? "pkg:" + activePkg.id : effective;
+      const isPaid = paid !== "Not Paid";
+      const contact = contacts[client] || ["Not on file", "Not on file"];
+      panel = {
+        panelType: sel.type,
+        panelWhen: sel.dateLabel,
+        panelTime: sel.timeLabel,
+        panelCoach: sel.coachName,
+        panelClient: client,
+        panelClientLabel: who ? "Booked person" : sel.attendees.length ? "Session" : "Client info",
+        backDisplay: who ? "block" : "none",
+        clearAttendee: () => this.setState({ attendee: null }),
+        panelPaidCount: (() => {
+          if (!sel.attendees.length) return "";
+          const n = sel.attendees.filter(a => {
+            const k = (sel.base || sel.key + "|") + a;
+            const av = packagesFor(a, sel.type, k).find(p => p.unlimited || p.left > 0);
+            return (this.state.payments[k] || (av ? "pkg:" + av.id : "Not Paid")) !== "Not Paid";
+          }).length;
+          return n + " of " + sel.attendees.length + " paid";
+        })(),
+        hasCap: cap > 0,
+        capText: cap ? head + " of " + cap + seatNoun : "",
+        capLeft: !cap ? "" : full ? "Full" : (cap - head) + " spot" + (cap - head === 1 ? "" : "s") + " left",
+        capLeftFg: full ? "#c8452e" : "var(--muted)",
+        capBarPct: cap ? Math.min(100, Math.round(head / cap * 100)) + "%" : "0%",
+        capBarBg: full ? "#c8452e" : types[sel.type],
+        addLabel: full ? "Add to the waitlist" : "Book another person",
+        hasWait: waiting.length > 0,
+        waitLabel: "Waitlist · " + waiting.length,
+        waitRows: waiting.map((n, i) => ({
+          n, pos: String(i + 1),
+          initials: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+          promote: () => {
+            const row = [dowIdx(new Date(sel.iso + "T00:00:00")), sel.start, sel.dur, n, sel.type, sel.coach];
+            row.iso = sel.iso;
+            this.setState(st => ({ bookings: [...st.bookings, row] }));
+            this.setWait(wKey, waiting.filter(x => x !== n));
+          },
+          drop: () => this.setWait(wKey, waiting.filter(x => x !== n)),
+        })),
+        addToGroup: () => this.setState({
+          draft: {
+            iso: sel.iso, dow: dowIdx(new Date(sel.iso + "T00:00:00")),
+            when: sel.dateLabel,
+            start: sel.start, dur: sel.dur, type: sel.type,
+            coach: sel.coach, client: "", sessionName: capName,
+          },
+        }),
+        panelPhone: contact[0],
+        panelEmail: contact[1],
+        panelInitials: client.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+        panelStatus: status,
+        panelPaid: paid,
+        panelPaidColor: paid === "Waived" ? "var(--muted)" : isPaid ? "var(--ok)" : "#c8452e",
+        attendanceActions: [
+          ["Check in", "Checked in", okHex],
+          ["No-show", "No-show", "#c8452e"],
+          ["Late cancel", "Late cancel", "#c8452e"],
+        ].map(([label, value, color]) => {
+          const on = status === value;
+          return {
+            label, bg: on ? tint(color) : "transparent",
+            border: on ? color : "var(--divider)",
+            fg: on ? (color === okHex ? "var(--ok)" : color) : "var(--text)",
+            weight: on ? 600 : 400,
+            click: () => this.setStatus(payKey, on ? "Booked" : value),
+          };
+        }),
+        showFeePrompt: (status === "No-show" || status === "Late cancel") && !fee,
+        feePromptText: status === "No-show"
+          ? "No-show — charge " + client + " for this session?"
+          : "Late cancel — charge " + client + " for this session?",
+        chargeFee: () => this.setFee(payKey, "charged"),
+        waiveFee: () => {
+          this.setFee(payKey, "waived");
+          this.setState(st => ({ payments: { ...st.payments, [payKey]: "Waived" } }));
+        },
+        hasFeeNote: !!fee,
+        feeNote: fee === "waived"
+          ? "Waived — no charge, and the prepaid credit goes back to " + client + "."
+          : fee === "charged" ? "Charged — the prepaid credit stays drawn." : "",
+        payOptions: pkgs.map(p => ({
+          v: "pkg:" + p.id,
+          label: p.unlimited
+            ? p.label + " · unlimited"
+            : p.covered
+              ? p.label + " · session " + (p.slot + 1) + " of " + p.qty
+              : p.label + " · none left",
+        })).concat([
+          { v: "Card on file", label: "Card on file" },
+          { v: "Cash", label: "Cash" },
+          { v: "Debit", label: "Debit" },
+          { v: "Not Paid", label: "Not Paid" },
+          { v: "Waived", label: "Waived" },
+        ]),
+        hasPkgNote: !!activePkg,
+        pkgNote: activePkg
+          ? (activePkg.unlimited
+              ? "Covered by " + activePkg.label + " · " + activePkg.window
+              : activePkg.covered
+                ? "Session " + (activePkg.slot + 1) + " of " + activePkg.qty + " · prepaid " + activePkg.window + " · " + Math.max(0, activePkg.qty - activePkg.slot - 1) + " left after this"
+                : activePkg.label + " is fully drawn · prepaid " + activePkg.window)
+          : "",
+        panelDue: who || !sel.attendees.length
+          ? (paid === "Waived" ? "Waived · $0.00 due" : activePkg ? "Prepaid · $0.00 due" : isPaid ? "Paid · $" + price.toFixed(2) : "Subtotal due $" + price.toFixed(2))
+          : "Session total $" + (price * Math.max(1, sel.attendees.length)).toFixed(2),
+        panelRoster: sel.attendees.map(n => {
+          const on = who === n;
+          const nKey = (sel.base || sel.key + "|") + n;
+          const nPkgs = packagesFor(n, sel.type, nKey);
+          const nAuto = nPkgs.find(p => p.covered);
+          const nPaid = this.state.payments[nKey] || (nAuto ? "pkg:" + nAuto.id : "Not Paid");
+          const pd = nPaid !== "Not Paid";
+          const nIn = this.state.statuses[nKey] === "Checked in";
+          return {
+            n, initials: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+            bg: on ? "var(--row)" : "transparent",
+            border: on ? "var(--accent)" : "var(--divider)",
+            weight: on ? 600 : 400,
+            chip: pd ? "Paid" : "Unpaid",
+            chipBg: pd ? paidChip[0] : dueChip[0],
+            chipFg: pd ? paidChip[1] : dueChip[1],
+            select: () => this.setState({ attendee: on ? null : n }),
+            inBorder: nIn ? okHex : "var(--divider)",
+            inBg: nIn ? tint(okHex) : "transparent",
+            inFg: nIn ? okHex : "var(--muted)",
+            inTitle: nIn ? "Checked in — click to undo" : "Check in " + n,
+            toggleIn: () => this.setStatus(nKey, nIn ? "Booked" : "Checked in"),
+          };
+        }),
+        panelStoreHref: (!who && sel.isAggregate)
+          ? "2110 POS.dc.html"
+          : "2110 POS.dc.html?member=" + encodeURIComponent(client)
+            + "&type=" + encodeURIComponent(sel.type)
+            + "&coach=" + encodeURIComponent(coachName(sel.coach)),
+        panelClientHref: (!who && sel.isAggregate)
+          ? "2110 Schedule.dc.html"
+          : "2110 Members.dc.html?member=" + encodeURIComponent(client),
+        panelIsGroup: sel.attendees.length > 0,
+        panelRosterLabel: (() => {
+          const inCount = sel.attendees.filter(a => this.state.statuses[(sel.base || sel.key + "|") + a] === "Checked in").length;
+          const noun = sel.type === "Class" ? " signed in" : " booked";
+          return inCount ? sel.attendees.length + noun + " · " + inCount + " in" : sel.attendees.length + noun;
+        })(),
+        setPanelStatus: (ev) => this.setStatus(payKey, ev.target.value),
+        setPanelPaid: (ev) => this.setState(st => ({
+          payments: { ...st.payments, [payKey]: ev.target.value },
+        })),
+        payNow: () => this.setState(st => ({
+          payments: {
+            ...st.payments,
+            [payKey]: activePkg ? "pkg:" + activePkg.id : "Card on file",
+          },
+        })),
+        markComplete: () => this.setStatus(payKey, "Completed"),
+        hasReceiptMsg: !!this.state.receiptMsg,
+        receiptMsg: this.state.receiptMsg || "",
+        printReceipt: () => this.setState({
+          receiptMsg: "Receipt for " + sel.client + " sent to the front desk printer.",
+        }),
+        openReschedule: () => this.setState({
+          pendingMove: {
+            key: sel.row.mkey || (sel.iso + "|" + sel.start + "|" + sel.coach + "|" + (sel.row[3] || sel.row[4])),
+            row: sel.row, dur: sel.dur,
+            fromIso: sel.iso, fromStart: sel.start, fromCoach: sel.coach,
+            iso: sel.iso, start: sel.start, coach: sel.coach,
+            who: sel.client, type: sel.type,
+            isGroup: sel.attendees.length > 0,
+          },
+        }),
+      };
+    }
+
+    const ranges = ["Day", "Week", "Month"].map(label => {
+      const on = this.state.range === label;
+      return {
+        label, bg: on ? "var(--row)" : "transparent", fg: on ? "var(--text)" : "var(--muted)",
+        weight: on ? 600 : 400, select: () => this.setState({ range: label, offset: 0 }),
+      };
+    });
+
+    return {
+      expanded: !this.state.collapsed,
+      navWidth: this.state.collapsed ? "76px" : "232px",
+      navAlign: this.state.collapsed ? "center" : "flex-start",
+      navToggleTitle: this.state.collapsed ? "Expand sidebar" : "Collapse sidebar",
+      navChevron: this.state.collapsed ? "m14.2 9.4 2.6 2.6-2.6 2.6" : "m17.3 9.4-2.6 2.6 2.6 2.6",
+      toggleNav: () => this.setState(st => ({ collapsed: !st.collapsed })),
+      ranges, days, hours, columns, coaches, gridCols, dowLabels, monthCells, periodLabel,
+      nowTop, nowLabel: fmt(nowMin), showNowLabel: showNowMarker,
+      hourRows: hours.map((h, i) => ({
+        h,
+        opacity: (showNowMarker && Math.abs((DAY_START + i * 60) - nowMin) < 22) ? 0 : 1,
+      })),
+      panelOpen: !!sel, statusOptions, payOptions,
+      mainPadRight: sel && wideEnough ? "382px" : "30px",
+      panelTop: wideEnough ? "64px" : "220px",
+      railCols: railVisible ? "minmax(0,172px) minmax(0,1fr)" : "minmax(0,1fr)",
+      showRail: railVisible,
+      showCoachSelect: !railVisible,
+      coachSelectValue: coachId,
+      coachSelectOptions: coachList.map(c => ({ v: c.id, label: c.id === "all" ? "All coaches" : c.name })),
+      setCoachSelect: (ev) => this.setState({ coach: ev.target.value, hover: null }),
+      ...panel,
+      closePanel: () => this.setState({ selected: null }),
+      ...(() => {
+        const pm = this.state.pendingMove;
+        const dayOpts = [0, 1, 2, 3, 4, 5, 6].map(i => {
+          const d = addDays(weekStart, i);
+          return { v: isoOf(d), label: DOW[i] + " " + MONTHS[d.getMonth()].slice(0, 3) + " " + d.getDate() };
+        });
+        if (!pm) return { moveOpen: false, moveDayOptions: dayOpts };
+        const when = (iso, start) => {
+          const d = new Date(iso + "T00:00:00");
+          return DOW[dowIdx(d)] + " " + MONTHS[d.getMonth()].slice(0, 3) + " " + d.getDate() + ", " + fmt(start);
+        };
+        const known = dayOpts.some(o => o.v === pm.iso)
+          ? dayOpts
+          : dayOpts.concat([{ v: pm.iso, label: when(pm.iso, pm.start).split(",")[0] }]);
+        const setPM = (patch) => this.setState(st => ({ pendingMove: { ...st.pendingMove, ...patch } }));
+        return {
+          moveOpen: true,
+          moveDayOptions: known,
+          moveWho: pm.who + " · " + pm.type,
+          moveFrom: when(pm.fromIso, pm.fromStart),
+          moveFromCoach: coachName(pm.fromCoach),
+          moveTo: when(pm.iso, pm.start),
+          moveToCoach: coachName(pm.coach),
+          moveIso: pm.iso,
+          moveStart: String(pm.start),
+          moveCoach: pm.coach,
+          moveIsGroup: !!pm.isGroup,
+          setMoveIso: (ev) => setPM({ iso: ev.target.value }),
+          setMoveStart: (ev) => setPM({ start: Number(ev.target.value) }),
+          setMoveCoach: (ev) => setPM({ coach: ev.target.value }),
+          cancelMove: () => this.setState({ pendingMove: null }),
+          confirmMove: () => {
+            const m = this.state.pendingMove;
+            if (!m) return;
+            this.setState(st => ({
+              moves: { ...st.moves, [m.key]: { row: m.row, iso: m.iso, start: m.start, coach: m.coach } },
+              pendingMove: null, selected: null, hover: null,
+            }));
+          },
+        };
+      })(),
+      bookingOpen: !!draft,
+      typeOptions, startOptions, durOptions, coachOptions,
+      draftClient: draft ? draft.client : "",
+      ...(() => {
+        const q = (draft ? draft.client : "").trim().toLowerCase();
+        const all = this.memberNames();
+        const exact = all.some(n => n.toLowerCase() === q);
+        // match on any word so "chen" and "sarah" both find Sarah Chen
+        const hits = q.length >= 2 && !exact
+          ? all.filter(n => n.toLowerCase().split(" ").some(w => w.startsWith(q)) || n.toLowerCase().includes(q)).slice(0, 8)
+          : [];
+        return {
+          clientOpen: !!this.state.clientOpen && hits.length > 0,
+          clientHits: hits.map(n => ({
+            n,
+            initials: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+            pick: () => this.setState(st => ({ draft: { ...st.draft, client: n }, clientOpen: false })),
+          })),
+          clientIsNew: q.length >= 2 && !exact && hits.length === 0,
+          clientMore: hits.length > 4 ? hits.length - 4 + " more — keep typing" : "",
+          hasClientMore: hits.length > 4,
+          clientMatched: exact,
+          openClient: () => this.setState({ clientOpen: true }),
+          setClientTyped: (ev) => {
+            const v = ev.target.value;
+            this.setState(st => ({ draft: { ...st.draft, client: v }, clientOpen: v.trim().length >= 2 }));
+          },
+        };
+      })(),
+      draftType: draft ? draft.type : "Personal Training",
+      draftStart: draft ? String(draft.start) : String(DAY_START),
+      draftDur: draft ? String(draft.dur) : "55",
+      draftCoach: draft ? draft.coach : "CM",
+      canRepeat: !!draft && (draft.type === "Personal Training" || draft.type === "Group Training"),
+      isRepeating: !!draft && !!draft.repeat,
+      repeatTrackBg: draft && draft.repeat ? "var(--accent)" : "var(--divider)",
+      repeatKnobLeft: draft && draft.repeat ? "21px" : "3px",
+      repeatKnobBg: draft && draft.repeat ? "var(--on-accent)" : "var(--muted)",
+      toggleRepeat: () => this.setState(st => {
+        const d = st.draft;
+        const days = Object.keys(d.repeatDays || {}).length
+          ? d.repeatDays
+          : { [DOW[d.dow]]: d.start };
+        return { draft: { ...d, repeat: !d.repeat, repeatDays: days } };
+      }),
+      repeatDayRows: DOW.map(label => {
+        const on = !!draft && draft.repeatDays && draft.repeatDays[label] != null;
+        const at = on ? draft.repeatDays[label] : (draft ? draft.start : DAY_START);
+        return {
+          label, on,
+          timeValue: String(at),
+          timeOpacity: on ? 1 : .4,
+          off: !on,
+          bg: on ? "var(--row)" : "transparent",
+          fg: on ? "var(--text)" : "var(--muted)",
+          border: on ? "var(--accent)" : "var(--divider)",
+          weight: on ? 600 : 400,
+          endLabel: on ? fmt(at + (draft ? draft.dur : 60)) : "",
+          toggle: () => this.setState(st => {
+            const days = { ...(st.draft.repeatDays || {}) };
+            if (days[label] != null) delete days[label];
+            else days[label] = st.draft.start;
+            return { draft: { ...st.draft, repeatDays: days } };
+          }),
+          setTime: (ev) => {
+            const v = Number(ev.target.value);
+            this.setState(st => ({
+              draft: { ...st.draft, repeatDays: { ...st.draft.repeatDays, [label]: v } },
+            }));
+          },
+        };
+      }),
+      endModeOptions: [["date", "On a date"], ["open", "No end date"]].map(([v, label]) => {
+        const on = !!draft && draft.endMode === v;
+        return {
+          v, label,
+          bg: on ? "var(--row)" : "transparent",
+          fg: on ? "var(--text)" : "var(--muted)",
+          border: on ? "var(--accent)" : "var(--divider)",
+          weight: on ? 600 : 400,
+          select: () => this.setState(st => ({ draft: { ...st.draft, endMode: v } })),
+        };
+      }),
+      endDateShown: !!draft && draft.endMode === "date",
+      draftEndDate: draft ? draft.endDate : "",
+      setEndDate: (ev) => {
+        const v = ev.target.value;
+        this.setState(st => ({ draft: { ...st.draft, endDate: v } }));
+      },
+      repeatSummary: (() => {
+        if (!draft || !draft.repeat) return "";
+        const ks = DOW.filter(d => draft.repeatDays && draft.repeatDays[d] != null);
+        if (!ks.length) return "Pick at least one day";
+        const when = draft.endMode === "date" && draft.endDate
+          ? "until " + draft.endDate
+          : "with no end date";
+        return "Repeats weekly on " + ks.join(", ") + " " + when;
+      })(),
+      confirmLabel: draftFull ? "Add to the waitlist"
+        : draftWarn
+        ? (draft && draft.repeat ? "Book series anyway" : "Book anyway")
+        : (draft && draft.repeat ? "Book series" : "Book session"),
+      hasCapNote: draftCap > 0,
+      capNote: draftCap
+        ? (draftFull
+            ? draftHead + " of " + draftCap + " booked — this one is full. Anyone added goes on the waitlist."
+            : draftHead + " of " + draftCap + " booked · " + (draftCap - draftHead) + " spot" + (draftCap - draftHead === 1 ? "" : "s") + " left")
+        : "",
+      capNoteFg: draftFull ? "#c8452e" : "var(--muted)",
+      hasDraftWarn: !!draftWarn,
+      draftWarn: draftWarn ? coachName(draft.coach) + " is unavailable — " + draftWarn.charAt(0).toLowerCase() + draftWarn.slice(1) + "." : "",
+      hasMoveWarn: !!moveWarn,
+      moveWarn: moveWarn ? coachName(pmv.coach) + " is unavailable — " + moveWarn.charAt(0).toLowerCase() + moveWarn.slice(1) + "." : "",
+      moveConfirmLabel: moveWarn ? "Move anyway" : "Confirm move",
+      warnBg: dark ? "rgba(200,69,46,.15)" : "rgba(200,69,46,.07)",
+      warnFg: dark ? "#f0a691" : "#9c3419",
+      offBg: dark ? "rgba(8,9,16,.5)" : "rgba(15,23,42,.05)",
+      offStripe: dark
+        ? "repeating-linear-gradient(135deg,transparent 0 7px,rgba(255,255,255,.035) 7px 8px)"
+        : "repeating-linear-gradient(135deg,transparent 0 7px,rgba(15,23,42,.05) 7px 8px)",
+      draftWhen: draft ? draft.when + " · " + fmt(draft.start) + "–" + fmt(draft.start + draft.dur) : "",
+      setClient: patch("client"), setType: patch("type"), setStart: patch("start"),
+      setDur: patch("dur"), setCoach: patch("coach"),
+      stopClick: (ev) => ev.stopPropagation(),
+      closeBooking: () => this.setState({ draft: null }),
+      newSession: this._newSession = () => this.setState({
+        draft: {
+          iso: isoOf(TODAY_DATE), dow: dowIdx(TODAY_DATE),
+          when: DOW[dowIdx(TODAY_DATE)] + ", " + MONTHS[TODAY_DATE.getMonth()].slice(0, 3) + " " + TODAY_DATE.getDate(),
+          start: Math.min(DAY_END - 60, Math.max(DAY_START, Math.round(nowMin / 5) * 5)),
+          dur: stdDur["Personal Training"], type: "Personal Training",
+          coach: coachId !== "all" ? coachId : "CM", client: "",
+          repeat: false, repeatDays: {}, endMode: "open", endDate: "",
+        },
+      }),
+      confirmBooking: () => {
+        const d = this.state.draft;
+        if (!d) return;
+        const client = d.client.trim() || "New client";
+        const cCap = capOf(d.type, d.sessionName || "");
+        if (cCap && slotPeople(d.iso, d.start, d.coach, d.type).length >= cCap) {
+          const k = waitKey(d.iso, d.start, d.coach, d.type);
+          this.setWait(k, waitFor(d.iso, d.start, d.coach, d.type).concat([client]));
+          this.setState({ draft: null });
+          return;
+        }
+        if (d.repeat && Object.keys(d.repeatDays).length) {
+          const s = {
+            id: "s" + Date.now(),
+            client, type: d.type, coach: d.coach, dur: d.dur,
+            days: { ...d.repeatDays },
+            fromIso: d.iso,
+            toIso: d.endMode === "date" && d.endDate ? d.endDate : null,
+          };
+          this.setState(st => ({ series: [...(st.series || []), s], draft: null }));
+          return;
+        }
+        const row = [d.dow, d.start, d.dur, client, d.type, d.coach];
+        row.iso = d.iso;
+        this.setState(st => ({ bookings: [...st.bookings, row], draft: null }));
+      },
+      isTimeView: view !== "Month",
+      isMonth: view === "Month",
+      coachSummary: activeCoach.id === "all"
+        ? periodRows.length + " sessions across 3 coaches"
+        : periodRows.length + " sessions · " + activeCoach.name,
+      prevPeriod: step(-1), nextPeriod: step(1),
+      goToday: () => this.setState({ offset: 0, hover: null }),
+      isToday: off === 0,
+      prevTitle: "Previous " + view.toLowerCase(),
+      nextTitle: "Next " + view.toLowerCase(),
+      trackHeight: slots * SLOT + "px",
+      ...this.notifVals(),
+      ...this.searchVals(),
+      theme: this.state.theme,
+      themeLabel: dark ? "Dark" : "Light",
+      themeIcon: dark ? this.moon() : this.sun(),
+      toggleTheme: () => this.flipTheme(),
+    };
+  }
+
+  static availDefaults() {
+    const w = (on, start, end) => ({ on, start, end });
+    return {
+      CM: {
+        hours: { Mon: w(true, 360, 1140), Tue: w(true, 360, 1140), Wed: w(true, 360, 1140), Thu: w(true, 360, 1140), Fri: w(true, 360, 900), Sat: w(false, 480, 720), Sun: w(false, 480, 720) },
+        timeOff: [
+          { from: "2026-09-21", to: "2026-09-25", reason: "Vacation", type: "Full days" },
+          { from: "2026-10-09", to: "2026-10-09", reason: "Certification course", type: "Full days" },
+        ],
+      },
+      JT: {
+        hours: { Mon: w(true, 360, 1200), Tue: w(true, 360, 1200), Wed: w(true, 360, 1200), Thu: w(true, 360, 1200), Fri: w(true, 420, 1080), Sat: w(true, 480, 780), Sun: w(true, 540, 720) },
+        timeOff: [],
+      },
+      AR: {
+        hours: { Mon: w(true, 420, 1020), Tue: w(true, 420, 1020), Wed: w(true, 420, 1020), Thu: w(true, 420, 1020), Fri: w(true, 420, 960), Sat: w(true, 480, 720), Sun: w(true, 480, 720) },
+        timeOff: [],
+      },
+    };
+  }
+  // written by the coach's own preferences page
+  static availAll() {
+    const base = Component.availDefaults();
+    try {
+      const raw = localStorage.getItem("2110-availability");
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved && typeof saved === "object") {
+          const out = {};
+          Object.keys(base).forEach(k => { out[k] = saved[k] || base[k]; });
+          Object.keys(saved).forEach(k => { out[k] = saved[k]; });
+          return out;
+        }
+      }
+    } catch (e) {}
+    return base;
+  }
+  // attendance survives a reload and a page change
+  static loadAtt(key) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) { const s = JSON.parse(raw); if (s && typeof s === "object") return s; }
+    } catch (e) {}
+    return {};
+  }
+  setStatus(k, v) {
+    this.setState(st => {
+      const statuses = { ...st.statuses, [k]: v };
+      try { localStorage.setItem("2110-attendance", JSON.stringify(statuses)); } catch (e) {}
+      return { statuses };
+    });
+  }
+  setWait(k, list) {
+    this.setState(st => {
+      const waitlists = { ...st.waitlists };
+      if (list.length) waitlists[k] = list; else delete waitlists[k];
+      try { localStorage.setItem("2110-waitlists", JSON.stringify(waitlists)); } catch (e) {}
+      return { waitlists };
+    });
+  }
+  setFee(k, v) {
+    this.setState(st => {
+      const fees = { ...st.fees, [k]: v };
+      try { localStorage.setItem("2110-session-fees", JSON.stringify(fees)); } catch (e) {}
+      return { fees };
+    });
+  }
+  static savedTheme(fallback) {
+    try { return localStorage.getItem("2110-theme") || fallback || "light"; }
+    catch (e) { return fallback || "light"; }
+  }
+  flipTheme() {
+    this.setState(st => {
+      const next = st.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("2110-theme", next); } catch (e) {}
+      return { theme: next };
+    });
+  }
+
+  notifData() {
+    return [
+      ["b1", "Sarah Chen booked Personal Training", "Today, 10:00 AM · booked 6 min ago", "SC", "member"],
+      ["b2", "Owen Pratt joined Conditioning", "Today, 4:30 PM class · 14 min ago", "OP", "member"],
+      ["b3", "Kim Alvarez joined Group Training", "Today, 11:35 AM · 38 min ago", "KA", "member"],
+      ["b4", "Rafael Diaz booked Bodpod", "Thu, Sep 3, 2:20 PM · 1 hr ago", "RD", "member"],
+      ["b5", "Amy Cole joined Recovery class", "Sun, Sep 6, 10:00 AM · 2 hrs ago", "AC", "member"],
+    ];
+  }
+  notifVals() {
+    const dark = this.state.theme === "dark";
+    const read = this.state.notifRead || {};
+    const items = this.notifData().map(([id, text, when, initials]) => {
+      const isRead = !!read[id];
+      const name = text.split(" ").slice(0, 2).join(" ");
+      return {
+        id, text, when, initials,
+        href: "2110 Members.dc.html?member=" + encodeURIComponent(name),
+        rowBg: isRead ? "transparent" : (dark ? "rgba(145,132,217,.07)" : "rgba(15,110,107,.05)"),
+        dotDisplay: isRead ? "none" : "block",
+        iconBg: "var(--row)", iconFg: "var(--muted)",
+      };
+    });
+    const unread = items.filter(i => i.dotDisplay === "block").length;
+    const open = !!this.state.notifOpen;
+    return {
+      notifItems: items,
+      notifEmpty: items.length === 0,
+      notifCount: String(unread),
+      badgeDisplay: unread > 0 ? "grid" : "none",
+      notifOpen: open,
+      notifBg: open ? "var(--row)" : "transparent",
+      notifFg: open ? "var(--text)" : "var(--muted)",
+      notifBorder: open ? "var(--accent)" : "var(--divider)",
+      toggleNotif: () => this.setState(st => ({ notifOpen: !st.notifOpen })),
+      markAllRead: (ev) => {
+        ev.preventDefault();
+        const all = {};
+        this.notifData().forEach(([id]) => { all[id] = true; });
+        this.setState({ notifRead: all });
+      },
+    };
+  }
+
+  memberNames() {
+    return ["Dan Whitfield","Sarah Chen","Marcus Ellis","Priya Raman","Alicia Braun","Rosa Delgado",
+      "Tom Okafor","Owen Pratt","Kim Alvarez","Beth Nunes","Rafael Diaz","Amy Cole","Lena Ortiz","Nina Park",
+      "Jon Reyes","Neil Vance"];
+  }
+  searchIndex() {
+    const members = this.memberNames();
+    const items = members.map(n => ({
+      title: n, sub: "Member profile", kind: "member",
+      badge: n.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+      radius: "999px",
+      href: "2110 Members.dc.html?member=" + encodeURIComponent(n),
+    }));
+    const pages = [
+      ["Dashboard", "Today's overview", "2110 Scheduling Dashboard.dc.html"],
+      ["Schedule", "Day, week and month calendar", "2110 Schedule.dc.html"],
+      ["Members", "Member list and profiles", "2110 Members.dc.html"],
+      ["POS", "Point of sale", "2110 POS.dc.html"],
+      ["Reports", "Revenue, sessions, coaches", "2110 Reports.dc.html"],
+      ["Settings", "Facility, staff, services", "2110 Settings.dc.html"],
+      ["My preferences", "Hours, time off, notifications", "2110 Coach Preferences.dc.html"],
+    ].map(([title, sub, href]) => ({ title, sub, href, kind: "page", badge: "→", radius: "8px" }));
+    const sessions = [
+      ["Personal Training", "Session type · 60 min · $50"],
+      ["Group Training", "Session type · 60 min · up to 6"],
+      ["Class", "Session type · 60 min · up to 16"],
+      ["Remote Consult", "Session type · 15 min · $40"],
+      ["Bodpod", "Session type · 30 min · $45"],
+      ["Blueprint and Baseline", "Session type · 90 min · no charge"],
+    ].map(([title, sub]) => ({ title, sub, kind: "session", badge: "◷", radius: "8px", href: "2110 Schedule.dc.html" }));
+    return items.concat(sessions, pages);
+  }
+  searchVals() {
+    const q = (this.state.searchQuery || "").trim().toLowerCase();
+    const hits = q ? this.searchIndex().filter(i =>
+      i.title.toLowerCase().includes(q) || i.sub.toLowerCase().includes(q)).slice(0, 8) : [];
+    const open = !!this.state.searchOpen && q.length > 0;
+    return {
+      searchQuery: this.state.searchQuery || "",
+      searchResults: hits,
+      searchEmpty: open && hits.length === 0,
+      searchOpen: open,
+      searchBorder: open ? "var(--accent)" : "var(--divider)",
+      clearDisplay: q ? "grid" : "none",
+      setSearch: (ev) => this.setState({ searchQuery: ev.target.value, searchOpen: true }),
+      openSearch: () => this.setState({ searchOpen: true }),
+      clearSearch: () => this.setState({ searchQuery: "", searchOpen: false }),
+    };
+  }
+
+  sun() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" },
+      React.createElement("circle", { cx: 12, cy: 12, r: 4 }),
+      React.createElement("path", { d: "M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" }));
+  }
+  moon() {
+    return React.createElement("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" },
+      React.createElement("path", { d: "M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" }));
+  }
+}
+
+</script>
+</body>
+</html>
